@@ -1,0 +1,12 @@
+{
+  "name": "marie-doula-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site de Marie Graugnard, doula à Paris & proche banlieue sud",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && python3 -m http.server 8080 -d public"
+  },
+  "engines": { "node": ">=18" }
+}
