@@ -398,11 +398,11 @@ function pied(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie') {
 </div>
 </div>
 </footer>
-<a class="flottant" href="${lienWa}">${ICONE_WA}${esc(boutonFlottant)}</a>
+<a class="flottant" href="${lienWa}" aria-label="${esc(boutonFlottant)} sur WhatsApp">${ICONE_WA}<span class="sr">${esc(boutonFlottant)}</span></a>
 `;
 }
 
-const fin = (avecScript) => `${avecScript ? '<script src="/carrousel.js" defer></script>\n' : ''}</body>
+const fin = (avecScript) => `${avecScript ? '<script src="/carrousel.js" defer></script>\n' : ''}<script src="/bulle.js" defer></script>\n</body>
 </html>
 `;
 
@@ -663,6 +663,7 @@ for (const s of services) writeFileSync(join(SORTIE, `${s.slug}.html`), pageServ
 writeFileSync(join(SORTIE, 'mentions-legales.html'), mentions());
 copyFileSync('src/styles.css', join(SORTIE, 'styles.css'));
 copyFileSync('src/carrousel.js', join(SORTIE, 'carrousel.js'));
+copyFileSync('src/bulle.js', join(SORTIE, 'bulle.js'));
 for (const f of readdirSync('src/images')) copyFileSync(join('src/images', f), join(SORTIE, 'images', f));
 writeFileSync(join(SORTIE, 'robots.txt'), PREVISU ? 'User-agent: *\nDisallow: /\n' : 'User-agent: *\nAllow: /\n');
 writeFileSync(join(SORTIE, '_headers'), '/images/*\n  Cache-Control: public, max-age=604800\n/*.css\n  Cache-Control: public, max-age=3600\n');

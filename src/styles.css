@@ -240,14 +240,20 @@ p { margin: 0; }
 .pied-infos img { height: 64px; width: auto; align-self: flex-start; margin-bottom: 8px; }
 .pied-infos strong { color: var(--texte); }
 
-/* ---------- Bouton WhatsApp flottant (mobile) ---------- */
+/* ---------- Bulle WhatsApp flottante (mobile) ---------- */
 .flottant {
-  display: none; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50;
-  justify-content: center; align-items: center; gap: 10px; min-height: 54px; border-radius: 999px;
-  background: var(--brun); color: var(--blanc); text-decoration: none; font-weight: 600; font-size: 17px;
-  box-shadow: 0 10px 30px rgba(59,42,36,.25);
+  display: none; position: fixed; right: 16px; bottom: 16px; z-index: 50;
+  width: 56px; height: 56px; border-radius: 50%;
+  justify-content: center; align-items: center;
+  background: var(--brun); color: var(--blanc); text-decoration: none;
+  box-shadow: 0 8px 24px rgba(59,42,36,.28);
+  opacity: 0; transform: translateY(12px) scale(.9); pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
 }
-.flottant:hover { color: var(--blanc); }
+.flottant svg { width: 26px; height: 26px; }
+.flottant.visible { opacity: 1; transform: none; pointer-events: auto; }
+.flottant:hover { color: var(--blanc); background: var(--brun-fonce, #743937); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---------- Mentions ---------- */
 .legal h2 { font-size: 28px; margin-top: 16px; }
@@ -261,7 +267,6 @@ p { margin: 0; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 760px) {
-  body { padding-bottom: 84px; }
   .conteneur, .conteneur-etroit { padding-left: 16px; padding-right: 16px; }
   .section { padding-top: 56px; padding-bottom: 48px; }
   .entete-int { gap: 10px; padding-top: 12px; padding-bottom: 10px; }
