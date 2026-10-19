@@ -28,7 +28,7 @@ const IMG = {
   blessing: '/images/mama-blessing.jpg'
 };
 
-const CESU = 'Avec le CESU+, le crédit d’impôt de 50 % est déduit au moment du paiement, quels que soient vos revenus. Je vous guide pour les démarches.';
+const CESU = 'J’exerce dans le cadre du service à la personne (CESU+) : crédit d’impôt sur le montant total, quels que soient vos revenus, avec l’avance immédiate au moment du paiement. Je vous guide dans les formalités.';
 
 // ------------------------------------------------------------------
 // Les services : une seule source pour les cartes de l’accueil et les pages
@@ -40,26 +40,24 @@ const services = [
     titreSeo: 'Accompagnement prénatal à Paris',
     description: 'Accompagnement prénatal par une doula à Paris : projet de naissance, préparation du jour J et du post-partum. 60 €/h, 30 €/h après crédit d’impôt.',
     image: IMG.logo, imageEstLogo: true, alt: '',
-    carteTexte: 'Un espace d’écoute rien qu’à vous, dès la pré-conception ou à tout moment de la grossesse.',
+    carteTexte: 'Un espace d’écoute bienveillant, dès la pré-conception ou à tout moment de votre grossesse.',
     cartePoints: ['Votre projet de naissance', 'La préparation du jour J', 'Anticiper le post-partum'],
     prix: '60 €/h', prixDetail: '30 €/h après crédit d’impôt', avecCredit: true,
     carteAvis: { texte: 'Marie m’a beaucoup soutenue et encouragée pour mener à bien mon projet de naissance. Avec elle, tout a été plus facile et plus doux.', auteur: 'Agathe L.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, je suis enceinte de … mois et j’aimerais être accompagnée pendant ma grossesse.'),
-    accroche: 'Dès la pré-conception ou à tout moment de votre grossesse, je vous offre un espace d’écoute bienveillant : un moment qui vous appartient, où tous les sujets peuvent être abordés librement.',
-    inclusTitre: 'Ce que nous pouvons aborder ensemble',
+    accroche: 'Dès la pré-conception ou à tout moment de votre grossesse, je suis là pour vous accompagner et vous soutenir. Mon accompagnement est avant tout émotionnel : un espace d’écoute bienveillant, un moment qui vous appartient, où tous les sujets peuvent être abordés librement.',
+    inclusTitre: 'Lors de nos séances',
     inclus: [
-      ['Votre projet de naissance', 'Clarifier vos souhaits et vos besoins pour le jour J.'],
-      ['La préparation du jour J', 'Vous sentir prête et entourée le moment venu.'],
-      ['L’anticipation du post-partum', 'Des pistes concrètes pour préparer l’après-naissance.'],
-      ['Le tissu rebozo', 'Le découvrir ou le redécouvrir pour prendre soin de vous, physiquement et émotionnellement.'],
-      ['Le désir d’enfant', 'Un soutien dès la pré-conception, à votre rythme.'],
-      ['Vos questions, vos émotions', 'Tous les sujets liés à cette période peuvent être abordés, sans jugement.']
+      ['Votre projet de naissance', 'Je vous accompagne sur votre projet de naissance.'],
+      ['La préparation du jour J', 'Je vous aide à préparer le jour J.'],
+      ['Votre post-partum', 'Je vous donne des pistes pour l’anticiper.'],
+      ['Le tissu rebozo', 'Le découvrir ou le redécouvrir, pour prendre soin de vous, physiquement et émotionnellement.'],
+      ['Des informations utiles', 'Je partage les informations qui pourraient vous manquer pour vivre cette expérience en toute sérénité.']
     ],
     deroule: [
-      ['Un premier échange gratuit', '20 minutes au téléphone pour faire connaissance et voir si nous sommes en phase.'],
-      ['Des rendez-vous à votre rythme', 'Chaque séance est construite selon vos besoins, dans un cadre sécurisant et chaleureux.'],
-      ['Un lien qui peut continuer', 'Si vous le souhaitez, je peux aussi être présente à la naissance et vous accompagner après l’arrivée de bébé.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
+      ['Des séances sur mesure', 'Chaque rendez-vous est conçu pour répondre à vos besoins, dans un cadre sécurisant et chaleureux.']
     ],
     tarifs: [['Rendez-vous prénatal', 'À l’heure', '60 €/h', '30 €/h après crédit d’impôt']],
     tarifNote: CESU,
@@ -70,8 +68,8 @@ const services = [
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Mon accompagnement est avant tout émotionnel et se fait en complément du suivi avec votre sage-femme ou votre gynécologue.'],
-      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre des services à la personne. Avec le CESU+, 50 % du montant est déduit immédiatement au moment du paiement. Je vous accompagne dans les démarches.'],
-      ['Seule ou en couple ?', 'L’accompagnement s’adapte à votre situation, que vous viviez votre grossesse en couple ou en solo.']
+      ['Quand commencer ?', 'Dès la pré-conception ou à tout moment de votre grossesse : le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée.'],
+      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre du service à la personne, avec le dispositif CESU+ : vous bénéficiez d’un crédit d’impôt sur le montant total de la prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement. Je vous guide dans les formalités.']
     ]
   },
   {
@@ -80,40 +78,40 @@ const services = [
     titreSeo: 'Doula présente à la naissance à Paris',
     description: 'Une doula à vos côtés pour la naissance de votre bébé à Paris : astreinte de 3 semaines et présence le jour J, 800 €.',
     image: IMG.logo, imageEstLogo: true, alt: '',
-    carteTexte: 'Je suis d’astreinte deux semaines avant votre terme et une semaine après, puis à vos côtés le jour de l’accouchement.',
-    cartePoints: ['Disponible jour et nuit pendant l’astreinte', 'Une présence discrète et rassurante', 'Un soutien pour vous et votre partenaire'],
+    carteTexte: 'D’astreinte dès deux semaines avant votre terme et jusqu’à une semaine après, puis à vos côtés le jour de l’accouchement.',
+    cartePoints: ['J’adapte mon planning pour être disponible', 'Une présence discrète mais précieuse', 'Un soutien émotionnel et rassurant'],
     prix: '800 €', prixDetail: '3 semaines d’astreinte + le jour J', avecCredit: false,
     carteAvis: { texte: 'Elle m’a accompagnée pendant ma grossesse et mon accouchement. Pleine de tendresse, toujours à l’écoute et jamais dans le jugement.', auteur: 'Anne-Sophie D.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, j’aimerais que vous soyez présente à mon accouchement. Mon terme est prévu le : '),
-    accroche: 'Je peux être à vos côtés pour la naissance de votre bébé : une présence discrète mais précieuse, à l’écoute de vos besoins et de vos choix, pour que vous ne soyez pas seule à vivre ce moment unique.',
+    accroche: 'Chères mamans, chères mamans solos, je peux être à vos côtés pour la naissance de votre bébé : une présence discrète mais précieuse, à l’écoute de vos besoins et de vos choix, pour que vous ne soyez pas seule à vivre ce moment unique.',
     inclusTitre: 'Ce que comprend cet accompagnement',
     inclus: [
       ['Une période d’astreinte', 'Dès deux semaines avant votre terme et jusqu’à une semaine après, j’adapte mon planning pour être pleinement disponible.'],
       ['Ma présence le jour J', 'Un soutien émotionnel, une écoute bienveillante et une présence rassurante tout au long de l’accouchement.'],
-      ['Le respect de vos choix', 'Une présence discrète, attentive à vos besoins, à votre projet de naissance et à votre rythme.'],
-      ['Pour toutes les mamans', 'En couple ou en solo : vous ne serez pas seule à vivre ce moment.']
+      ['Le respect de vos choix', 'Une présence discrète, à l’écoute de vos besoins et de vos choix.'],
+      ['Pour toutes les mamans', 'Chères mamans, chères mamans solos : vous ne serez pas seule à vivre ce moment unique.']
     ],
     deroule: [
-      ['Un premier échange gratuit', '20 minutes au téléphone pour faire connaissance et parler de votre projet de naissance.'],
-      ['L’astreinte', 'Deux semaines avant votre terme, je deviens joignable et disponible, jusqu’à une semaine après.'],
-      ['Le jour de la naissance', 'Je suis à vos côtés, présence calme et rassurante, pour vous soutenir du début à la fin.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
+      ['L’astreinte', 'Dès deux semaines avant votre terme et jusqu’à une semaine après, j’adapte mon planning pour être pleinement disponible.'],
+      ['Le jour de la naissance', 'Je suis à vos côtés : un soutien émotionnel, une écoute bienveillante et une présence rassurante.']
     ],
     tarifs: [
       ['Astreinte', 'De 2 semaines avant le terme à 1 semaine après', '100 €/sem.', 'soit 300 € pour 3 semaines'],
       ['Présence le jour J', 'Le jour de l’accouchement', '500 €', ''],
       ['Total', 'Astreinte + jour J', '800 €', '']
     ],
-    tarifNote: 'Les modalités de paiement se voient ensemble lors du premier échange.',
+    tarifNote: 'Mon accompagnement n’est pas médical, il se fait en complément du suivi avec votre sage-femme ou votre gynécologue.',
     avis: [
       ['Je recommande vivement Marie, qui m’a accompagnée pendant ma grossesse, mon accouchement et encore aujourd’hui. Pleine de tendresse et de bienveillance, toujours à l’écoute et jamais dans le jugement.', 'Anne-Sophie D.'],
       ['Très réactive, à l’écoute, elle a ce talent de tout anticiper simplement. Un grand soutien au quotidien, et même une astreinte pour réussir notre rencontre, maman et bébé.', 'Elsa A.'],
       ['Son écoute attentive, sa bienveillance et ses connaissances de la périnatalité nous ont permis d’être sereines pour le grand saut dans la parentalité.', 'Fanny & Solène']
     ],
     infos: [
-      ['Est-ce un accompagnement médical ?', 'Non. Mon rôle est de vous apporter un soutien émotionnel et une présence rassurante, en complément du suivi par votre sage-femme ou votre gynécologue.'],
-      ['Peut-on préparer la naissance ensemble avant ?', 'Oui : l’accompagnement prénatal permet de travailler votre projet de naissance et de préparer le jour J. Je peux aussi vous soutenir après l’arrivée de bébé.'],
-      ['Je vis ma maternité en solo, est-ce pour moi ?', 'Bien sûr. Beaucoup de mamans solos m’ont fait confiance : vous ne serez pas seule à vivre ce moment.']
+      ['Est-ce un accompagnement médical ?', 'Non. Mon rôle est de vous apporter un soutien émotionnel, une écoute bienveillante et une présence rassurante. Il se fait en complément du suivi avec votre sage-femme ou votre gynécologue.'],
+      ['Peut-on préparer la naissance ensemble avant ?', 'Oui : l’accompagnement prénatal permet de travailler votre projet de naissance et de préparer le jour J.'],
+      ['Je vis ma maternité solo, est-ce pour moi ?', 'Oui. La vie met sur ma route des mamans solos, encore et encore. Vous ne serez jamais seule dans cette aventure.']
     ]
   },
   {
@@ -122,26 +120,25 @@ const services = [
     titreSeo: 'Rendez-vous postnatal avec une doula à Paris',
     description: 'Rendez-vous postnatal avec une doula à Paris : récit de naissance, portage, premiers pas de jeune maman. 60 €/h, 30 €/h après crédit d’impôt.',
     image: IMG.logo, imageEstLogo: true, alt: '',
-    carteTexte: 'Un moment pour vous, pour déposer vos émotions et vos questions de jeune maman.',
+    carteTexte: 'Un espace d’écoute, un moment à vous, pour exprimer vos émotions et vos interrogations en toute liberté.',
     cartePoints: ['Votre récit de naissance', 'Portage et langue des signes pour bébé', 'Motricité libre, diversification…'],
     prix: '60 €/h', prixDetail: '30 €/h après crédit d’impôt', avecCredit: true,
     carteAvis: { texte: 'Nos rendez-vous hebdomadaires étaient une bouffée d’air frais. Elle m’a tant appris sur mon bébé, sur mon corps, sur l’allaitement.', auteur: 'Charlotte A.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, j’ai accouché il y a … et j’aimerais un rendez-vous postnatal.'),
-    accroche: 'Après la naissance de votre bébé, je vous offre un espace d’écoute bienveillant, un moment à vous, où exprimer toutes vos émotions et vos interrogations en toute liberté.',
-    inclusTitre: 'Ce que nous pouvons partager',
+    accroche: 'Après la naissance de votre bébé, je suis là pour vous accompagner à chaque étape. Toujours centrée sur le soutien émotionnel, je vous propose un espace d’écoute bienveillant, un moment à vous, où exprimer toutes vos émotions et interrogations en toute liberté.',
+    inclusTitre: 'Ce que nous pourrons partager',
     inclus: [
-      ['Votre récit de naissance', 'Revenir sur ce que vous avez vécu, et sur les émotions qui y sont liées.'],
-      ['Vos premiers pas de maman', 'Vos questionnements, vos doutes, vos découvertes du quotidien.'],
+      ['Votre récit de naissance', 'Et les émotions qui y sont liées.'],
+      ['Vos premiers pas de jeune maman', 'Vos questionnements, à votre rythme.'],
       ['Le tissu rebozo', 'Un outil pour favoriser votre bien-être physique et émotionnel.'],
       ['Le portage', 'Des conseils adaptés à vos besoins et à ceux de votre bébé.'],
       ['La langue des signes pour bébé', 'Poser les bases d’une communication simple et naturelle dès les premiers mois.'],
-      ['Motricité libre, diversification…', 'Des repères pour les étapes qui arrivent.']
+      ['Et bien d’autres sujets', 'Motricité libre, diversification alimentaire…']
     ],
     deroule: [
-      ['Un premier échange gratuit', '20 minutes au téléphone pour faire connaissance et voir si nous sommes en phase.'],
-      ['Des rendez-vous à votre rythme', 'Chaque rencontre s’adapte à vos besoins, dans un environnement rassurant et bienveillant.'],
-      ['Plus de présence si besoin', 'Si les semaines sont lourdes, le soutien post-partum à domicile prend le relais au quotidien.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
+      ['Des rencontres sur mesure', 'Chaque rencontre s’adapte à vos besoins, dans un environnement rassurant et bienveillant.']
     ],
     tarifs: [['Rendez-vous postnatal', 'À l’heure', '60 €/h', '30 €/h après crédit d’impôt']],
     tarifNote: CESU,
@@ -152,8 +149,8 @@ const services = [
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Il vient en complément du suivi par votre sage-femme, votre gynécologue ou votre pédiatre.'],
-      ['Quelle différence avec le soutien post-partum à domicile ?', 'Le rendez-vous postnatal est un temps d’échange et de conseils. Le soutien à domicile est une présence régulière, deux à trois fois par semaine, avec une aide concrète : repas, relais avec bébé.'],
-      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre des services à la personne. Avec le CESU+, 50 % du montant est déduit immédiatement au moment du paiement.']
+      ['Quelle différence avec le soutien post-partum à domicile ?', 'Le rendez-vous postnatal est un temps d’écoute et d’échange. Le soutien post-partum est une présence à domicile deux ou trois fois par semaine, avec une aide dans les tâches du quotidien.'],
+      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre du service à la personne, avec le dispositif CESU+ : vous bénéficiez d’un crédit d’impôt sur le montant total de la prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement.']
     ]
   },
   {
@@ -163,26 +160,26 @@ const services = [
     description: 'Une doula chez vous 2 à 3 fois par semaine après la naissance : repas maison, relais avec bébé, écoute. 25 €/h, 12,50 €/h après crédit d’impôt.',
     image: IMG.logo, imageEstLogo: true, alt: '',
     imagePage: IMG.cuisine, altPage: 'Marie dans une cuisine, un bébé contre elle dans une écharpe de portage',
-    carteTexte: 'Deux ou trois fois par semaine, je viens chez vous trois heures pour prendre le relais, vous nourrir et vous écouter.',
-    cartePoints: ['Des petits plats maison pour la semaine', 'Le relais avec bébé : sieste, douche, sortie', '2 × 3 h ou 3 × 3 h par semaine'],
+    carteTexte: 'Un soutien quasi quotidien chez vous : aide dans les tâches du quotidien et écoute bienveillante.',
+    cartePoints: ['Préparation des repas', 'Je veille sur bébé le temps d’une douche ou d’une sieste', '2 × 3 h ou 3 × 3 h par semaine'],
     prix: '25 €/h', prixDetail: '12,50 €/h après crédit d’impôt', avecCredit: true,
     carteAvis: { texte: 'Notre bulle d’oxygène : dormir quelques heures et retrouver un bébé apaisé et des plats maison réconfortants.', auteur: 'Claire T.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, je suis intéressée par le soutien post-partum à domicile. Mon bébé est né / doit naître le : '),
-    accroche: 'Les premières semaines et les premiers mois avec un bébé peuvent être intenses. Deux ou trois fois par semaine, je viens chez vous trois heures pour prendre le relais, vous nourrir et vous écouter.',
-    inclusTitre: 'Ce que je fais pour vous',
+    accroche: 'Les premières semaines, les premiers mois après la naissance de votre bébé peuvent être intenses. Je propose une offre unique à Paris, conçue pour soulager l’intensité de votre post-partum avec un soutien quasi quotidien, adapté à vos besoins.',
+    inclusTitre: 'Mon accompagnement inclut',
     inclus: [
-      ['Des repas nourrissants', 'Je cuisine des petits plats maison, pensés pour le post-partum, pour la semaine.'],
-      ['Le relais avec bébé', 'Je veille sur votre bébé le temps d’une douche, d’une sieste ou d’une sortie.'],
-      ['L’aide au quotidien', 'Gestion des tâches de la maison pour alléger votre charge mentale.'],
-      ['Une écoute bienveillante', 'Un espace pour vous exprimer librement, sans jugement.'],
-      ['Des conseils pratiques', 'Des astuces pour faciliter votre quotidien avec bébé.'],
-      ['Un soutien à la parentalité', 'Un accompagnement dans vos nouvelles responsabilités de parent.']
+      ['Des repas nourrissants', 'Je vous cuisine des repas nourrissants.'],
+      ['Le relais avec bébé', 'Je veille sur votre bébé le temps d’une douche ou d’une sieste.'],
+      ['Une aide logistique', 'Gestion des tâches quotidiennes, soutien à la maison.'],
+      ['Une écoute bienveillante', 'Un espace pour vous exprimer librement.'],
+      ['Des conseils pratiques', 'Des astuces pour faciliter votre quotidien.'],
+      ['Un soutien à la parentalité', 'Un accompagnement dans vos nouvelles responsabilités.']
     ],
     deroule: [
-      ['Un premier échange gratuit', '20 minutes au téléphone pour parler de vos besoins et de votre organisation.'],
-      ['On choisit votre formule', 'Deux ou trois visites de trois heures par semaine, selon ce qui vous soulage le plus.'],
-      ['Je viens chez vous, à votre rythme', 'Quelques semaines ou plusieurs mois : l’accompagnement dure le temps dont vous avez besoin.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
+      ['On choisit votre formule', 'Offre mini : 2 fois 3 h par semaine. Offre maxi : 3 fois 3 h par semaine.'],
+      ['Un soutien à votre rythme', 'Un accompagnement quasi quotidien, adapté à votre rythme et à vos besoins, dans le respect de votre espace et de votre parentalité.']
     ],
     tarifs: [
       ['Offre mini', '2 × 3 h par semaine', '150 €/sem.', '75 € après crédit d’impôt'],
@@ -196,8 +193,8 @@ const services = [
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Il vient en complément du suivi par votre sage-femme, votre gynécologue ou votre pédiatre.'],
-      ['Quand commencer ?', 'Dès votre retour à la maison, ou plus tard quand les semaines deviennent lourdes. Vous pouvez aussi l’organiser pendant la grossesse.'],
-      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre des services à la personne. Avec le CESU+, 50 % du montant est déduit immédiatement au moment du paiement.']
+      ['Quand faire appel à moi ?', 'Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée. Durant les premiers mois, je vous accompagne face à la fatigue, aux doutes et aux besoins du quotidien.'],
+      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre du service à la personne, avec le dispositif CESU+ : vous bénéficiez d’un crédit d’impôt sur le montant total de la prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement.']
     ]
   },
   {
@@ -206,29 +203,29 @@ const services = [
     titreSeo: 'Soin rebozo à Paris 13e',
     description: 'L’instant rebozo : 1 h 30 de bercements et de serrages avec les tissus rebozo, chez vous ou à Paris 13e. 120 €. Bébé bienvenu.',
     image: IMG.rebozo, alt: 'Une femme allongée, enveloppée dans des tissus rebozo',
-    carteTexte: 'Bercements et serrages avec les tissus rebozo, pour se détendre et se recentrer.',
+    carteTexte: 'Bercements et serrages avec les tissus rebozo : détente, relâchement du corps, libération des émotions.',
     cartePoints: ['Chez vous ou chez moi (Paris 13e)', 'Votre bébé peut rester avec vous', 'Temps d’échange avant et après'],
     prix: '120 €', prixDetail: '1 h 30', prixDetailPage: '1 h 30 · chez vous ou chez moi (Paris 13e)', avecCredit: false,
     carteAvis: { texte: 'Le soin de Marie m’a fait un bien fou. Elle s’adapte à la présence du bébé pour que vous en profitiez pleinement.', auteur: 'Joséphine B.' },
     bouton: 'Réserver', boutonPage: 'Réserver un instant rebozo',
     wa: wa('Bonjour Marie, j’aimerais réserver un instant rebozo.'),
-    accroche: 'Le rebozo est un châle traditionnel mexicain. À travers des bercements et des serrages, il apporte détente, relâchement du corps et libération des émotions. Particulièrement apprécié pendant ou après une grossesse, c’est aussi un soin à s’offrir à tout moment de sa vie de femme.',
+    accroche: 'Le rebozo est un châle traditionnel mexicain, utilisé pour le soutien physique et émotionnel des femmes à travers des bercements et des serrages. Particulièrement apprécié pendant ou après une grossesse, l’instant rebozo est aussi un soin que l’on peut s’offrir à tout moment de sa vie de femme.',
     inclusTitre: 'Pendant cette heure et demie',
     inclus: [
-      ['L’installation de l’espace', 'Un cadre doux et apaisant, chez vous ou chez moi.'],
-      ['Un temps d’échange', 'Avant et après le soin, pour accueillir ce que vous traversez.'],
+      ['L’installation de l’espace', 'Chez vous, ou chez moi dans le 13e arrondissement.'],
+      ['Un temps d’échange', 'Avant et après le soin.'],
       ['Des bercements', 'Avec mes rebozos, sur différents points du corps.'],
-      ['Un serrage de bassin', 'Pour retrouver contenance et ancrage (sauf pendant la grossesse).'],
+      ['Un serrage de bassin', 'Sauf pendant la grossesse.'],
       ['Votre bébé est le bienvenu', 'Pour les mères, votre bébé peut vous accompagner pendant le soin.'],
-      ['Pour toutes les femmes', 'Pendant la grossesse, après la naissance ou à n’importe quel passage de vie.']
+      ['Pour toutes les femmes', 'Pendant ou après une grossesse, ou à tout moment de votre vie de femme.']
     ],
     deroule: [
       ['Vous m’écrivez', 'On choisit ensemble une date et le lieu : chez vous ou chez moi, dans le 13e.'],
-      ['On prend le temps d’échanger', 'J’installe l’espace et nous parlons de vos besoins et de vos ressentis.'],
-      ['Le soin', 'Bercements, serrage, puis un dernier temps d’échange pour revenir en douceur.']
+      ['L’installation', 'J’installe l’espace et nous prenons un temps d’échange.'],
+      ['Le soin', 'Bercements, serrage de bassin, puis un dernier temps d’échange.']
     ],
     tarifs: [['L’instant rebozo', '1 h 30 · chez vous ou chez moi', '120 €', '']],
-    tarifNote: 'Les modalités de paiement se voient ensemble au moment de la réservation.',
+    tarifNote: 'Je me déplace à votre domicile ou vous reçois chez moi, dans le 13e arrondissement.',
     avis: [
       ['Le soin de Marie m’a fait un bien fou. Elle s’adapte à la présence du bébé et vous met dans les meilleures conditions pour en profiter pleinement.', 'Joséphine B.'],
       ['Meilleur cadeau de naissance ! Marie a su s’adapter à la présence de mon bébé, qui a voulu profiter du soin elle aussi. Un vrai moment pour soi.', 'Imen E.'],
@@ -237,7 +234,7 @@ const services = [
     infos: [
       ['Puis-je le recevoir pendant ma grossesse ?', 'Oui. Le soin s’adapte : il n’y a simplement pas de serrage de bassin pendant la grossesse.'],
       ['Mon bébé peut-il être là ?', 'Oui, pour les mères, votre bébé peut vous accompagner durant ce soin.'],
-      ['Est-ce réservé aux jeunes mamans ?', 'Non. C’est un soin que l’on peut s’offrir à tout moment de sa vie de femme, pour se détendre et se recentrer.']
+      ['Est-ce réservé aux jeunes mamans ?', 'Non. C’est un soin que l’on peut s’offrir à tout moment de sa vie de femme.']
     ]
   },
   {
@@ -246,7 +243,7 @@ const services = [
     titreSeo: 'Rituel rebozo à 4 mains à Paris 13e',
     description: 'Le rituel rebozo à 4 mains : 3 heures avec deux doulas, massage à l’huile, bain aux plantes et serrage en 7 points, à Paris 13e. 380 €.',
     image: IMG.rituel, alt: 'Mains nouant un tissu rebozo pendant un serrage',
-    carteTexte: 'Avec Jeanne, doula : un moment de sororité pour honorer votre corps et tourner une page.',
+    carteTexte: 'Un soin à 4 mains, avec deux doulas : un moment de partage et de sororité.',
     cartePoints: ['Massage à l’huile à 4 mains', 'Bain chaud aux plantes', 'Serrage en 7 points'],
     prix: '380 €', prixDetail: '3 h · chez moi (Paris 13e)', avecCredit: false,
     carteAvis: { texte: 'J’avais besoin de me retrouver, de tourner la page, et c’est chose faite. Je le recommande à toutes les femmes, pas uniquement aux mères.', auteur: 'Cindy D.' },
@@ -258,8 +255,8 @@ const services = [
       ['Un temps d’échange', 'Avant et après le soin, autour d’une boisson chaude.'],
       ['Un massage à 4 mains', 'Un massage de tout le corps, à l’huile.'],
       ['Un bain chaud aux plantes', 'Pour relâcher le corps et prolonger la détente.'],
-      ['Un serrage en 7 points', 'Avec les rebozos, pour envelopper le corps et marquer le passage.'],
-      ['Deux doulas pour vous', 'Marie et Jeanne, pour honorer votre corps, votre cœur et votre esprit.'],
+      ['Un serrage en 7 points', 'En 7 points du corps, avec les rebozos.'],
+      ['Deux doulas pour vous', 'Nous avons à cœur d’honorer le corps féminin, de le choyer, et à travers lui votre cœur et votre esprit.'],
       ['Un espace doux', 'Chez moi, dans le 13e arrondissement, dans un cadre bienveillant.']
     ],
     deroule: [
@@ -268,7 +265,7 @@ const services = [
       ['Le rituel', 'Massage à 4 mains, bain aux plantes, serrage en 7 points, puis un dernier temps de partage.']
     ],
     tarifs: [['Le rituel rebozo à 4 mains', '3 h · avec deux doulas', '380 €', '']],
-    tarifNote: 'Les modalités de paiement se voient ensemble au moment de la réservation.',
+    tarifNote: 'Pour les mères, ce soin est réalisé sans bébé, afin de garantir ce moment de relaxation et de connexion au corps.',
     avis: [
       ['Je ne trouve pas les mots pour remercier Marie et Jeanne. J’avais besoin de me retrouver, de tourner la page, et c’est chose faite. Je recommande à toutes les femmes, et pas uniquement aux mères.', 'Cindy D.', 'Avis Google'],
       ['Un grand merci à vous deux pour ce magnifique soin tout en bienveillance, douceur et puissance. C’était magique !', 'Hélène', 'Témoignage']
@@ -286,7 +283,7 @@ const services = [
     description: 'Le Mama Blessing : une cérémonie de 3 heures pour célébrer la future maman, entourée des femmes qui comptent pour elle. 340 €.',
     image: IMG.blessing, alt: 'Table de Mama Blessing décorée de fleurs séchées et de bougies',
     carteTexte: 'Une cérémonie pour célébrer la future maman, entourée des femmes qui comptent pour elle.',
-    cartePoints: ['Organisée à votre image', 'Avec votre « village »', 'Avant la naissance'],
+    cartePoints: ['Une parenthèse sacrée', 'Avec votre « village »', 'Avant la naissance'],
     prix: '340 €', prixDetail: '3 h', avecCredit: false,
     carteAvis: { texte: 'Marie a su être à l’écoute pour organiser un événement à mon image. Toutes étaient ravies de ce moment !', auteur: 'Mélanie D.' },
     bouton: 'Organiser', boutonPage: 'Organiser un Mama Blessing',
@@ -294,26 +291,24 @@ const services = [
     accroche: 'Une cérémonie unique et précieuse, dédiée à célébrer la future mère, à l’honorer et à l’accompagner avec amour jusqu’à la naissance de son bébé, entourée des femmes qui comptent pour elle.',
     inclusTitre: 'Ce que je vous propose',
     inclus: [
-      ['Une cérémonie à votre image', 'Organisée selon vos envies, à l’écoute de ce qui compte pour vous.'],
+      ['Une cérémonie pour vous', 'Dédiée à célébrer la future mère, à l’honorer et à l’accompagner avec amour jusqu’à la naissance de son bébé.'],
       ['Votre « village » réuni', 'Les femmes qui comptent pour vous, autour de vous.'],
       ['Une bulle de soutien', 'Pendant quelques heures, elles prennent soin de vous avec amour, bienveillance et douceur.'],
       ['Une parenthèse sacrée', 'Un moment où vous êtes célébrée pour la femme et la mère que vous êtes.'],
-      ['Je facilite le moment', 'Avec joie et gratitude, je guide la cérémonie pour que chacune se sente à l’aise.']
+      ['Je facilite ce moment', 'C’est avec joie et gratitude que je facilite ce moment intime.']
     ],
     deroule: [
-      ['Vous m’écrivez', 'Nous parlons de vos envies, des femmes que vous souhaitez réunir et de la date.'],
-      ['On prépare ensemble', 'Je construis avec vous une cérémonie qui vous ressemble.'],
-      ['Le jour de la cérémonie', 'Pendant environ trois heures, je facilite ce moment de lien, de joie et de douceur.']
+      ['Vous m’écrivez', 'Nous parlons de vos envies et des femmes que vous souhaitez réunir.'],
+      ['Le jour de la cérémonie', 'Pendant trois heures, je facilite ce moment intime, entourée des femmes qui comptent pour vous.']
     ],
     tarifs: [['Mama Blessing', '3 h · cérémonie facilitée par Marie', '340 €', '']],
-    tarifNote: 'Les détails pratiques se voient ensemble lors de la préparation.',
+    tarifNote: '',
     avis: [
       ['Mille mercis à Marie pour l’organisation de ma cérémonie autour de ma grossesse. Elle a su être à l’écoute pour organiser un évènement à mon image. Un contact très agréable, doux, facile, joyeux, pour mettre tout le monde à l’aise. Toutes étaient ravies de ce moment !', 'Mélanie D.']
     ],
     infos: [
-      ['Quand l’organiser ?', 'Pendant la grossesse, avant la naissance de bébé, pour vous porter jusqu’au grand jour.'],
-      ['Qui inviter ?', 'Les femmes qui comptent pour vous, celles qui forment votre « village ».'],
-      ['Est-ce une baby shower ?', 'Non. Le Mama Blessing est centré sur la future mère : un moment pour l’honorer, l’entourer et se sentir reliée à ses proches et à soi-même.']
+      ['Quand l’organiser ?', 'Pendant la grossesse, pour vous accompagner avec amour jusqu’à la naissance de votre bébé.'],
+      ['Qui inviter ?', 'Les femmes qui comptent pour vous, celles qui forment votre « village ».']
     ]
   }
 ];
@@ -449,8 +444,8 @@ function accueil() {
 <section class="conteneur heros" id="accueil">
 <div class="heros-texte">
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
-<h1 class="h1">Une présence douce, <em>de la grossesse aux premiers mois.</em></h1>
-<p class="chapo">Accompagnement à domicile, présence à la naissance, soins rebozo : je prends soin de vous, en couple ou en solo, à chaque étape.</p>
+<h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
+<p class="chapo">Vous êtes enceinte, vous venez d’accueillir votre bébé ou vous commencez à imaginer votre parcours vers la parentalité ? Vous ressentez le besoin d’être écoutée, soutenue, accompagnée : vous êtes au bon endroit.</p>
 <div class="groupe-btn">
 <a class="btn btn-grand" href="#accompagnements">Voir les accompagnements <span aria-hidden="true">↓</span></a>
 <a class="btn btn-grand btn-sauge" href="#soins">Voir les soins <span aria-hidden="true">↓</span></a>
@@ -465,9 +460,9 @@ function accueil() {
 
 <section class="bandeau" aria-label="En bref">
 <div class="conteneur bandeau-int">
-<div class="bandeau-item"><strong>5,0 ★ · 28 avis</strong><span>Toutes les mamans recommandent</span></div>
-<div class="bandeau-item"><strong>−50 % avec le CESU+</strong><span>Sur les accompagnements à domicile</span></div>
-<div class="bandeau-item"><strong>4 ans de doula</strong><span>et 13 ans auprès des tout-petits</span></div>
+<div class="bandeau-item"><strong>5,0 ★ · 28 avis</strong><span>sur Google</span></div>
+<div class="bandeau-item"><strong>−50 % avec le CESU+</strong><span>Crédit d’impôt sur les accompagnements</span></div>
+<div class="bandeau-item"><strong>4 ans de doula</strong><span>après 13 ans d’assistante maternelle</span></div>
 <div class="bandeau-item"><strong>Chez vous</strong><span>Paris &amp; proche banlieue sud</span></div>
 </div>
 </section>
@@ -476,9 +471,9 @@ function accueil() {
 <div class="intro">
 <div class="intro-texte">
 <span class="etiquette">Accompagnements</span>
-<h2 class="h2">Être soutenue, de la grossesse aux premiers mois</h2>
-<p class="texte">Un accompagnement émotionnel et concret, non médical, en complément du suivi de votre sage-femme ou de votre gynécologue.</p>
-<p class="texte">Je viens chez vous, je cuisine, je prends le relais avec bébé et je vous écoute, à votre rythme.</p>
+<h2 class="h2">Votre accompagnement sur mesure, pour une maternité plus sereine</h2>
+<p class="texte">Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.</p>
+<p class="texte">Mon accompagnement n’est pas médical : il vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p>
 <p class="discret">Prix indiqués avant crédit d’impôt.</p>
 </div>
 <img class="intro-photo" src="${IMG.cuisine}" alt="Marie dans une cuisine, un bébé contre elle dans une écharpe de portage" loading="lazy">
@@ -488,7 +483,7 @@ ${acc.map(carte).join('\n')}
 </div>
 ${points('points-acc', acc.length)}
 <div class="solo">
-<div class="solo-texte"><strong>Vous vivez votre maternité en solo ?</strong><span>La vie a mis beaucoup de mamans solos sur ma route. Vous ne serez jamais seule dans cette aventure.</span></div>
+<div class="solo-texte"><strong>Vous vivez la maternité solo ?</strong><span>La vie met sur ma route des mamans solos, encore et encore. Vous ne serez jamais seule dans cette aventure.</span></div>
 <a class="btn btn-clair" href="${WA_SOLO}">Parlons-en</a>
 </div>
 </section>
@@ -496,8 +491,8 @@ ${points('points-acc', acc.length)}
 <section class="conteneur section pile pile-32" id="soins" style="padding-top:48px">
 <div class="intro-simple">
 <span class="etiquette sauge">Soins &amp; cérémonies</span>
-<h2 class="h2">Prendre un temps pour soi</h2>
-<p class="texte">Le rebozo est un châle traditionnel mexicain : bercements, enveloppements et serrages pour relâcher le corps et accueillir les émotions. Pendant la grossesse, après la naissance, ou à n’importe quel passage de votre vie de femme.</p>
+<h2 class="h2">Une parenthèse pour soi</h2>
+<p class="texte">Le rebozo est un châle traditionnel mexicain, utilisé pour le soutien physique et émotionnel des femmes à travers des bercements et des serrages. Pendant ou après une grossesse, ou à tout moment de votre vie de femme.</p>
 </div>
 <div class="grille grille-3 carrousel" data-carrousel="points-soins">
 ${soins.map(carte).join('\n')}
@@ -508,7 +503,7 @@ ${points('points-soins', soins.length)}
 <section class="fond-rose" id="avis">
 <div class="conteneur avis-entete" style="padding-top:56px;padding-bottom:56px">
 <div class="pile" style="gap:8px">
-<h2 class="h2-moyen">Elles en parlent mieux que moi</h2>
+<h2 class="h2-moyen">Elles en parlent</h2>
 <p class="texte" style="font-size:18px"><strong style="color:var(--texte)">5,0 <span class="etoiles">★★★★★</span></strong> · 28 avis sur Google</p>
 </div>
 <div class="groupe-btn" style="gap:12px">
@@ -521,21 +516,21 @@ ${points('points-soins', soins.length)}
 <section class="conteneur section apropos" id="apropos">
 <img class="apropos-photo" src="${IMG.portrait}" alt="Portrait de Marie, souriante, en extérieur" loading="lazy">
 <div class="apropos-texte">
-<span class="surtitre">Qui je suis</span>
-<h2 class="h2" style="font-size:40px;line-height:1.15">Femme, mère de trois garçons, et doula.</h2>
-<p class="texte" style="font-size:18px">Diplômée de la petite enfance, j’ai été assistante maternelle pendant 13 ans. J’ai vécu trois post-partum, avec leurs doutes et leur solitude, et cette peur de demander de l’aide.</p>
-<p class="citation">Aujourd’hui, j’offre aux mères ce que j’aurais aimé recevoir : une présence douce, sans jugement, et une aide bien concrète.</p>
-<p class="texte">Comme une sœur, une amie ou une mère, avec mon expérience à vos côtés.</p>
+<span class="surtitre">Bienvenue dans mon cocon</span>
+<h2 class="h2" style="font-size:40px;line-height:1.15">Je m’appelle Marie : femme, mère, compagne, amie, et doula.</h2>
+<p class="texte" style="font-size:18px">Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle, aux côtés de nombreuses familles. Je suis aussi maman de trois garçons. J’ai vécu trois post-partum, avec leurs doutes, leur solitude, et cette peur de demander de l’aide.</p>
+<p class="citation">Aujourd’hui, je veux offrir aux mères ce que j’aurais aimé recevoir : un soutien bienveillant, une présence sans jugement, une aide concrète au quotidien.</p>
+<p class="texte">Comme une sœur, une amie ou une mère, avec mon expertise à vos côtés.</p>
 </div>
 </section>
 
 <section class="conteneur-etroit section pile pile-24" id="faq">
 <h2 class="h2">Vos questions</h2>
 <div class="faq">
-<details><summary>Qu’est-ce qu’une doula ?</summary><p>Une accompagnante non médicale qui vous soutient émotionnellement et concrètement pendant la grossesse, la naissance et le post-partum. Elle ne remplace pas votre sage-femme ou votre médecin : elle complète leur suivi.</p></details>
-<details><summary>Comment fonctionne le crédit d’impôt avec le CESU+ ?</summary><p>J’exerce dans le cadre des services à la personne. Pour les accompagnements à domicile, vous bénéficiez d’un crédit d’impôt de 50 %, déduit immédiatement au moment du paiement, quels que soient vos revenus. Je vous accompagne dans les démarches.</p></details>
-<details><summary>Où intervenez-vous ?</summary><p>À domicile, à Paris et en proche banlieue sud [liste des arrondissements et villes à confirmer]. Les soins rebozo peuvent aussi avoir lieu chez moi, dans le 13e.</p></details>
-<details><summary>Quand faire appel à vous ?</summary><p>Dès que vous en ressentez le besoin : pendant la grossesse pour préparer l’arrivée de bébé, pour la naissance, ou quand les premières semaines deviennent trop lourdes.</p></details>
+<details><summary>Quand faire appel à moi ?</summary><p>Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée : avant l’arrivée de bébé, pour la préparation émotionnelle et organisationnelle ; lors de la naissance, pour une présence calme et apaisante ; durant les premiers mois, face à la fatigue, aux doutes et aux besoins du quotidien.</p></details>
+<details><summary>Est-ce un accompagnement médical ?</summary><p>Non. Mon accompagnement vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p></details>
+<details><summary>Comment fonctionne le crédit d’impôt avec le CESU+ ?</summary><p>J’exerce mon activité dans le cadre du service à la personne. Vous bénéficiez d’un crédit d’impôt sur le montant total de ma prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement (dans la limite de 6 000 € de crédit par an pour l’emploi à domicile). Les formalités sont très simplifiées, et je suis à vos côtés pour vous guider.</p></details>
+<details><summary>Où intervenez-vous ?</summary><p>À votre domicile, à Paris et en proche banlieue sud [liste à confirmer]. Pour l’instant rebozo, je peux aussi vous recevoir chez moi, dans le 13e arrondissement.</p></details>
 </div>
 </section>
 </main>
@@ -599,7 +594,7 @@ ${s.deroule.map(([t, d], i) => `<li><span class="num${sauge ? ' sauge' : ''}">${
 <aside class="tarifs" aria-label="Tarifs">
 <h2>${s.tarifs.length > 1 ? 'Tarifs' : 'Tarif'}</h2>
 ${s.tarifs.map(([label, sous, valeur, note]) => `<div class="tarif-ligne"><div class="g"><strong>${esc(label)}</strong><span>${esc(sous)}</span></div><div class="d"><strong>${esc(valeur)}</strong>${note ? `<span>${esc(note)}</span>` : ''}</div></div>`).join('\n')}
-<p class="discret">${esc(s.tarifNote)}</p>
+${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
 <a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || s.bouton)}</a>
 </aside>
 </section>
