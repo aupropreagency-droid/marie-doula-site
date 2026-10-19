@@ -78,4 +78,5 @@
   .heros-v3 .heros-visuel { order: 2; margin-top: 22px; margin-bottom: 6px; }
   .heros-v3 .groupe-btn { margin-top: 24px; }
   .heros-v3 .arche { height: 320px; }
+  .heros-v3 .badge-avis { display: none; }
 }
