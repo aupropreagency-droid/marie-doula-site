@@ -274,6 +274,10 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .h2, .h2-moyen { font-size: 27px !important; }
 }
 
+@media (max-width: 340px) {
+  .h1-service { font-size: 27px !important; }
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 760px) {
   .conteneur, .conteneur-etroit { padding-left: 16px; padding-right: 16px; }
