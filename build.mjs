@@ -513,10 +513,10 @@ ${acc.map(carte).join('\n')}
 </div>
 ${points('points-acc', acc.length)}
 ${MODULE_CESU}
-<div class="solo">
+${V3 ? '' : `<div class="solo">
 <div class="solo-texte"><strong>Vous vivez la maternité solo ?</strong><span>La vie met sur ma route des mamans solos, encore et encore. Vous ne serez jamais seule dans cette aventure.</span></div>
 <a class="btn btn-clair" href="${WA_SOLO}">Parlons-en</a>
-</div>
+</div>`}
 </section>
 
 <section class="conteneur section pile pile-32" id="soins" style="padding-top:48px">
