@@ -266,7 +266,6 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .info-i { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--sauge); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: "Fraunces", serif; font-style: italic; font-size: 15px; }
 .info-cesu-corps { padding: 0 22px 22px 60px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: var(--texte-2); }
 .info-cesu-corps p { margin: 0; }
-.info-cesu-note { font-weight: 600; color: var(--texte); }
 @media (max-width: 760px) { .info-cesu-corps { padding: 0 18px 20px 18px; } .info-cesu summary { padding: 16px 18px; } }
 
 /* ---------- Mentions ---------- */

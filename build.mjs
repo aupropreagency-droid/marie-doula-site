@@ -29,15 +29,12 @@ const IMG = {
   blessing: '/images/mama-blessing.jpg'
 };
 
-const WA_CESU = wa('Bonjour Marie, j’ai une question sur le CESU+ : ');
 const MODULE_CESU = `<details class="info-cesu" id="cesu">
 <summary><span class="info-i" aria-hidden="true">i</span>Le CESU+ : comment ça marche ?</summary>
 <div class="info-cesu-corps">
 <p>J’ai à cœur que mes tarifs d’accompagnement puissent être accessibles au plus grand nombre. J’exerce mon activité de doula dans le cadre du service à la personne : je peux donc être employée à domicile et bénéficier du dispositif CESU+.</p>
 <p>Ce statut, en tant que particulier employeur, vous donne droit à un crédit d’impôt sur le montant total de ma prestation, quels que soient vos revenus. Vous bénéficiez de l’avance immédiate de crédit d’impôt au moment du paiement (dans la limite de 6 000 € de crédit par an pour l’emploi à domicile).</p>
 <p>Pour me rémunérer, les formalités sont très simplifiées et vous bénéficiez automatiquement de cet avantage. Je serai bien sûr à vos côtés pour vous guider.</p>
-<p class="info-cesu-note">Le CESU+ ne s’applique qu’à certains accompagnements : écrivez-moi pour savoir si le vôtre est concerné.</p>
-<a class="lien-fleche" href="${WA_CESU}">Poser ma question sur WhatsApp →</a>
 </div>
 </details>`;
 
