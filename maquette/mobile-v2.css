@@ -1,0 +1,41 @@
+/* ===== Proposition mobile v2 (maquette uniquement) ===== */
+.version-courte, .avis-depli { display: none; }
+.lire-suite summary, .avis-depli summary { list-style: none; cursor: pointer; }
+.lire-suite summary::-webkit-details-marker, .avis-depli summary::-webkit-details-marker { display: none; }
+@media (max-width: 760px) {
+  /* 1. Cartes de services : chacune garde sa hauteur */
+  .carrousel { align-items: flex-start; }
+  /* 2. À propos : chapitres repliables */
+  .chapitre-texte.version-complete { display: none; }
+  .chapitre-texte.version-courte { display: flex; }
+  .lire-suite > summary { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-weight: 600; font-size: 15px; color: var(--brun); }
+  .lire-suite > summary::after { content: "↓"; }
+  .lire-suite[open] > summary { display: none; }
+  .lire-suite > .chapitre-texte { display: flex; }
+  /* 3. Témoignages : carrousel + texte replié */
+  .grille-avis { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px !important; margin: 0 -16px; padding: 4px 16px 6px; scrollbar-width: none; align-items: flex-start; }
+  .grille-avis::-webkit-scrollbar { display: none; }
+  .grille-avis > .avis-carte { flex: 0 0 86%; min-width: 0; scroll-snap-align: start; }
+  .avis-complet { display: none; }
+  .avis-depli { display: block; }
+  .avis-court { margin: 0; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+  .avis-depli .lire { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: 14px; color: var(--brun); font-family: var(--sans, inherit); font-style: normal; }
+  .avis-depli[open] > summary { display: none; }
+  /* 5. Pages d'accompagnement : pas de grand logo en haut */
+  .heros-service .heros-visuel:has(.arche.logo) { display: none; }
+  /* 6. Liste « Ce que comprend » compacte */
+  .inclus { gap: 14px !important; }
+  .inclus li { background: none !important; padding: 0 !important; border-radius: 0; }
+  /* 7. Tarifs : le prix passe sous le libellé */
+  .tarif-ligne { flex-direction: column; gap: 6px; }
+  .tarif-ligne .d { text-align: left; max-width: none; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  /* 8. En-tête qui reste accessible */
+  .entete { position: sticky; top: 0; z-index: 40; }
+  /* 9. Zones de clic plus grandes */
+  .ariane a { display: inline-flex; align-items: center; min-height: 44px; }
+  .ariane { padding-top: 6px; row-gap: 0; }
+  .pied-infos a { display: inline-flex; align-items: center; min-height: 44px; }
+  .faq details { padding: 0; }
+  .faq summary { padding: 18px 20px; min-height: 56px; align-items: center; }
+  .faq p { margin: 0; padding: 0 20px 18px; }
+}

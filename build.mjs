@@ -3,7 +3,7 @@
 import { mkdirSync, writeFileSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 
-const SORTIE = 'public';
+const SORTIE = process.env.SORTIE || 'public';
 const TEL = '33652105482';
 const FICHE_GOOGLE = 'https://share.google/hiO8zxGKeLJWMfdDU';
 const PREVISU = true;
