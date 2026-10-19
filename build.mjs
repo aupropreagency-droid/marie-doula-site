@@ -4,7 +4,7 @@ import { mkdirSync, writeFileSync, copyFileSync, readdirSync, rmSync } from 'nod
 import { join } from 'node:path';
 
 const SORTIE = process.env.SORTIE || 'public';
-const V3 = process.env.MAQUETTE_V3 === '1'; // proposition maquette (pas en ligne)
+const V3 = process.env.MAQUETTE_V3 !== '0'; // version validée sur la maquette (menu mobile, cartes allégées…)
 const TEL = '33652105482';
 const FICHE_GOOGLE = 'https://share.google/hiO8zxGKeLJWMfdDU';
 const PREVISU = true;
@@ -719,12 +719,30 @@ function mentions() {
 }
 
 // ------------------------------------------------------------------
+// Version mobile : chapitres et témoignages repliables, carrousel d'avis
+// ------------------------------------------------------------------
+function mobile(page) {
+  if (!V3) return page;
+  page = page.replace(/<div class="chapitre-texte">\n([\s\S]*?)\n<\/div>\n<\/article>/g, (_, inner) => {
+    const premier = inner.match(/<p[^>]*>[\s\S]*?<\/p>/)[0];
+    const suite = inner.replace(premier, '').trim();
+    return `<div class="chapitre-texte version-complete">\n${inner}\n</div>
+<div class="chapitre-texte version-courte">\n${premier}\n<details class="lire-suite"><summary>Lire la suite</summary>
+<div class="chapitre-texte">\n${suite}\n</div>\n</details>\n</div>\n</article>`;
+  });
+  page = page.replace(/<blockquote>(« [\s\S]*? »)<\/blockquote>/g, (tout, t) => t.length < 230 ? tout :
+    `<blockquote class="avis-complet">${t}</blockquote>\n<details class="avis-depli"><summary><blockquote class="avis-court">${t}</blockquote><span class="lire">Lire la suite</span></summary><blockquote>${t}</blockquote></details>`);
+  return page.replace('<div class="grille" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">',
+    '<div class="grille grille-avis" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">');
+}
+
+// ------------------------------------------------------------------
 // Écriture
 // ------------------------------------------------------------------
 rmSync(SORTIE, { recursive: true, force: true });
 mkdirSync(join(SORTIE, 'images'), { recursive: true });
-writeFileSync(join(SORTIE, 'index.html'), accueil());
-for (const s of services) writeFileSync(join(SORTIE, `${s.slug}.html`), pageService(s));
+writeFileSync(join(SORTIE, 'index.html'), mobile(accueil()));
+for (const s of services) writeFileSync(join(SORTIE, `${s.slug}.html`), mobile(pageService(s)));
 writeFileSync(join(SORTIE, 'mentions-legales.html'), mentions());
 copyFileSync('src/styles.css', join(SORTIE, 'styles.css'));
 copyFileSync('src/carrousel.js', join(SORTIE, 'carrousel.js'));

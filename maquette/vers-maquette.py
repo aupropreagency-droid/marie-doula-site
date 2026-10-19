@@ -8,7 +8,7 @@ BLOB = {'logo.png':'93dd444eafbabbafe3540ee650e60af1','marie-fauteuil.jpg':'4e80
         'mama-blessing.jpg':'d87cc366ad1b0e55f8900ec9c2edced8'}
 PAGES = [('accompagnement-prenatal','Prenatal'),('presence-naissance','Naissance'),('rendez-vous-postnatal','Postnatal'),
          ('soutien-post-partum','PostPartum'),('instant-rebozo','InstantRebozo'),('rituel-rebozo','RituelRebozo'),('mama-blessing','MamaBlessing')]
-css = open(os.path.join(OUT,'styles.css')).read() + ('\n' + open(os.path.join(SRC,'mobile-v2.css')).read() if V2 else '')
+css = open(os.path.join(OUT,'styles.css')).read()
 css = css.replace('</', '<\\/')
 
 def convert(page_html, mobile, service, titre, w, h):

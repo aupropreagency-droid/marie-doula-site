@@ -17,3 +17,15 @@
   if (pied) obs.observe(pied);
   maj();
 })();
+
+// Menu mobile : se referme quand on choisit une section ou qu'on touche ailleurs.
+(function () {
+  var menu = document.querySelector('.menu-mobile');
+  if (!menu) return;
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { menu.removeAttribute('open'); });
+  });
+  document.addEventListener('click', function (e) {
+    if (menu.hasAttribute('open') && !menu.contains(e.target)) menu.removeAttribute('open');
+  });
+})();
