@@ -29,7 +29,17 @@ const IMG = {
   blessing: '/images/mama-blessing.jpg'
 };
 
-const CESU = 'J’exerce dans le cadre du service à la personne (CESU+) : crédit d’impôt sur le montant total, quels que soient vos revenus, avec l’avance immédiate au moment du paiement. Je vous guide dans les formalités.';
+const WA_CESU = wa('Bonjour Marie, j’ai une question sur le CESU+ : ');
+const MODULE_CESU = `<details class="info-cesu" id="cesu">
+<summary><span class="info-i" aria-hidden="true">i</span>Le CESU+ : comment ça marche ?</summary>
+<div class="info-cesu-corps">
+<p>J’ai à cœur que mes tarifs d’accompagnement puissent être accessibles au plus grand nombre. J’exerce mon activité de doula dans le cadre du service à la personne : je peux donc être employée à domicile et bénéficier du dispositif CESU+.</p>
+<p>Ce statut, en tant que particulier employeur, vous donne droit à un crédit d’impôt sur le montant total de ma prestation, quels que soient vos revenus. Vous bénéficiez de l’avance immédiate de crédit d’impôt au moment du paiement (dans la limite de 6 000 € de crédit par an pour l’emploi à domicile).</p>
+<p>Pour me rémunérer, les formalités sont très simplifiées et vous bénéficiez automatiquement de cet avantage. Je serai bien sûr à vos côtés pour vous guider.</p>
+<p class="info-cesu-note">Le CESU+ ne s’applique qu’à certains accompagnements : écrivez-moi pour savoir si le vôtre est concerné.</p>
+<a class="lien-fleche" href="${WA_CESU}">Poser ma question sur WhatsApp →</a>
+</div>
+</details>`;
 
 // ------------------------------------------------------------------
 // Les services : une seule source pour les cartes de l’accueil et les pages
@@ -39,11 +49,11 @@ const services = [
     groupe: 'accompagnements', slug: 'accompagnement-prenatal',
     etape: 'Désir d’enfant & grossesse', nom: 'Accompagnement prénatal',
     titreSeo: 'Accompagnement prénatal à Paris',
-    description: 'Accompagnement prénatal par une doula à Paris : projet de naissance, préparation du jour J et du post-partum. 60 €/h, 30 €/h après crédit d’impôt.',
+    description: 'Accompagnement prénatal par une doula à Paris : projet de naissance, préparation du jour J et du post-partum. 60 €/h.',
     image: IMG.logo, imageEstLogo: true, alt: '',
     carteTexte: 'Un espace d’écoute bienveillant, dès la pré-conception ou à tout moment de votre grossesse.',
     cartePoints: ['Votre projet de naissance', 'La préparation du jour J', 'Anticiper le post-partum'],
-    prix: '60 €/h', prixDetail: '30 €/h après crédit d’impôt', avecCredit: true,
+    prix: '60 €/h', prixDetail: '', avecCredit: false,
     carteAvis: { texte: 'Marie m’a beaucoup soutenue et encouragée pour mener à bien mon projet de naissance. Avec elle, tout a été plus facile et plus doux.', auteur: 'Agathe L.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, je suis enceinte de … mois et j’aimerais être accompagnée pendant ma grossesse.'),
@@ -60,8 +70,8 @@ const services = [
       ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
       ['Des séances sur mesure', 'Chaque rendez-vous est conçu pour répondre à vos besoins, dans un cadre sécurisant et chaleureux.']
     ],
-    tarifs: [['Rendez-vous prénatal', 'À l’heure', '60 €/h', '30 €/h après crédit d’impôt']],
-    tarifNote: CESU,
+    tarifs: [['Rendez-vous prénatal', 'À l’heure', '60 €/h', '']],
+    tarifNote: '',
     avis: [
       ['Marie m’a beaucoup soutenue et encouragée pour mener à bien mon projet de naissance. Avec elle à mes côtés, tout a été plus facile et plus doux.', 'Agathe L.'],
       ['J’ai choisi Marie pour m’accompagner dans le chemin de la maternité quelques mois avant mon accouchement. Sa présence et son soutien ont été précieux.', 'Anne-Sophie D.'],
@@ -69,8 +79,7 @@ const services = [
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Mon accompagnement est avant tout émotionnel et se fait en complément du suivi avec votre sage-femme ou votre gynécologue.'],
-      ['Quand commencer ?', 'Dès la pré-conception ou à tout moment de votre grossesse : le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée.'],
-      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre du service à la personne, avec le dispositif CESU+ : vous bénéficiez d’un crédit d’impôt sur le montant total de la prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement. Je vous guide dans les formalités.']
+      ['Quand commencer ?', 'Dès la pré-conception ou à tout moment de votre grossesse : le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée.']
     ]
   },
   {
@@ -119,11 +128,11 @@ const services = [
     groupe: 'accompagnements', slug: 'rendez-vous-postnatal',
     etape: 'Après la naissance', nom: 'Rendez-vous postnatal',
     titreSeo: 'Rendez-vous postnatal avec une doula à Paris',
-    description: 'Rendez-vous postnatal avec une doula à Paris : récit de naissance, portage, premiers pas de jeune maman. 60 €/h, 30 €/h après crédit d’impôt.',
+    description: 'Rendez-vous postnatal avec une doula à Paris : récit de naissance, portage, premiers pas de jeune maman. 60 €/h.',
     image: IMG.logo, imageEstLogo: true, alt: '',
     carteTexte: 'Un espace d’écoute, un moment à vous, pour exprimer vos émotions et vos interrogations en toute liberté.',
     cartePoints: ['Votre récit de naissance', 'Portage et langue des signes pour bébé', 'Motricité libre, diversification…'],
-    prix: '60 €/h', prixDetail: '30 €/h après crédit d’impôt', avecCredit: true,
+    prix: '60 €/h', prixDetail: '', avecCredit: false,
     carteAvis: { texte: 'Nos rendez-vous hebdomadaires étaient une bouffée d’air frais. Elle m’a tant appris sur mon bébé, sur mon corps, sur l’allaitement.', auteur: 'Charlotte A.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, j’ai accouché il y a … et j’aimerais un rendez-vous postnatal.'),
@@ -141,8 +150,8 @@ const services = [
       ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
       ['Des rencontres sur mesure', 'Chaque rencontre s’adapte à vos besoins, dans un environnement rassurant et bienveillant.']
     ],
-    tarifs: [['Rendez-vous postnatal', 'À l’heure', '60 €/h', '30 €/h après crédit d’impôt']],
-    tarifNote: CESU,
+    tarifs: [['Rendez-vous postnatal', 'À l’heure', '60 €/h', '']],
+    tarifNote: '',
     avis: [
       ['Nos rendez-vous hebdomadaires étaient une bouffée d’air frais, de joie et de détente. Elle m’a tant appris sur mon bébé, sur mon corps, sur l’allaitement.', 'Charlotte A.'],
       ['On devrait toutes avoir une Marie dans notre vie quand on devient parent. Marie écoute, conseille quand on la sollicite, on chemine ensemble.', 'Clémence B.'],
@@ -150,20 +159,19 @@ const services = [
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Il vient en complément du suivi par votre sage-femme, votre gynécologue ou votre pédiatre.'],
-      ['Quelle différence avec le soutien post-partum à domicile ?', 'Le rendez-vous postnatal est un temps d’écoute et d’échange. Le soutien post-partum est une présence à domicile deux ou trois fois par semaine, avec une aide dans les tâches du quotidien.'],
-      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre du service à la personne, avec le dispositif CESU+ : vous bénéficiez d’un crédit d’impôt sur le montant total de la prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement.']
+      ['Quelle différence avec le soutien post-partum à domicile ?', 'Le rendez-vous postnatal est un temps d’écoute et d’échange. Le soutien post-partum est une présence à domicile deux ou trois fois par semaine, avec une aide dans les tâches du quotidien.']
     ]
   },
   {
     groupe: 'accompagnements', slug: 'soutien-post-partum',
     etape: 'Post-partum au quotidien', nom: 'Soutien post-partum à domicile',
     titreSeo: 'Soutien post-partum à domicile à Paris',
-    description: 'Une doula chez vous 2 à 3 fois par semaine après la naissance : repas maison, relais avec bébé, écoute. 25 €/h, 12,50 €/h après crédit d’impôt.',
+    description: 'Une doula chez vous 2 à 3 fois par semaine après la naissance : repas maison, relais avec bébé, écoute. 25 €/h.',
     image: IMG.logo, imageEstLogo: true, alt: '',
     imagePage: IMG.cuisine, altPage: 'Marie dans une cuisine, un bébé contre elle dans une écharpe de portage',
     carteTexte: 'Un soutien quasi quotidien chez vous : aide dans les tâches du quotidien et écoute bienveillante.',
     cartePoints: ['Préparation des repas', 'Je veille sur bébé le temps d’une douche ou d’une sieste', '2 × 3 h ou 3 × 3 h par semaine'],
-    prix: '25 €/h', prixDetail: '12,50 €/h après crédit d’impôt', avecCredit: true,
+    prix: '25 €/h', prixDetail: '2 × 3 h ou 3 × 3 h par semaine', avecCredit: false,
     carteAvis: { texte: 'Notre bulle d’oxygène : dormir quelques heures et retrouver un bébé apaisé et des plats maison réconfortants.', auteur: 'Claire T.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, je suis intéressée par le soutien post-partum à domicile. Mon bébé est né / doit naître le : '),
@@ -183,10 +191,10 @@ const services = [
       ['Un soutien à votre rythme', 'Un accompagnement quasi quotidien, adapté à votre rythme et à vos besoins, dans le respect de votre espace et de votre parentalité.']
     ],
     tarifs: [
-      ['Offre mini', '2 × 3 h par semaine', '150 €/sem.', '75 € après crédit d’impôt'],
-      ['Offre maxi', '3 × 3 h par semaine', '225 €/sem.', '112,50 € après crédit d’impôt']
+      ['Offre mini', '2 × 3 h par semaine', '150 €/sem.', ''],
+      ['Offre maxi', '3 × 3 h par semaine', '225 €/sem.', '']
     ],
-    tarifNote: 'Tarif horaire de 25 €. ' + CESU,
+    tarifNote: 'Tarif horaire de 25 €.',
     avis: [
       ['Notre bulle d’oxygène dans les premières semaines : dormir quelques heures et retrouver à notre réveil un bébé bien au chaud et apaisé, et des plats maison réconfortants.', 'Claire T.'],
       ['Des bons petits plats pour la semaine, du relais pour s’occuper de bébé, un tas de linge plié… Tout le monde devrait avoir Marie dans sa vie de post-partum.', 'Andrea A.'],
@@ -194,8 +202,7 @@ const services = [
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Il vient en complément du suivi par votre sage-femme, votre gynécologue ou votre pédiatre.'],
-      ['Quand faire appel à moi ?', 'Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée. Durant les premiers mois, je vous accompagne face à la fatigue, aux doutes et aux besoins du quotidien.'],
-      ['Comment fonctionne le crédit d’impôt ?', 'J’exerce dans le cadre du service à la personne, avec le dispositif CESU+ : vous bénéficiez d’un crédit d’impôt sur le montant total de la prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement.']
+      ['Quand faire appel à moi ?', 'Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée. Durant les premiers mois, je vous accompagne face à la fatigue, aux doutes et aux besoins du quotidien.']
     ]
   },
   {
@@ -423,7 +430,7 @@ ${s.cartePoints.map((p) => `<li>${coche('#6B8266')}<span>${esc(p)}</span></li>`)
 <figcaption><span><span class="etoiles" aria-label="5 étoiles sur 5">★★★★★</span> ${esc(s.carteAvis.auteur)} · Avis Google</span><a href="${FICHE_GOOGLE}">Voir plus d’avis →</a></figcaption>
 </figure>
 <div class="carte-pied">
-<div class="prix"><strong>${esc(s.prix)}</strong><span${s.avecCredit ? '' : ' class="neutre"'}>${esc(s.prixDetail)}</span></div>
+<div class="prix"><strong>${esc(s.prix)}</strong>${s.prixDetail ? `<span class="neutre">${esc(s.prixDetail)}</span>` : ''}</div>
 <a class="btn btn-petit" href="${s.wa}">${ICONE_WA}${esc(s.bouton)}</a>
 </div>
 </div>
@@ -462,7 +469,7 @@ function accueil() {
 <section class="bandeau" aria-label="En bref">
 <div class="conteneur bandeau-int">
 <div class="bandeau-item"><strong>5,0 ★ · 28 avis</strong><span>sur Google</span></div>
-<div class="bandeau-item"><strong>−50 % avec le CESU+</strong><span>Crédit d’impôt sur les accompagnements</span></div>
+<div class="bandeau-item"><strong>Premier échange offert</strong><span>20 minutes au téléphone</span></div>
 <div class="bandeau-item"><strong>4 ans de doula</strong><span>après 13 ans d’assistante maternelle</span></div>
 <div class="bandeau-item"><strong>Chez vous</strong><span>Paris &amp; proche banlieue sud</span></div>
 </div>
@@ -475,7 +482,6 @@ function accueil() {
 <h2 class="h2">Votre accompagnement sur mesure, pour une maternité plus sereine</h2>
 <p class="texte">Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.</p>
 <p class="texte">Mon accompagnement n’est pas médical : il vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p>
-<p class="discret">Prix indiqués avant crédit d’impôt.</p>
 </div>
 <img class="intro-photo" src="${IMG.cuisine}" alt="Marie dans une cuisine, un bébé contre elle dans une écharpe de portage" loading="lazy">
 </div>
@@ -483,6 +489,7 @@ function accueil() {
 ${acc.map(carte).join('\n')}
 </div>
 ${points('points-acc', acc.length)}
+${MODULE_CESU}
 <div class="solo">
 <div class="solo-texte"><strong>Vous vivez la maternité solo ?</strong><span>La vie met sur ma route des mamans solos, encore et encore. Vous ne serez jamais seule dans cette aventure.</span></div>
 <a class="btn btn-clair" href="${WA_SOLO}">Parlons-en</a>
@@ -530,7 +537,6 @@ ${points('points-soins', soins.length)}
 <div class="faq">
 <details><summary>Quand faire appel à moi ?</summary><p>Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée : avant l’arrivée de bébé, pour la préparation émotionnelle et organisationnelle ; lors de la naissance, pour une présence calme et apaisante ; durant les premiers mois, face à la fatigue, aux doutes et aux besoins du quotidien.</p></details>
 <details><summary>Est-ce un accompagnement médical ?</summary><p>Non. Mon accompagnement vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p></details>
-<details><summary>Comment fonctionne le crédit d’impôt avec le CESU+ ?</summary><p>J’exerce mon activité dans le cadre du service à la personne. Vous bénéficiez d’un crédit d’impôt sur le montant total de ma prestation, quels que soient vos revenus, avec l’avance immédiate au moment du paiement (dans la limite de 6 000 € de crédit par an pour l’emploi à domicile). Les formalités sont très simplifiées, et je suis à vos côtés pour vous guider.</p></details>
 <details><summary>Où intervenez-vous ?</summary><p>À votre domicile, à Paris et en proche banlieue sud [liste à confirmer]. Pour l’instant rebozo, je peux aussi vous recevoir chez moi, dans le 13e arrondissement.</p></details>
 </div>
 </section>
@@ -565,7 +571,7 @@ function pageService(s) {
 <span class="etiquette${sauge ? ' sauge' : ''}">${esc(s.etapePage || s.etape)}</span>
 <h1 class="h1 h1-service">${esc(s.nom)}</h1>
 <p class="chapo">${esc(s.accroche)}</p>
-<div class="prix-heros"><strong>${esc(s.prix)}</strong><span${s.avecCredit ? '' : ' class="neutre"'}>${s.avecCredit ? 'soit ' : ''}${esc(s.prixDetailPage || s.prixDetail)}</span></div>
+<div class="prix-heros"><strong>${esc(s.prix)}</strong>${(s.prixDetailPage || s.prixDetail) ? `<span class="neutre">${esc(s.prixDetailPage || s.prixDetail)}</span>` : ''}</div>
 <div class="groupe-btn" style="gap:12px">
 <a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || s.bouton)}</a>
 <a class="btn btn-contour" href="${groupeLien}">${esc(voirAutres)}</a>
@@ -599,6 +605,7 @@ ${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
 <a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || s.bouton)}</a>
 </aside>
 </section>
+${sauge ? '' : `<div class="conteneur" style="padding-bottom:56px">${MODULE_CESU}</div>`}
 
 <section class="fond-rose">
 <div class="conteneur section pile pile-32">

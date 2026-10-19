@@ -257,6 +257,18 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .flottant:hover { color: var(--blanc); background: var(--brun-fonce, #743937); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* ---------- Module info CESU+ ---------- */
+.info-cesu { background: var(--sauge-clair); border-radius: 20px; padding: 0; max-width: 820px; }
+.info-cesu summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 18px 22px; font-weight: 600; color: var(--sauge-fonce); }
+.info-cesu summary::-webkit-details-marker { display: none; }
+.info-cesu summary::after { content: "+"; margin-left: auto; font-size: 22px; font-weight: 400; line-height: 1; }
+.info-cesu[open] summary::after { content: "–"; }
+.info-i { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--sauge); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: "Fraunces", serif; font-style: italic; font-size: 15px; }
+.info-cesu-corps { padding: 0 22px 22px 60px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: var(--texte-2); }
+.info-cesu-corps p { margin: 0; }
+.info-cesu-note { font-weight: 600; color: var(--texte); }
+@media (max-width: 760px) { .info-cesu-corps { padding: 0 18px 20px 18px; } .info-cesu summary { padding: 16px 18px; } }
+
 /* ---------- Mentions ---------- */
 .legal h2 { font-size: 28px; margin-top: 16px; }
 .legal p { color: var(--texte-2); }
