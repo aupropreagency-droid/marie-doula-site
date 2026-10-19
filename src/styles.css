@@ -56,6 +56,8 @@ p { margin: 0; }
 .surtitre { font-size: 14px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sauge-moyen); }
 .h1 { font-size: 60px; line-height: 1.06; letter-spacing: -.01em; }
 .h1 em { font-style: italic; color: var(--corail); }
+.h1-service { font-size: 56px; }
+h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .h2 { font-size: 42px; line-height: 1.1; }
 .h2-moyen { font-size: 36px; line-height: 1.1; }
 .h2-petit { font-size: 32px; line-height: 1.15; }
@@ -265,6 +267,13 @@ p { margin: 0; }
   .bandeau-int { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* ---------- Très petits écrans ---------- */
+@media (max-width: 380px) {
+  .h1 { font-size: 34px !important; }
+  .h1-service { font-size: 30px !important; }
+  .h2, .h2-moyen { font-size: 27px !important; }
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 760px) {
   .conteneur, .conteneur-etroit { padding-left: 16px; padding-right: 16px; }
@@ -282,6 +291,7 @@ p { margin: 0; }
   .heros { padding-top: 28px; padding-bottom: 44px; gap: 32px; }
   .heros-service { padding-top: 20px; padding-bottom: 40px; }
   .h1 { font-size: 38px; }
+  .h1-service { font-size: 34px; line-height: 1.1; }
   .h2, .h2-moyen { font-size: 30px; }
   .h2-petit { font-size: 26px; }
   .chapo { font-size: 17px; }

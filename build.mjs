@@ -517,7 +517,7 @@ ${points('points-soins', soins.length)}
 <img class="apropos-photo" src="${IMG.portrait}" alt="Portrait de Marie, souriante, en extérieur" loading="lazy">
 <div class="apropos-texte">
 <span class="surtitre">Bienvenue dans mon cocon</span>
-<h2 class="h2" style="font-size:40px;line-height:1.15">Je m’appelle Marie : femme, mère, compagne, amie, et doula.</h2>
+<h2 class="h2">Je m’appelle Marie : femme, mère, compagne, amie, et doula.</h2>
 <p class="texte" style="font-size:18px">Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle, aux côtés de nombreuses familles. Je suis aussi maman de trois garçons. J’ai vécu trois post-partum, avec leurs doutes, leur solitude, et cette peur de demander de l’aide.</p>
 <p class="citation">Aujourd’hui, je veux offrir aux mères ce que j’aurais aimé recevoir : un soutien bienveillant, une présence sans jugement, une aide concrète au quotidien.</p>
 <p class="texte">Comme une sœur, une amie ou une mère, avec mon expertise à vos côtés.</p>
@@ -562,7 +562,7 @@ function pageService(s) {
 <section class="conteneur heros heros-service">
 <div class="heros-texte" style="gap:22px">
 <span class="etiquette${sauge ? ' sauge' : ''}">${esc(s.etapePage || s.etape)}</span>
-<h1 class="h1" style="font-size:56px">${esc(s.nom)}</h1>
+<h1 class="h1 h1-service">${esc(s.nom)}</h1>
 <p class="chapo">${esc(s.accroche)}</p>
 <div class="prix-heros"><strong>${esc(s.prix)}</strong><span${s.avecCredit ? '' : ' class="neutre"'}>${s.avecCredit ? 'soit ' : ''}${esc(s.prixDetailPage || s.prixDetail)}</span></div>
 <div class="groupe-btn" style="gap:12px">
@@ -577,7 +577,7 @@ function pageService(s) {
 
 <section class="fond-blanc">
 <div class="conteneur section pile pile-32">
-<h2 class="h2" style="font-size:40px">${esc(s.inclusTitre)}</h2>
+<h2 class="h2">${esc(s.inclusTitre)}</h2>
 <ul class="inclus">
 ${s.inclus.map(([t, d]) => `<li>${coche(couleurCoche).replace('width="18" height="18"', 'width="22" height="22"')}<span><strong>${esc(t)}</strong><span>${esc(d)}</span></span></li>`).join('\n')}
 </ul>
@@ -586,7 +586,7 @@ ${s.inclus.map(([t, d]) => `<li>${coche(couleurCoche).replace('width="18" height
 
 <section class="conteneur section deroule-bloc">
 <div class="deroule">
-<h2 class="h2" style="font-size:40px">Comment ça se passe</h2>
+<h2 class="h2">Comment ça se passe</h2>
 <ol>
 ${s.deroule.map(([t, d], i) => `<li><span class="num${sauge ? ' sauge' : ''}">${i + 1}</span><span><strong>${esc(t)}</strong><span class="d">${esc(d)}</span></span></li>`).join('\n')}
 </ol>
@@ -601,7 +601,7 @@ ${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
 
 <section class="fond-rose">
 <div class="conteneur section pile pile-32">
-<div class="avis-entete" style="align-items:flex-end"><h2 class="h2" style="font-size:40px">Elles en parlent</h2><a class="lien-fleche" href="${FICHE_GOOGLE}">5,0 ★ · Voir les 28 avis Google →</a></div>
+<div class="avis-entete" style="align-items:flex-end"><h2 class="h2">Elles en parlent</h2><a class="lien-fleche" href="${FICHE_GOOGLE}">5,0 ★ · Voir les 28 avis Google →</a></div>
 <div class="grille" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
 ${avisHtml}
 </div>
@@ -609,7 +609,7 @@ ${avisHtml}
 </section>
 
 <section class="conteneur-etroit section pile pile-24">
-<h2 class="h2" style="font-size:40px">Bon à savoir</h2>
+<h2 class="h2">Bon à savoir</h2>
 <div class="faq">
 ${s.infos.map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('\n')}
 </div>
@@ -632,7 +632,7 @@ ${autres.map((x) => `<a href="/${x.slug}"${x.groupe === 'soins' ? ' class="sauge
 // ------------------------------------------------------------------
 function mentions() {
   return tete({ titre: 'Mentions légales · Marie Graugnard, doula', description: 'Mentions légales et politique de confidentialité du site de Marie Graugnard, doula à Paris.', chemin: '/mentions-legales' }) + entete() + `<main class="conteneur-etroit section pile pile-16 legal">
-<h1 class="h1" style="font-size:44px">Mentions légales</h1>
+<h1 class="h1 h1-service">Mentions légales</h1>
 <h2>Éditrice du site</h2>
 <p>Marie Graugnard · [Statut] · SIRET [à compléter] · [Adresse] · mariedoula75@gmail.com · 06 52 10 54 82</p>
 <p>Services à la personne · Déclaration n° [à compléter]</p>
