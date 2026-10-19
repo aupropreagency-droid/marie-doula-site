@@ -466,3 +466,8 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 @media (max-width: 760px) {
   #accueil, #accompagnements, #soins, #avis, #apropos, #faq, #cesu, #detail, #tarif, #avis-page, #questions { scroll-margin-top: 88px; }
 }
+/* Pages services (mobile) : ni prix, ni précision, ni photo en haut — tout est détaillé plus bas */
+@media (max-width: 760px) {
+  .heros-service .prix-heros, .heros-service .heros-visuel { display: none; }
+  .heros-service { padding-bottom: 32px; }
+}

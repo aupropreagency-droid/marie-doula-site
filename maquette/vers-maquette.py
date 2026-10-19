@@ -39,7 +39,7 @@ def convert(page_html, mobile, service, titre, w, h):
 </nav>
 </sc-if>
 </div>''')
-    if V2:
+    if V2 and 'version-courte' not in body and 'avis-depli' not in body:
         def chap(m):
             inner = m.group(1).strip()
             ps = re.findall(r'<p[^>]*>.*?</p>', inner, re.S)
