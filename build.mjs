@@ -589,7 +589,6 @@ function pageService(s) {
   const sauge = s.groupe === 'soins';
   const groupeNom = sauge ? 'Soins & cérémonies' : 'Accompagnements';
   const groupeLien = sauge ? '/#soins' : '/#accompagnements';
-  const voirAutres = sauge ? 'Les autres soins' : 'Les autres accompagnements';
   const image = s.imagePage || s.image;
   const alt = s.imagePage ? s.altPage : s.alt;
   const estLogo = !s.imagePage && s.imageEstLogo;
@@ -613,7 +612,6 @@ function pageService(s) {
 <div class="prix-heros"><strong>${esc(s.prix)}</strong>${(s.prixDetailPage || s.prixDetail) ? `<span class="neutre">${esc(s.prixDetailPage || s.prixDetail)}</span>` : ''}</div>
 <div class="groupe-btn" style="gap:12px">
 <a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || s.bouton)}</a>
-<a class="btn btn-contour" href="${groupeLien}">${esc(voirAutres)}</a>
 </div>
 </div>
 <div class="heros-visuel">
