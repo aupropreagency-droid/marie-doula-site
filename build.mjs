@@ -354,8 +354,8 @@ function entete() {
 <span class="marque-texte"><span class="marque-nom">Marie Graugnard</span><span class="marque-sous">Doula · Paris &amp; proche banlieue sud</span></span>
 </a>
 <nav class="nav" aria-label="Navigation principale">
-<a href="/#accompagnements">Accompagnements</a>
-<a href="/#soins">Soins &amp; cérémonies</a>
+<a class="nav-offre" href="/#accompagnements">Accompagnements</a>
+<a class="nav-offre" href="/#soins">Soins &amp; cérémonies</a>
 <a href="/#avis">Avis</a>
 <a href="/#apropos">À propos</a>
 <a href="/#faq">Questions</a>

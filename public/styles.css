@@ -275,7 +275,8 @@ p { margin: 0; }
   .marque-sous { display: none; }
   .nav { order: 3; flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; gap: 8px; margin: 0 -16px; padding: 2px 16px 4px; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
-  .nav a { flex: 0 0 auto; padding: 0 14px; border-radius: 999px; background: var(--peche); min-height: 40px; display: inline-flex; align-items: center; font-size: 14px; }
+  .nav .nav-offre { display: none; }
+  .nav a { flex: 1 1 0; justify-content: center; padding: 0 14px; border-radius: 999px; background: var(--peche); min-height: 40px; display: inline-flex; align-items: center; font-size: 14px; }
   .btn-entete { padding: 0; width: 44px; }
   .btn-entete span { display: none; }
   .heros { padding-top: 28px; padding-bottom: 44px; gap: 32px; }
