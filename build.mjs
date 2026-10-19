@@ -500,8 +500,7 @@ ${V3 ? '' : `<div class="heros-visuel">
 <section class="conteneur section pile pile-32" id="accompagnements" style="padding-bottom:48px">
 <div class="intro">
 <div class="intro-texte">
-<span class="etiquette">Accompagnements</span>
-<h2 class="h2">Mes accompagnements</h2>
+${V3 ? '' : `<span class="etiquette">Accompagnements</span>\n`}<h2 class="h2">Mes accompagnements</h2>
 <p class="texte">J’ai à cœur d’accompagner les femmes, les futures mères et les femmes qui vivent la maternité solo. Cette expérience peut parfois être empreinte de défis particuliers, mais elle est aussi pleine de force et de résilience.</p>
 <p class="texte">Spécialisée dans l’accompagnement postnatal à domicile, j’offre une présence quasi quotidienne, bienveillante, une écoute attentive et un soutien concret dans les tâches du quotidien. Accueillir un bébé est un bouleversement, et les premiers mois peuvent parfois sembler intenses et épuisants.</p>
 <p class="texte">Mon accompagnement n’est pas médical : il vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p>
