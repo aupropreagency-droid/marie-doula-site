@@ -278,6 +278,10 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .bandeau-int { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* ---------- Raccourcis des pages services (mobile) ---------- */
+.raccourcis { display: none; }
+#detail, #tarif, #avis-page, #questions { scroll-margin-top: 16px; }
+
 /* ---------- Très petits écrans ---------- */
 @media (max-width: 380px) {
   .h1 { font-size: 34px !important; }
@@ -313,6 +317,17 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .groupe-btn .btn { flex: 1 1 100%; }
   .arche { height: 400px; max-width: 100%; }
   .heros-service .arche { height: 300px; }
+  /* Accueil : boutons visibles dès l'ouverture */
+  .heros:not(.heros-service) { padding-top: 20px; gap: 24px; }
+  .heros:not(.heros-service) .heros-texte { gap: 16px; }
+  .heros-suite { order: 5; }
+  .heros-aide { order: 6; }
+  .heros:not(.heros-service) .arche { height: 300px; }
+  .heros:not(.heros-service) .surtitre { font-size: 12px; }
+  /* Raccourcis sous le titre */
+  .raccourcis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: -6px; }
+  .raccourcis a { display: inline-flex; align-items: center; min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--blanc); color: var(--texte); font-size: 14px; font-weight: 500; text-decoration: none; }
+  .raccourcis a::after { content: "↓"; margin-left: 6px; color: var(--brun); }
   .badge-avis { left: 10px; bottom: 16px; padding: 10px 14px; }
   .bandeau-int { gap: 16px; padding-top: 20px; padding-bottom: 20px; }
   .bandeau-item strong { font-size: 18px; }

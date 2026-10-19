@@ -450,12 +450,12 @@ function accueil() {
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
 <p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
-<p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
+<p class="texte heros-suite">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
 <div class="groupe-btn">
 <a class="btn btn-grand" href="#accompagnements">Voir les accompagnements <span aria-hidden="true">↓</span></a>
 <a class="btn btn-grand btn-sauge" href="#soins">Voir les soins <span aria-hidden="true">↓</span></a>
 </div>
-<p class="texte" style="font-size:15px;color:var(--texte-3)">Pas sûre de ce qu’il vous faut ? <a href="${WA_DECOUVERTE}" style="font-weight:600">Réservez l’échange gratuit de 20 minutes</a> sur WhatsApp.</p>
+<p class="texte heros-aide" style="font-size:15px;color:var(--texte-3)">Pas sûre de ce qu’il vous faut ? <a href="${WA_DECOUVERTE}" style="font-weight:600">Réservez l’échange gratuit de 20 minutes</a> sur WhatsApp.</p>
 </div>
 <div class="heros-visuel">
 <img class="arche" src="${IMG.fauteuil}" alt="Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre" width="420" height="540" fetchpriority="high">
@@ -608,6 +608,7 @@ function pageService(s) {
 <div class="heros-texte" style="gap:22px">
 <span class="etiquette${sauge ? ' sauge' : ''}">${esc(s.etapePage || s.etape)}</span>
 <h1 class="h1 h1-service">${esc(s.nom)}</h1>
+<nav class="raccourcis" aria-label="Sur cette page"><a href="#detail">Le détail</a><a href="#tarif">Tarif</a><a href="#avis-page">Avis</a><a href="#questions">Questions</a></nav>
 <p class="chapo">${esc(s.accroche)}</p>
 <div class="prix-heros"><strong>${esc(s.prix)}</strong>${(s.prixDetailPage || s.prixDetail) ? `<span class="neutre">${esc(s.prixDetailPage || s.prixDetail)}</span>` : ''}</div>
 <div class="groupe-btn" style="gap:12px">
@@ -620,7 +621,7 @@ function pageService(s) {
 </div>
 </section>
 
-<section class="fond-blanc">
+<section class="fond-blanc" id="detail">
 <div class="conteneur section pile pile-32">
 ${s.inclus.length ? '' : `<h2 class="h2">${esc(s.inclusTitre)}</h2>`}
 ${(s.intro || []).length ? `<div class="texte-long">${s.intro.map((t) => `<p class="texte">${esc(t)}</p>`).join('\n')}</div>` : ''}
@@ -639,7 +640,7 @@ ${s.conclusion ? `<p class="texte texte-long">${esc(s.conclusion)}</p>` : ''}
 ${s.deroule.map(([t, d], i) => `<li><span class="num${sauge ? ' sauge' : ''}">${i + 1}</span><span><strong>${esc(t)}</strong><span class="d">${esc(d)}</span></span></li>`).join('\n')}
 </ol>
 </div>
-<aside class="tarifs" aria-label="Tarifs">
+<aside class="tarifs" id="tarif" aria-label="Tarifs">
 <h2>${s.tarifs.length > 1 ? 'Tarifs' : 'Tarif'}</h2>
 ${s.tarifs.map(([label, sous, valeur, note]) => `<div class="tarif-ligne"><div class="g"><strong>${esc(label)}</strong><span>${esc(sous)}</span></div><div class="d"><strong>${esc(valeur)}</strong>${note ? `<span>${esc(note)}</span>` : ''}</div></div>`).join('\n')}
 ${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
@@ -648,7 +649,7 @@ ${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
 </section>
 ${sauge ? '' : `<div class="conteneur" style="padding-bottom:56px">${MODULE_CESU}</div>`}
 
-<section class="fond-rose">
+<section class="fond-rose" id="avis-page">
 <div class="conteneur section pile pile-32">
 <div class="avis-entete" style="align-items:flex-end"><h2 class="h2">Elles en parlent</h2><a class="lien-fleche" href="${FICHE_GOOGLE}">5,0 ★ · Voir les 28 avis Google →</a></div>
 <div class="grille" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
@@ -657,7 +658,7 @@ ${avisHtml}
 </div>
 </section>
 
-<section class="conteneur-etroit section pile pile-24">
+<section class="conteneur-etroit section pile pile-24" id="questions">
 <h2 class="h2">Bon à savoir</h2>
 <div class="faq">
 ${s.infos.map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('\n')}
