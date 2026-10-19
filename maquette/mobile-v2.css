@@ -80,3 +80,7 @@
   .heros-v3 .arche { height: 320px; }
   .heros-v3 .badge-avis { display: none; }
 }
+/* En-tête accroché : les sections ciblées s'arrêtent sous l'en-tête */
+@media (max-width: 760px) {
+  #accueil, #accompagnements, #soins, #avis, #apropos, #faq, #cesu, #detail, #tarif, #avis-page, #questions { scroll-margin-top: 88px; }
+}
