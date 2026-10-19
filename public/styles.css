@@ -318,16 +318,17 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .arche { height: 400px; max-width: 100%; }
   .heros-service .arche { height: 300px; }
   /* Accueil : boutons visibles dès l'ouverture */
-  .heros:not(.heros-service) { padding-top: 20px; gap: 24px; }
-  .heros:not(.heros-service) .heros-texte { gap: 16px; }
+  .heros:not(.heros-service) { padding-top: 14px; gap: 24px; }
+  .heros:not(.heros-service) .heros-texte { gap: 14px; }
+  .heros:not(.heros-service) .groupe-btn { gap: 10px; }
   .heros-suite { order: 5; }
   .heros-aide { order: 6; }
   .heros:not(.heros-service) .arche { height: 300px; }
   .heros:not(.heros-service) .surtitre { font-size: 12px; }
   /* Raccourcis sous le titre */
-  .raccourcis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: -6px; }
-  .raccourcis a { display: inline-flex; align-items: center; min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--blanc); color: var(--texte); font-size: 14px; font-weight: 500; text-decoration: none; }
-  .raccourcis a::after { content: "↓"; margin-left: 6px; color: var(--brun); }
+  .raccourcis { display: flex; flex-wrap: nowrap; gap: 6px; margin-top: -6px; }
+  .raccourcis a { flex: 1 1 auto; justify-content: center; white-space: nowrap; display: inline-flex; align-items: center; min-height: 40px; padding: 0 8px; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--blanc); color: var(--texte); font-size: 13px; font-weight: 500; text-decoration: none; }
+  .raccourcis a::after { content: "↓"; margin-left: 4px; color: var(--brun); }
   .badge-avis { left: 10px; bottom: 16px; padding: 10px 14px; }
   .bandeau-int { gap: 16px; padding-top: 20px; padding-bottom: 20px; }
   .bandeau-item strong { font-size: 18px; }
