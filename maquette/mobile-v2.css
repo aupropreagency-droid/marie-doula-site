@@ -68,3 +68,14 @@
   .heros-seul { padding-bottom: 36px; }
 }
 @media (max-width: 760px) { .carrousel:has(.carte-mini) { align-items: stretch; } }
+/* Accueil : photo de Marie juste sous le titre (mobile) */
+@media (max-width: 760px) {
+  .heros-v3 { flex-direction: column; align-items: stretch; gap: 0; }
+  .heros-v3 .heros-texte { display: contents; }
+  .heros-v3 .heros-texte > * { order: 3; margin-top: 16px; }
+  .heros-v3 .heros-texte > .surtitre { order: 1; margin-top: 0; }
+  .heros-v3 .heros-texte > .h1 { order: 2; margin-top: 12px; }
+  .heros-v3 .heros-visuel { order: 2; margin-top: 22px; margin-bottom: 6px; }
+  .heros-v3 .groupe-btn { margin-top: 24px; }
+  .heros-v3 .arche { height: 320px; }
+}

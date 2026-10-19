@@ -470,7 +470,7 @@ function accueil() {
     description: 'Doula à Paris et proche banlieue sud : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
     chemin: '/'
   }) + entete() + `<main>
-<section class="conteneur heros${V3 ? ' heros-seul' : ''}" id="accueil">
+<section class="conteneur heros${V3 ? ' heros-v3' : ''}" id="accueil">
 <div class="heros-texte">
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
@@ -482,7 +482,7 @@ function accueil() {
 </div>
 <p class="texte" style="font-size:15px;color:var(--texte-3)">Pas sûre de ce qu’il vous faut ? <a href="${WA_DECOUVERTE}" style="font-weight:600">Réservez l’échange gratuit de 20 minutes</a> sur WhatsApp.</p>
 </div>
-${V3 ? '' : `<div class="heros-visuel">
+${`<div class="heros-visuel">
 <img class="arche" src="${IMG.fauteuil}" alt="Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre" width="420" height="540" fetchpriority="high">
 <div class="badge-avis"><strong>5,0 <span class="etoiles">★★★★★</span></strong><span class="discret">28 avis Google</span></div>
 </div>`}
