@@ -350,3 +350,24 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ---------- Textes longs des pages services ---------- */
+.texte-long { max-width: 760px; display: flex; flex-direction: column; gap: 14px; }
+.texte-long .texte, p.texte-long { font-size: 18px; line-height: 1.7; color: var(--texte-2); }
+@media (max-width: 760px) { .texte-long .texte, p.texte-long { font-size: 16px; } }
+
+/* ---------- À propos : chapitres ---------- */
+.chapitres { display: flex; flex-direction: column; padding-bottom: 88px; }
+.chapitres-intro { max-width: 760px; display: flex; flex-direction: column; gap: 14px; margin: 0 auto 32px; text-align: center; }
+.chapitre { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 48px; padding: 40px 0; border-top: 1px solid var(--ligne); }
+.chapitre h3 { font-family: "Fraunces", serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: var(--texte); margin: 0; }
+.chapitre-texte { display: flex; flex-direction: column; gap: 14px; font-size: 17px; line-height: 1.7; color: var(--texte-2); }
+.chapitre-texte p { margin: 0; }
+.chapitre-signature { font-family: "Fraunces", serif; font-style: italic; font-size: 22px; color: var(--brun); margin: 0; }
+@media (max-width: 760px) {
+  .chapitres { padding-bottom: 56px; }
+  .chapitres-intro { text-align: left; }
+  .chapitre { grid-template-columns: 1fr; gap: 14px; padding: 28px 0; }
+  .chapitre h3 { font-size: 24px; }
+  .chapitre-texte { font-size: 16px; }
+}

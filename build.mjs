@@ -54,24 +54,25 @@ const services = [
     carteAvis: { texte: 'Marie m’a beaucoup soutenue et encouragée pour mener à bien mon projet de naissance. Avec elle, tout a été plus facile et plus doux.', auteur: 'Agathe L.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, je suis enceinte de … mois et j’aimerais être accompagnée pendant ma grossesse.'),
-    accroche: 'Dès la pré-conception ou à tout moment de votre grossesse, je suis là pour vous accompagner et vous soutenir. Mon accompagnement est avant tout émotionnel : un espace d’écoute bienveillant, un moment qui vous appartient, où tous les sujets peuvent être abordés librement.',
-    inclusTitre: 'Lors de nos séances',
+    accroche: 'Que ce soit dès la pré-conception ou à tout moment de votre grossesse, je suis là pour vous accompagner et vous soutenir tout au long de ce chemin unique.',
+    intro: ['Mon accompagnement est avant tout émotionnel : je vous offre un espace d’écoute bienveillant et respectueux, un moment qui vous appartient, où tous les sujets liés à cette période précieuse peuvent être abordés librement.', 'Mon intention est de vous apporter un soutien adapté à vos besoins, tout en partageant des informations qui pourraient vous manquer pour vivre cette expérience en toute sérénité.'],
+    inclusTitre: 'Lors de nos séances, je pourrai également',
     inclus: [
-      ['Votre projet de naissance', 'Je vous accompagne sur votre projet de naissance.'],
-      ['La préparation du jour J', 'Je vous aide à préparer le jour J.'],
-      ['Votre post-partum', 'Je vous donne des pistes pour l’anticiper.'],
-      ['Le tissu rebozo', 'Le découvrir ou le redécouvrir, pour prendre soin de vous, physiquement et émotionnellement.'],
-      ['Des informations utiles', 'Je partage les informations qui pourraient vous manquer pour vivre cette expérience en toute sérénité.']
+      ['Vous accompagner sur votre projet de naissance', ''],
+      ['Vous aider à préparer le jour J', ''],
+      ['Vous donner des pistes pour anticiper votre post-partum', ''],
+      ['Vous faire découvrir ou redécouvrir le tissu rebozo', 'Pour prendre soin de vous, à la fois physiquement et émotionnellement.']
     ],
+    conclusion: 'Chaque rendez-vous est conçu pour répondre à vos besoins spécifiques, dans un cadre sécurisant et chaleureux, pour que vous puissiez traverser votre grossesse avec sérénité et confiance.',
     deroule: [
-      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
-      ['Des séances sur mesure', 'Chaque rendez-vous est conçu pour répondre à vos besoins, dans un cadre sécurisant et chaleureux.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase pour avancer ensemble. Ce premier contact est l’occasion de poser les bases d’un accompagnement qui vous ressemble.'],
+      ['Des séances à votre rythme', 'Dès la pré-conception ou à tout moment de votre grossesse, selon vos besoins.']
     ],
     tarifs: [['Rendez-vous prénatal', 'À l’heure', '60 €/h', '']],
     tarifNote: '',
     avis: [
       ['Marie m’a beaucoup soutenue et encouragée pour mener à bien mon projet de naissance. Avec elle à mes côtés, tout a été plus facile et plus doux.', 'Agathe L.'],
-      ['J’ai choisi Marie pour m’accompagner dans le chemin de la maternité quelques mois avant mon accouchement. Sa présence et son soutien ont été précieux.', 'Anne-Sophie D.'],
+      ['Je recommande vivement Marie, qui m’a accompagnée pendant ma grossesse, mon accouchement et mon post-partum. Elle est pleine de tendresse et de bienveillance, toujours à l’écoute et jamais dans le jugement. Ma maternité se passe bien en partie grâce à elle. Je me sens très chanceuse d’avoir fait sa rencontre et d’avoir ce lien unique avec elle.', 'Anne-Sophie, maman solo d’Olympe', 'Témoignage'],
       ['Accompagnée à partir du dernier trimestre : extrêmement bienveillante et non jugeante, très à l’écoute, drôle, avec un grand sens pratique.', 'Sophie S.']
     ],
     infos: [
@@ -91,18 +92,18 @@ const services = [
     carteAvis: { texte: 'Elle m’a accompagnée pendant ma grossesse et mon accouchement. Pleine de tendresse, toujours à l’écoute et jamais dans le jugement.', auteur: 'Anne-Sophie D.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, j’aimerais que vous soyez présente à mon accouchement. Mon terme est prévu le : '),
-    accroche: 'Chères mamans, chères mamans solos, je peux être à vos côtés pour la naissance de votre bébé : une présence discrète mais précieuse, à l’écoute de vos besoins et de vos choix, pour que vous ne soyez pas seule à vivre ce moment unique.',
+    accroche: 'Chères mamans, chères mamans solos, je peux être à vos côtés pour la naissance de votre bébé.',
+    intro: [],
     inclusTitre: 'Ce que comprend cet accompagnement',
     inclus: [
-      ['Une période d’astreinte', 'Dès deux semaines avant votre terme et jusqu’à une semaine après, j’adapte mon planning pour être pleinement disponible.'],
-      ['Ma présence le jour J', 'Un soutien émotionnel, une écoute bienveillante et une présence rassurante tout au long de l’accouchement.'],
-      ['Le respect de vos choix', 'Une présence discrète, à l’écoute de vos besoins et de vos choix.'],
-      ['Pour toutes les mamans', 'Chères mamans, chères mamans solos : vous ne serez pas seule à vivre ce moment unique.']
+      ['Une période d’astreinte', 'Je vous propose une période d’astreinte dès deux semaines avant votre terme et jusqu’à une semaine après. Durant cette période, j’adapte mon planning pour être pleinement disponible lorsque votre bébé décidera d’arriver.'],
+      ['Ma présence le jour J', 'Le jour de votre accouchement, je serai une présence discrète mais précieuse, à l’écoute de vos besoins et de vos choix. Mon rôle est de vous apporter un soutien émotionnel, une écoute bienveillante et une présence rassurante pour que vous ne soyez pas seule à vivre ce moment unique.']
     ],
+    conclusion: '',
     deroule: [
-      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
-      ['L’astreinte', 'Dès deux semaines avant votre terme et jusqu’à une semaine après, j’adapte mon planning pour être pleinement disponible.'],
-      ['Le jour de la naissance', 'Je suis à vos côtés : un soutien émotionnel, une écoute bienveillante et une présence rassurante.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase pour avancer ensemble. Ce premier contact est l’occasion de poser les bases d’un accompagnement qui vous ressemble.'],
+      ['L’astreinte', 'Deux semaines avant votre terme, je me rends pleinement disponible, jusqu’à une semaine après.'],
+      ['Le jour de la naissance', 'Je suis à vos côtés.']
     ],
     tarifs: [
       ['Astreinte', 'De 2 semaines avant le terme à 1 semaine après', '100 €/sem.', 'soit 300 € pour 3 semaines'],
@@ -111,9 +112,9 @@ const services = [
     ],
     tarifNote: 'Mon accompagnement n’est pas médical, il se fait en complément du suivi avec votre sage-femme ou votre gynécologue.',
     avis: [
-      ['Je recommande vivement Marie, qui m’a accompagnée pendant ma grossesse, mon accouchement et encore aujourd’hui. Pleine de tendresse et de bienveillance, toujours à l’écoute et jamais dans le jugement.', 'Anne-Sophie D.'],
-      ['Très réactive, à l’écoute, elle a ce talent de tout anticiper simplement. Un grand soutien au quotidien, et même une astreinte pour réussir notre rencontre, maman et bébé.', 'Elsa A.'],
-      ['Son écoute attentive, sa bienveillance et ses connaissances de la périnatalité nous ont permis d’être sereines pour le grand saut dans la parentalité.', 'Fanny & Solène']
+      ['Je recommande vivement Marie, qui m’a accompagnée pendant ma grossesse, mon accouchement et mon post-partum. Elle est pleine de tendresse et de bienveillance, toujours à l’écoute et jamais dans le jugement. Ma maternité se passe bien en partie grâce à elle. Je me sens très chanceuse d’avoir fait sa rencontre et d’avoir ce lien unique avec elle.', 'Anne-Sophie, maman solo d’Olympe', 'Témoignage'],
+      ['Marie est une doula extraordinaire. Très réactive, à l’écoute, elle a ce talent de tout anticiper simplement. J’ai été choyée par sa présence et ses mets (plats et autres dopants post-partum), sa douceur pour se joindre à notre intimité. Pragmatique aussi, j’ai reçu de très bons conseils, démonstration de portage, initiation aux soins de bébé, et surtout un grand soutien au quotidien, voire une astreinte pour réussir notre rencontre, maman et bébé. Je suis très reconnaissante de ses savoir-faire et savoir-être, en tant que doula et femme. Je recommande Marie !', 'Elsa, maman solo de Maïa', 'Témoignage'],
+      ['Marie a accompagné notre famille pendant la grossesse et après la naissance de notre enfant. Son écoute attentive, sa bienveillance et ses connaissances de la périnatalité nous ont permis d’être sereines pour le grand saut dans la parentalité. Son soutien sans faille dans le post-partum immédiat a reboosté notre confiance en nous et en notre bébé. Cette expérience n’aurait pas été la même sans Marie. Si vous cherchez une doula pour votre famille, contactez-la !', 'Fanny & Solène, mamans de Hyacinthe', 'Témoignage']
     ],
     infos: [
       ['Est-ce un accompagnement médical ?', 'Non. Mon rôle est de vous apporter un soutien émotionnel, une écoute bienveillante et une présence rassurante. Il se fait en complément du suivi avec votre sage-femme ou votre gynécologue.'],
@@ -133,25 +134,27 @@ const services = [
     carteAvis: { texte: 'Nos rendez-vous hebdomadaires étaient une bouffée d’air frais. Elle m’a tant appris sur mon bébé, sur mon corps, sur l’allaitement.', auteur: 'Charlotte A.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, j’ai accouché il y a … et j’aimerais un rendez-vous postnatal.'),
-    accroche: 'Après la naissance de votre bébé, je suis là pour vous accompagner à chaque étape. Toujours centrée sur le soutien émotionnel, je vous propose un espace d’écoute bienveillant, un moment à vous, où exprimer toutes vos émotions et interrogations en toute liberté.',
-    inclusTitre: 'Ce que nous pourrons partager',
+    accroche: 'Après la naissance de votre bébé, je suis là pour vous accompagner à chaque étape de cette belle aventure qu’est la parentalité.',
+    intro: ['Toujours centrée sur le soutien émotionnel, je vous propose un espace d’écoute bienveillant, un moment à vous, où vous pouvez exprimer toutes vos émotions et interrogations en toute liberté.'],
+    inclusTitre: 'Lors de nos rencontres, nous pourrons partager ensemble',
     inclus: [
       ['Votre récit de naissance', 'Et les émotions qui y sont liées.'],
-      ['Vos premiers pas de jeune maman', 'Vos questionnements, à votre rythme.'],
+      ['Vos questionnements, vos premiers pas de jeune maman', ''],
       ['Le tissu rebozo', 'Un outil pour favoriser votre bien-être physique et émotionnel.'],
-      ['Le portage', 'Des conseils adaptés à vos besoins et à ceux de votre bébé.'],
-      ['La langue des signes pour bébé', 'Poser les bases d’une communication simple et naturelle dès les premiers mois.'],
+      ['Le portage', 'Avec des conseils adaptés à vos besoins et à ceux de votre bébé.'],
+      ['La langue des signes pour bébé', 'Afin de poser les bases d’une communication simple et naturelle dès les premiers mois.'],
       ['Et bien d’autres sujets', 'Motricité libre, diversification alimentaire…']
     ],
+    conclusion: 'Chaque rencontre est conçue pour s’adapter à vos besoins uniques, dans un environnement rassurant et bienveillant, afin que vous puissiez vivre cette nouvelle étape de la parentalité avec douceur et confiance.',
     deroule: [
-      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
-      ['Des rencontres sur mesure', 'Chaque rencontre s’adapte à vos besoins, dans un environnement rassurant et bienveillant.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase pour avancer ensemble. Ce premier contact est l’occasion de poser les bases d’un accompagnement qui vous ressemble.'],
+      ['Des rencontres à votre rythme', 'Après la naissance, chaque fois que vous en ressentez le besoin.']
     ],
     tarifs: [['Rendez-vous postnatal', 'À l’heure', '60 €/h', '']],
     tarifNote: '',
     avis: [
       ['Nos rendez-vous hebdomadaires étaient une bouffée d’air frais, de joie et de détente. Elle m’a tant appris sur mon bébé, sur mon corps, sur l’allaitement.', 'Charlotte A.'],
-      ['On devrait toutes avoir une Marie dans notre vie quand on devient parent. Marie écoute, conseille quand on la sollicite, on chemine ensemble.', 'Clémence B.'],
+      ['On devrait toustes avoir une Marie dans notre vie quand on devient parent. Marie écoute, conseille quand on la sollicite, on chemine ensemble. Elle peut être un véritable socle et un atout essentiel dans ce fameux village pour sa vie de parent. Je suis vraiment contente de l’avoir rencontrée. En plus, en post-partum, elle vous ramène des petits plats et douceurs incroyables :)', 'Clémence, maman solo de Félix', 'Témoignage'],
       ['Elle nous a aidés avec d’innombrables conseils pratiques et techniques, toujours avec douceur, soutien et affection.', 'Lucía C.']
     ],
     infos: [
@@ -172,20 +175,19 @@ const services = [
     carteAvis: { texte: 'Notre bulle d’oxygène : dormir quelques heures et retrouver un bébé apaisé et des plats maison réconfortants.', auteur: 'Claire T.' },
     bouton: 'Écrire à Marie',
     wa: wa('Bonjour Marie, je suis intéressée par le soutien post-partum à domicile. Mon bébé est né / doit naître le : '),
-    accroche: 'Les premières semaines, les premiers mois après la naissance de votre bébé peuvent être intenses. Je propose une offre unique à Paris, conçue pour soulager l’intensité de votre post-partum avec un soutien quasi quotidien, adapté à vos besoins.',
+    accroche: 'Les premières semaines, les premiers mois après la naissance de votre bébé peuvent être intenses. Pour vous accompagner au mieux, je propose une offre unique à Paris, conçue pour soulager l’intensité de votre post-partum avec un soutien quotidien, adapté à vos besoins.',
+    intro: ['Je vous aide dans les tâches pratiques du quotidien, tout en vous offrant un espace d’écoute bienveillant pour partager vos émotions et ressentis.'],
     inclusTitre: 'Mon accompagnement inclut',
     inclus: [
-      ['Des repas nourrissants', 'Je vous cuisine des repas nourrissants.'],
-      ['Le relais avec bébé', 'Je veille sur votre bébé le temps d’une douche ou d’une sieste.'],
-      ['Une aide logistique', 'Gestion des tâches quotidiennes, soutien à la maison.'],
-      ['Une écoute bienveillante', 'Un espace pour vous exprimer librement.'],
-      ['Des conseils pratiques', 'Des astuces pour faciliter votre quotidien.'],
-      ['Un soutien à la parentalité', 'Un accompagnement dans vos nouvelles responsabilités.']
+      ['Aide logistique', 'Gestion des tâches quotidiennes, préparation des repas, soutien à la maison.'],
+      ['Écoute bienveillante', 'Un espace pour vous exprimer librement.'],
+      ['Conseils pratiques', 'Des astuces pour faciliter votre quotidien.'],
+      ['Soutien à la parentalité', 'Accompagnement dans vos nouvelles responsabilités.']
     ],
+    conclusion: 'Cette offre vous permet de bénéficier d’un accompagnement quasi quotidien, spécifiquement adapté à votre rythme et à vos besoins, dans le respect de votre espace et de votre parentalité. Vivez cette période unique avec plus de soutien, de calme et de confiance. Ensemble, nous ferons en sorte que votre post-partum soit aussi doux que possible !',
     deroule: [
-      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase.'],
-      ['On choisit votre formule', 'Offre mini : 2 fois 3 h par semaine. Offre maxi : 3 fois 3 h par semaine.'],
-      ['Un soutien à votre rythme', 'Un accompagnement quasi quotidien, adapté à votre rythme et à vos besoins, dans le respect de votre espace et de votre parentalité.']
+      ['Un premier échange gratuit', 'Une vingtaine de minutes au téléphone pour discuter de vos besoins, répondre à vos questions et voir si nous sommes en phase pour avancer ensemble. Ce premier contact est l’occasion de poser les bases d’un accompagnement qui vous ressemble.'],
+      ['On choisit votre formule', 'Offre mini : 2 fois 3 h par semaine. Offre maxi : 3 fois 3 h par semaine.']
     ],
     tarifs: [
       ['Offre mini', '2 × 3 h par semaine', '150 €/sem.', ''],
@@ -193,6 +195,7 @@ const services = [
     ],
     tarifNote: 'Tarif horaire de 25 €.',
     avis: [
+      ['J’ai fait appel à Marie parce que j’avais besoin de soutien dans mon post-partum. Je n’aurais pas pu imaginer une meilleure personne pour ça. Marie s’est occupée de moi et de mon bébé telle une fée, prenant le relais avec brio pendant que j’allais m’aérer ou nager, me préparant de merveilleux plats, et se mettant à l’écoute chaque jour de mes peurs et de mes doutes avec une infinie bienveillance. Sa présence enveloppante, hyper rassurante et joyeuse m’a été immédiatement familière. Forte de son expérience de doula et de ses connaissances sur la maternité et les bébés, Marie a su m’accompagner et me réconforter, toujours avec justesse, et sans jugement. Marie restera à jamais dans mon cœur, elle a été comme un ange gardien sur mon chemin et je lui en suis infiniment reconnaissante. Merci Marie !', 'Fanny, maman d’Ethel', 'Témoignage'],
       ['Notre bulle d’oxygène dans les premières semaines : dormir quelques heures et retrouver à notre réveil un bébé bien au chaud et apaisé, et des plats maison réconfortants.', 'Claire T.'],
       ['Des bons petits plats pour la semaine, du relais pour s’occuper de bébé, un tas de linge plié… Tout le monde devrait avoir Marie dans sa vie de post-partum.', 'Andrea A.'],
       ['Son écoute, ses bras, ses conseils, ses petites thermos de thé… et surtout sa cuisine : la charge mentale s’envolait pour la semaine. Team légumes grillés !', 'Ida P.']
@@ -214,24 +217,24 @@ const services = [
     carteAvis: { texte: 'Le soin de Marie m’a fait un bien fou. Elle s’adapte à la présence du bébé pour que vous en profitiez pleinement.', auteur: 'Joséphine B.' },
     bouton: 'Réserver', boutonPage: 'Réserver un instant rebozo',
     wa: wa('Bonjour Marie, j’aimerais réserver un instant rebozo.'),
-    accroche: 'Le rebozo est un châle traditionnel mexicain, utilisé pour le soutien physique et émotionnel des femmes à travers des bercements et des serrages. Particulièrement apprécié pendant ou après une grossesse, l’instant rebozo est aussi un soin que l’on peut s’offrir à tout moment de sa vie de femme.',
+    accroche: 'Le tissu rebozo est un châle traditionnel mexicain utilisé pour le bien-être, notamment pour le soutien physique et émotionnel des femmes pendant la grossesse, l’accouchement et le post-partum, à travers des bercements et des serrages.',
+    intro: ['Particulièrement apprécié pendant ou après une grossesse, l’instant rebozo est aussi un soin que l’on peut s’offrir à tout moment de notre vie de femme. Détente, relâchement du corps, libération des émotions…', 'Je me déplace à votre domicile ou vous reçois chez moi, dans le 13e arrondissement.'],
     inclusTitre: 'Pendant cette heure et demie',
     inclus: [
-      ['L’installation de l’espace', 'Chez vous, ou chez moi dans le 13e arrondissement.'],
+      ['L’installation de l’espace', ''],
       ['Un temps d’échange', 'Avant et après le soin.'],
       ['Des bercements', 'Avec mes rebozos, sur différents points du corps.'],
-      ['Un serrage de bassin', 'Sauf pendant la grossesse.'],
-      ['Votre bébé est le bienvenu', 'Pour les mères, votre bébé peut vous accompagner pendant le soin.'],
-      ['Pour toutes les femmes', 'Pendant ou après une grossesse, ou à tout moment de votre vie de femme.']
+      ['Un serrage de bassin', 'Sauf pendant la grossesse.']
     ],
+    conclusion: 'Pour les mères, votre bébé peut vous accompagner durant ce soin.',
     deroule: [
       ['Vous m’écrivez', 'On choisit ensemble une date et le lieu : chez vous ou chez moi, dans le 13e.'],
-      ['L’installation', 'J’installe l’espace et nous prenons un temps d’échange.'],
-      ['Le soin', 'Bercements, serrage de bassin, puis un dernier temps d’échange.']
+      ['Le soin', 'Une heure et demie rien que pour vous.']
     ],
     tarifs: [['L’instant rebozo', '1 h 30 · chez vous ou chez moi', '120 €', '']],
     tarifNote: 'Je me déplace à votre domicile ou vous reçois chez moi, dans le 13e arrondissement.',
     avis: [
+      ['J’ai eu la chance de découvrir le soin rebozo avec Marie. Quelle belle découverte ! Une invitation à la relaxation, idéale pour se recentrer après une période de bouleversements telle qu’un accouchement ou un changement de vie, ou les deux pour ma part ! J’ai trouvé en Marie une personne à l’écoute, bienveillante, réconfortante, pleine de douceur, je la recommande vivement ! Merci pour ce beau moment.', 'Leïla', 'Témoignage'],
       ['Le soin de Marie m’a fait un bien fou. Elle s’adapte à la présence du bébé et vous met dans les meilleures conditions pour en profiter pleinement.', 'Joséphine B.'],
       ['Meilleur cadeau de naissance ! Marie a su s’adapter à la présence de mon bébé, qui a voulu profiter du soin elle aussi. Un vrai moment pour soi.', 'Imen E.'],
       ['Quand Marie arrive, on a l’impression de recevoir une amie à qui on peut tout dire. Un moment hors du temps.', 'Clara D.']
@@ -254,26 +257,25 @@ const services = [
     carteAvis: { texte: 'J’avais besoin de me retrouver, de tourner la page, et c’est chose faite. Je le recommande à toutes les femmes, pas uniquement aux mères.', auteur: 'Cindy D.' },
     bouton: 'Réserver', boutonPage: 'Réserver le rituel',
     wa: wa('Bonjour Marie, j’aimerais réserver un rituel rebozo à 4 mains.'),
-    accroche: 'Le rituel rebozo est un cadeau que l’on se fait, une parenthèse d’amour pour soi. Nous sommes deux doulas à prendre soin de vous : un moment de partage et de sororité, qui peut accompagner un passage important de votre vie.',
-    inclusTitre: 'Ce que comprend le rituel',
+    accroche: 'Le rituel rebozo est un cadeau que l’on se fait, une parenthèse d’amour pour soi ! Il peut vous accompagner lors de passages importants dans votre vie, vous offrir ce temps d’accueil de vos émotions.',
+    intro: ['Le rituel rebozo est un soin à 4 mains. Il s’adresse à toutes les femmes, de tout âge. Il est particulièrement apprécié des nouvelles mères.', 'Nous serons deux doulas à prendre soin de vous pour ce soin. C’est un moment de partage et de sororité.', 'Nous avons à cœur d’honorer le corps féminin, de le choyer. En passant par lui, nous espérons choyer aussi votre cœur et votre esprit.', 'Nous vous accueillerons chez moi, dans le 13e arrondissement, dans un espace doux et bienveillant.'],
+    inclusTitre: 'Le rituel se déroule ainsi',
     inclus: [
-      ['Un temps d’échange', 'Avant et après le soin, autour d’une boisson chaude.'],
-      ['Un massage à 4 mains', 'Un massage de tout le corps, à l’huile.'],
-      ['Un bain chaud aux plantes', 'Pour relâcher le corps et prolonger la détente.'],
-      ['Un serrage en 7 points', 'En 7 points du corps, avec les rebozos.'],
-      ['Deux doulas pour vous', 'Nous avons à cœur d’honorer le corps féminin, de le choyer, et à travers lui votre cœur et votre esprit.'],
-      ['Un espace doux', 'Chez moi, dans le 13e arrondissement, dans un cadre bienveillant.']
+      ['Un temps d’échange', 'Avant et après le soin, en partageant une boisson chaude.'],
+      ['Un massage de tout le corps', 'À l’huile et à 4 mains.'],
+      ['Un bain chaud aux plantes', ''],
+      ['Un serrage en 7 points du corps', 'Avec les rebozos.']
     ],
+    conclusion: '',
     deroule: [
       ['Vous m’écrivez', 'On choisit ensemble une date pour ces trois heures rien qu’à vous.'],
-      ['L’accueil', 'Nous vous recevons chez moi et prenons le temps d’échanger autour d’une boisson chaude.'],
-      ['Le rituel', 'Massage à 4 mains, bain aux plantes, serrage en 7 points, puis un dernier temps de partage.']
+      ['Le rituel', 'Nous vous accueillons chez moi, dans le 13e arrondissement.']
     ],
     tarifs: [['Le rituel rebozo à 4 mains', '3 h · avec deux doulas', '380 €', '']],
     tarifNote: 'Pour les mères, ce soin est réalisé sans bébé, afin de garantir ce moment de relaxation et de connexion au corps.',
     avis: [
-      ['Je ne trouve pas les mots pour remercier Marie et Jeanne. J’avais besoin de me retrouver, de tourner la page, et c’est chose faite. Je recommande à toutes les femmes, et pas uniquement aux mères.', 'Cindy D.', 'Avis Google'],
-      ['Un grand merci à vous deux pour ce magnifique soin tout en bienveillance, douceur et puissance. C’était magique !', 'Hélène', 'Témoignage']
+      ['Je ne trouve pas les mots pour remercier Marie et Jeanne. Elles sont bienveillantes, à l’écoute et parfaitement connectées. J’avais besoin de me retrouver, de tourner la page, et c’est chose faite ! Les jours et semaines à venir ne pourront être que bénéfiques grâce à ce soin rebozo à quatre mains, j’en suis certaine. Je recommande à toutes les femmes (et pas uniquement aux mères) de s’offrir ou de se faire offrir cette parenthèse !', 'Cindy', 'Témoignage'],
+      ['Un grand merci à vous deux pour ce magnifique soin tout en bienveillance, douceur et puissance. C’était magique ! Vous êtes deux magnifiques âmes.', 'Hélène', 'Témoignage']
     ],
     infos: [
       ['Mon bébé peut-il venir ?', 'Pour garantir ce moment de relaxation et de connexion au corps, ce soin est réalisé sans bébé à vos côtés.'],
@@ -293,23 +295,19 @@ const services = [
     carteAvis: { texte: 'Marie a su être à l’écoute pour organiser un événement à mon image. Toutes étaient ravies de ce moment !', auteur: 'Mélanie D.' },
     bouton: 'Organiser', boutonPage: 'Organiser un Mama Blessing',
     wa: wa('Bonjour Marie, j’aimerais organiser un Mama Blessing pour : '),
-    accroche: 'Une cérémonie unique et précieuse, dédiée à célébrer la future mère, à l’honorer et à l’accompagner avec amour jusqu’à la naissance de son bébé, entourée des femmes qui comptent pour elle.',
-    inclusTitre: 'Ce que je vous propose',
-    inclus: [
-      ['Une cérémonie pour vous', 'Dédiée à célébrer la future mère, à l’honorer et à l’accompagner avec amour jusqu’à la naissance de son bébé.'],
-      ['Votre « village » réuni', 'Les femmes qui comptent pour vous, autour de vous.'],
-      ['Une bulle de soutien', 'Pendant quelques heures, elles prennent soin de vous avec amour, bienveillance et douceur.'],
-      ['Une parenthèse sacrée', 'Un moment où vous êtes célébrée pour la femme et la mère que vous êtes.'],
-      ['Je facilite ce moment', 'C’est avec joie et gratitude que je facilite ce moment intime.']
-    ],
+    accroche: 'Le Mama Blessing est une cérémonie unique et précieuse, dédiée à célébrer la future mère, à l’honorer et à l’accompagner avec amour jusqu’à la naissance de son bébé.',
+    intro: ['C’est avec joie et gratitude que je facilite ce moment intime, entourée des femmes qui comptent pour vous, celles qui forment votre « village ». Pendant quelques heures, ces femmes prendront soin de vous, vous envelopperont d’amour, de bienveillance et de douceur, créant une bulle de soutien et de connexion.', 'Se sentir reliée à ses proches et à soi-même est si essentiel en cette période de transformation.', 'Le Mama Blessing est une véritable parenthèse sacrée où vous serez célébrée pour la femme et la mère que vous êtes, entourée de belles énergies qui vous porteront jusqu’au grand jour.'],
+    inclusTitre: 'La cérémonie',
+    inclus: [],
+    conclusion: '',
     deroule: [
       ['Vous m’écrivez', 'Nous parlons de vos envies et des femmes que vous souhaitez réunir.'],
-      ['Le jour de la cérémonie', 'Pendant trois heures, je facilite ce moment intime, entourée des femmes qui comptent pour vous.']
+      ['Le jour de la cérémonie', 'Pendant trois heures, je facilite ce moment intime.']
     ],
     tarifs: [['Mama Blessing', '3 h · cérémonie facilitée par Marie', '340 €', '']],
     tarifNote: '',
     avis: [
-      ['Mille mercis à Marie pour l’organisation de ma cérémonie autour de ma grossesse. Elle a su être à l’écoute pour organiser un évènement à mon image. Un contact très agréable, doux, facile, joyeux, pour mettre tout le monde à l’aise. Toutes étaient ravies de ce moment !', 'Mélanie D.']
+      ['Mille mercis à Marie pour l’organisation de ma cérémonie Mama Blessing, autour de ma grossesse… Marie a su être à l’écoute pour organiser un évènement qui soit à mon image. Elle a un contact très agréable, doux, facile, joyeux, pour mettre tout le monde à l’aise. Toutes étaient ravies de ce moment !', 'Mélanie', 'Témoignage']
     ],
     infos: [
       ['Quand l’organiser ?', 'Pendant la grossesse, pour vous accompagner avec amour jusqu’à la naissance de votre bébé.'],
@@ -372,6 +370,7 @@ function pied(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie') {
 <div class="pied-appel">
 <div class="pied-appel-texte">
 <h2>Envie d’en parler ?</h2>
+<p class="texte">Je serais ravie de vous rencontrer et de partager un bout de votre histoire. N’hésitez pas à me contacter pour en savoir plus ou organiser une première rencontre.</p>
 <ol class="mini-etapes">
 <li><b>1</b>Vous m’écrivez sur WhatsApp</li>
 <li><b>2</b>On échange 20 min, gratuitement</li>
@@ -450,7 +449,8 @@ function accueil() {
 <div class="heros-texte">
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
-<p class="chapo">Vous êtes enceinte, vous venez d’accueillir votre bébé ou vous commencez à imaginer votre parcours vers la parentalité ? Vous ressentez le besoin d’être écoutée, soutenue, accompagnée : vous êtes au bon endroit.</p>
+<p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
+<p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
 <div class="groupe-btn">
 <a class="btn btn-grand" href="#accompagnements">Voir les accompagnements <span aria-hidden="true">↓</span></a>
 <a class="btn btn-grand btn-sauge" href="#soins">Voir les soins <span aria-hidden="true">↓</span></a>
@@ -476,8 +476,9 @@ function accueil() {
 <div class="intro">
 <div class="intro-texte">
 <span class="etiquette">Accompagnements</span>
-<h2 class="h2">Votre accompagnement sur mesure, pour une maternité plus sereine</h2>
-<p class="texte">Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.</p>
+<h2 class="h2">Mes accompagnements</h2>
+<p class="texte">J’ai à cœur d’accompagner les femmes, les futures mères et les femmes qui vivent la maternité solo. Cette expérience peut parfois être empreinte de défis particuliers, mais elle est aussi pleine de force et de résilience.</p>
+<p class="texte">Spécialisée dans l’accompagnement postnatal à domicile, j’offre une présence quasi quotidienne, bienveillante, une écoute attentive et un soutien concret dans les tâches du quotidien. Accueillir un bébé est un bouleversement, et les premiers mois peuvent parfois sembler intenses et épuisants.</p>
 <p class="texte">Mon accompagnement n’est pas médical : il vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p>
 </div>
 <img class="intro-photo" src="${IMG.cuisine}" alt="Marie dans une cuisine, un bébé contre elle dans une écharpe de portage" loading="lazy">
@@ -522,11 +523,51 @@ ${points('points-soins', soins.length)}
 <img class="apropos-photo" src="${IMG.portrait}" alt="Portrait de Marie, souriante, en extérieur" loading="lazy">
 <div class="apropos-texte">
 <span class="surtitre">Bienvenue dans mon cocon</span>
-<h2 class="h2">Je m’appelle Marie : femme, mère, compagne, amie, et doula.</h2>
-<p class="texte" style="font-size:18px">Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle, aux côtés de nombreuses familles. Je suis aussi maman de trois garçons. J’ai vécu trois post-partum, avec leurs doutes, leur solitude, et cette peur de demander de l’aide.</p>
-<p class="citation">Aujourd’hui, je veux offrir aux mères ce que j’aurais aimé recevoir : un soutien bienveillant, une présence sans jugement, une aide concrète au quotidien.</p>
-<p class="texte">Comme une sœur, une amie ou une mère, avec mon expertise à vos côtés.</p>
+<h2 class="h2">Je m’appelle Marie, femme, mère, compagne, amie, et doula !</h2>
+<p class="texte">Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle.</p>
+<p class="texte">Durant ces années, j’ai eu la chance de partager le quotidien de nombreuses familles, de vivre leurs joies, de les accompagner dans leurs défis, et de leur offrir mes compétences, mes valeurs et mon soutien sur leur chemin de parentalité.</p>
+<p class="texte">Je suis aussi maman de trois merveilleux garçons, qui ont bouleversé et enrichi ma vie de femme.</p>
 </div>
+</section>
+
+<section class="conteneur chapitres" aria-label="Mon accompagnement">
+<div class="chapitres-intro">
+<h2 class="h2">Votre accompagnement sur mesure pour une maternité plus sereine</h2>
+<p class="texte">Chère femme, je vous propose de vous accompagner dans cette aventure aussi folle que merveilleuse qu’est l’arrivée, parfois encore rêvée, d’un enfant.</p>
+<p class="chapitre-signature">À vos côtés, à chaque étape !</p>
+<p class="texte">Je suis là pour vous, dès vos premiers pas en tant que maman, quand le bonheur se mêle parfois aux doutes et aux questionnements. Je vous accompagne tout au long de votre chemin de parentalité, chaque fois que vous ressentez le besoin d’un soutien bienveillant et rassurant.</p>
+</div>
+<article class="chapitre">
+<h3>Un accompagnement pour les futures mamans</h3>
+<div class="chapitre-texte">
+<p>Être enceinte est un voyage unique, rempli de découvertes, de joie, mais aussi de questionnements et parfois d’inquiétudes.</p>
+<p>Je vous accompagne tout au long de votre grossesse avec douceur, écoute et bienveillance. Ensemble, nous créons un espace de confiance où vous pouvez exprimer vos besoins, vos envies, et trouver des réponses adaptées.</p>
+<p>Mon rôle est de vous soutenir émotionnellement, de vous informer et de vous préparer sereinement à la naissance, pour que vous puissiez vivre cette étape importante en toute confiance et sérénité.</p>
+</div>
+</article>
+<article class="chapitre">
+<h3>Un accompagnement pour les mamans solos</h3>
+<div class="chapitre-texte">
+<p>Depuis quatre ans, mon chemin de doula m’a menée à accompagner une grande diversité de femmes et leur famille dans leur parentalité. Chaque rencontre a été unique, chaque histoire précieuse.</p>
+<p>Au fil du temps, un fil rouge s’est tissé, une évidence s’est imposée : la vie met sur ma route des mamans solos. Encore et encore !</p>
+<p>Chère femme, j’ai appris à vous écouter, à comprendre vos besoins profonds, à être là, pleinement.</p>
+<p>Aujourd’hui, plus que jamais, je ressens que ma place est auprès de vous. Parce que cela me touche, parce que j’aime profondément ce que je fais, parce que je veux que vous ayez un espace où vous pourrez souffler, vous déposer, être soutenues.</p>
+<p>Mon approche s’adapte à vos besoins et à vos attentes. Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.</p>
+<p>Engagée à soutenir les mamans solos, je sais que vous pouvez vous retrouver face à des défis uniques. Vous ne serez jamais seule dans cette aventure. Mon envie est d’être une alliée de confiance, vous apportant le soutien et la sécurité dont vous avez besoin à chaque étape de cette expérience.</p>
+</div>
+</article>
+<article class="chapitre">
+<h3>Un accompagnement du post-partum pour toutes</h3>
+<div class="chapitre-texte">
+<p>Je suis profondément convaincue que les femmes méritent une attention particulière après l’accouchement. J’ai vécu trois post-partum, avec leurs doutes, leur solitude. Et aussi cette peur de demander de l’aide, cette culpabilité de ne pas tout gérer, de ne pas tout savoir.</p>
+<p class="citation">Aujourd’hui, je veux offrir aux mères ce que j’aurais aimé recevoir : un soutien bienveillant, une présence sans jugement, une aide concrète au quotidien.</p>
+<p>Les mois qui suivent la naissance de votre bébé sont une période de grande vulnérabilité et de profonds changements. Vous apprenez à vous redécouvrir en tant que mère, vous apprivoisez ce nouveau corps, vous faites connaissance avec ce nouveau petit être, tout en jonglant avec l’intendance et le flot d’émotions.</p>
+<p>Et si vous vous autorisiez à vivre cette période avec plus de douceur, de repos et de bienveillance ?</p>
+<p>C’est ici qu’est ma place : comme une sœur, une amie ou une mère, avec mon expertise à vos côtés, pour vous soulager, vous accompagner et vous offrir un véritable moment de répit.</p>
+<p>Je vous cuisine des repas nourrissants, je veille sur votre bébé le temps d’une douche ou d’une sieste, je vous accompagne dans vos premiers pas dans la parentalité. Chaque geste, chaque mot est là pour alléger votre charge mentale, vous soutenir et vous permettre de vous recentrer sur l’essentiel : vous et votre bébé.</p>
+<p class="chapitre-signature">Une doula au quotidien, pour un post-partum plus doux !</p>
+</div>
+</article>
 </section>
 
 <section class="conteneur-etroit section pile pile-24" id="faq">
@@ -581,10 +622,13 @@ function pageService(s) {
 
 <section class="fond-blanc">
 <div class="conteneur section pile pile-32">
-<h2 class="h2">${esc(s.inclusTitre)}</h2>
+${s.inclus.length ? '' : `<h2 class="h2">${esc(s.inclusTitre)}</h2>`}
+${(s.intro || []).length ? `<div class="texte-long">${s.intro.map((t) => `<p class="texte">${esc(t)}</p>`).join('\n')}</div>` : ''}
+${s.inclus.length ? `<h2 class="h2">${esc(s.inclusTitre)}</h2>
 <ul class="inclus">
-${s.inclus.map(([t, d]) => `<li>${coche(couleurCoche).replace('width="18" height="18"', 'width="22" height="22"')}<span><strong>${esc(t)}</strong><span>${esc(d)}</span></span></li>`).join('\n')}
-</ul>
+${s.inclus.map(([t, d]) => `<li>${coche(couleurCoche).replace('width="18" height="18"', 'width="22" height="22"')}<span><strong>${esc(t)}</strong>${d ? `<span>${esc(d)}</span>` : ''}</span></li>`).join('\n')}
+</ul>` : ''}
+${s.conclusion ? `<p class="texte texte-long">${esc(s.conclusion)}</p>` : ''}
 </div>
 </section>
 
