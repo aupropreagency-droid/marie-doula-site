@@ -521,8 +521,8 @@ ${V3 ? '' : `<div class="solo">
 
 <section class="conteneur section pile pile-32" id="soins" style="padding-top:48px">
 <div class="intro-simple">
-<span class="etiquette sauge">Soins &amp; cérémonies</span>
-<h2 class="h2">Une parenthèse pour soi</h2>
+${V3 ? '<h2 class="h2">Soins &amp; cérémonies</h2>' : `<span class="etiquette sauge">Soins &amp; cérémonies</span>
+<h2 class="h2">Une parenthèse pour soi</h2>`}
 <p class="texte">Le rebozo est un châle traditionnel mexicain, utilisé pour le soutien physique et émotionnel des femmes à travers des bercements et des serrages. Pendant ou après une grossesse, ou à tout moment de votre vie de femme.</p>
 </div>
 <div class="grille grille-3 carrousel" data-carrousel="points-soins">
