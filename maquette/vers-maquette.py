@@ -27,6 +27,18 @@ def convert(page_html, mobile, service, titre, w, h):
         return m.group(0)
     body = re.sub(r'href="(/[^"]*)"', lien, body)
     if service: body = body.replace('class="flottant"', 'class="flottant visible"')
+    m = re.search(r'<details class="menu-mobile">\n<summary aria-label="Ouvrir le menu">(.*?)</summary>\n<nav class="menu-mobile-liste" aria-label="Menu">\n(.*?)\n</nav>\n</details>', body, re.S)
+    if m:
+        icone, liens = m.group(1), m.group(2)
+        liens = liens.replace('<a href=', '<a onClick="{{fermer}}" href=')
+        body = body.replace(m.group(0), f'''<div class="menu-mobile">
+<button type="button" class="menu-btn {{{{classeBouton}}}}" onClick="{{{{basculer}}}}" aria-expanded="{{{{ouvert}}}}" aria-label="Menu">{icone}</button>
+<sc-if value="{{{{ouvert}}}}" hint-placeholder-val="{{{{ false }}}}">
+<nav class="menu-mobile-liste" aria-label="Menu">
+{liens}
+</nav>
+</sc-if>
+</div>''')
     if V2:
         def chap(m):
             inner = m.group(1).strip()
@@ -69,7 +81,13 @@ body{{margin:0}}
 <script type="text/x-dc" data-dc-script data-props='{{"$preview":{{"width":{w},"height":{h}}}}}'>
 class Component extends DCLogic {{
   renderVals() {{
-    return {{}};
+    const ouvert = !!(this.state && this.state.menu);
+    return {{
+      ouvert,
+      classeBouton: ouvert ? 'ouvert' : '',
+      basculer: () => this.setState({{ menu: !ouvert }}),
+      fermer: () => this.setState({{ menu: false }})
+    }};
   }}
 }}
 </script>
