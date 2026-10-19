@@ -2,7 +2,7 @@
 (function () {
   var bulle = document.querySelector('.flottant');
   if (!bulle || !('IntersectionObserver' in window)) { if (bulle) bulle.classList.add('visible'); return; }
-  var haut = document.querySelector('.heros');
+  var haut = document.querySelector('.heros:not(.heros-service)');
   var pied = document.querySelector('.pied');
   var hautVisible = !!haut, piedVisible = false;
   function maj() { bulle.classList.toggle('visible', !hautVisible && !piedVisible); }

@@ -344,7 +344,7 @@ ${PREVISU ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta prop
 `;
 }
 
-function entete() {
+function entete(lienWa = WA_GENERAL) {
   return `<header class="entete">
 <div class="conteneur entete-int">
 <a class="marque" href="/">
@@ -358,7 +358,7 @@ function entete() {
 <a href="/#apropos">À propos</a>
 <a href="/#faq">Questions</a>
 </nav>
-<a class="btn btn-entete" href="${WA_GENERAL}" aria-label="Écrire à Marie sur WhatsApp">${ICONE_WA}<span>Écrire à Marie</span></a>
+<a class="btn btn-entete" href="${lienWa}" aria-label="Écrire à Marie sur WhatsApp">${ICONE_WA}<span>Écrire à Marie</span></a>
 </div>
 </header>
 `;
@@ -600,7 +600,7 @@ function pageService(s) {
 <figcaption><strong>${esc(auteur)}</strong> · ${esc(source || 'Avis Google')}</figcaption>
 </figure>`).join('\n');
 
-  return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug }) + entete() + `<main>
+  return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug }) + entete(s.wa) + `<main>
 <nav class="conteneur ariane" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="${groupeLien}">${esc(groupeNom)}</a><span aria-hidden="true">›</span><span aria-current="page">${esc(s.nom)}</span></nav>
 
 <section class="conteneur heros heros-service">
@@ -610,9 +610,6 @@ function pageService(s) {
 <nav class="raccourcis" aria-label="Sur cette page"><a href="#detail">Le détail</a><a href="#tarif">Tarif</a><a href="#avis-page">Avis</a><a href="#questions">Questions</a></nav>
 <p class="chapo">${esc(s.accroche)}</p>
 <div class="prix-heros"><strong>${esc(s.prix)}</strong>${(s.prixDetailPage || s.prixDetail) ? `<span class="neutre">${esc(s.prixDetailPage || s.prixDetail)}</span>` : ''}</div>
-<div class="groupe-btn" style="gap:12px">
-<a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || s.bouton)}</a>
-</div>
 </div>
 <div class="heros-visuel">
 <img class="arche${estLogo ? ' logo' : ''}${sauge ? ' sauge' : ''}" src="${image}" alt="${esc(alt)}" width="440" height="460" fetchpriority="high">
