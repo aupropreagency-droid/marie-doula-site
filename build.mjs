@@ -4,6 +4,7 @@ import { mkdirSync, writeFileSync, copyFileSync, readdirSync, rmSync } from 'nod
 import { join } from 'node:path';
 
 const SORTIE = process.env.SORTIE || 'public';
+const V3 = process.env.MAQUETTE_V3 === '1'; // proposition maquette (pas en ligne)
 const TEL = '33652105482';
 const FICHE_GOOGLE = 'https://share.google/hiO8zxGKeLJWMfdDU';
 const PREVISU = true;
@@ -359,6 +360,16 @@ function entete(lienWa = WA_GENERAL) {
 <a href="/#faq">Questions</a>
 </nav>
 <a class="btn btn-entete" href="${lienWa}" aria-label="Écrire à Marie sur WhatsApp">${ICONE_WA}<span>Écrire à Marie</span></a>
+${V3 ? `<details class="menu-mobile">
+<summary aria-label="Ouvrir le menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></summary>
+<nav class="menu-mobile-liste" aria-label="Menu">
+<a href="/#accompagnements">Accompagnements</a>
+<a href="/#soins">Soins &amp; cérémonies</a>
+<a href="/#avis">Avis</a>
+<a href="/#apropos">À propos</a>
+<a href="/#faq">Questions</a>
+</nav>
+</details>` : ''}
 </div>
 </header>
 `;
@@ -411,6 +422,20 @@ const fin = (avecScript) => `${avecScript ? '<script src="/carrousel.js?v=${VERS
 function carte(s) {
   const sauge = s.groupe === 'soins';
   const classeImg = 'carte-img' + (s.imageEstLogo ? ' logo' : '') + (sauge ? ' sauge' : '');
+  if (V3) return `<article class="carte carte-mini" id="${s.slug}">
+<a class="carte-lien" href="/${s.slug}">
+<img class="${classeImg}" src="${s.image}" alt="${esc(s.alt)}" loading="lazy">
+<div class="carte-corps">
+<span class="carte-etape${sauge ? ' sauge' : ''}">${esc(s.etape)}</span>
+<h3>${esc(s.nom)}</h3>
+<p class="carte-texte">${esc(s.carteTexte)}</p>
+<div class="carte-pied">
+<div class="prix"><strong>${esc(s.prix)}</strong>${s.prixDetail ? `<span class="neutre">${esc(s.prixDetail)}</span>` : ''}</div>
+<span class="lien-fleche">En savoir plus →</span>
+</div>
+</div>
+</a>
+</article>`;
   return `<article class="carte" id="${s.slug}">
 <img class="${classeImg}" src="${s.image}" alt="${esc(s.alt)}" loading="lazy">
 <div class="carte-corps">
@@ -445,7 +470,7 @@ function accueil() {
     description: 'Doula à Paris et proche banlieue sud : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
     chemin: '/'
   }) + entete() + `<main>
-<section class="conteneur heros" id="accueil">
+<section class="conteneur heros${V3 ? ' heros-seul' : ''}" id="accueil">
 <div class="heros-texte">
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
@@ -457,10 +482,10 @@ function accueil() {
 </div>
 <p class="texte" style="font-size:15px;color:var(--texte-3)">Pas sûre de ce qu’il vous faut ? <a href="${WA_DECOUVERTE}" style="font-weight:600">Réservez l’échange gratuit de 20 minutes</a> sur WhatsApp.</p>
 </div>
-<div class="heros-visuel">
+${V3 ? '' : `<div class="heros-visuel">
 <img class="arche" src="${IMG.fauteuil}" alt="Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre" width="420" height="540" fetchpriority="high">
 <div class="badge-avis"><strong>5,0 <span class="etoiles">★★★★★</span></strong><span class="discret">28 avis Google</span></div>
-</div>
+</div>`}
 </section>
 
 <section class="bandeau" aria-label="En bref">
@@ -589,9 +614,10 @@ function pageService(s) {
   const sauge = s.groupe === 'soins';
   const groupeNom = sauge ? 'Soins & cérémonies' : 'Accompagnements';
   const groupeLien = sauge ? '/#soins' : '/#accompagnements';
-  const image = s.imagePage || s.image;
-  const alt = s.imagePage ? s.altPage : s.alt;
-  const estLogo = !s.imagePage && s.imageEstLogo;
+  const photoMarie = V3 && !sauge;
+  const image = photoMarie ? IMG.fauteuil : (s.imagePage || s.image);
+  const alt = photoMarie ? 'Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre' : (s.imagePage ? s.altPage : s.alt);
+  const estLogo = !photoMarie && !s.imagePage && s.imageEstLogo;
   const couleurCoche = sauge ? '#4F6449' : '#924A48';
   const autres = services.filter((x) => x.slug !== s.slug);
   const avisHtml = s.avis.map(([texte, auteur, source]) => `<figure class="avis-carte">
