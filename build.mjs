@@ -6,7 +6,8 @@ import { join } from 'node:path';
 const SORTIE = 'public';
 const TEL = '33652105482';
 const FICHE_GOOGLE = 'https://share.google/hiO8zxGKeLJWMfdDU';
-const PREVISU = true; // true = site en prévisualisation : non indexé par Google
+const PREVISU = true;
+const VERSION = Date.now().toString(36); // casse le cache CSS/JS à chaque build // true = site en prévisualisation : non indexé par Google
 
 const wa = (msg) => `https://wa.me/${TEL}?text=${encodeURIComponent(msg)}`;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -335,7 +336,7 @@ ${PREVISU ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta prop
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=${VERSION}">
 </head>
 <body>
 `;
@@ -397,7 +398,7 @@ function pied(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie') {
 `;
 }
 
-const fin = (avecScript) => `${avecScript ? '<script src="/carrousel.js" defer></script>\n' : ''}<script src="/bulle.js" defer></script>\n</body>
+const fin = (avecScript) => `${avecScript ? '<script src="/carrousel.js?v=${VERSION}" defer></script>\n' : ''}<script src="/bulle.js?v=${VERSION}" defer></script>\n</body>
 </html>
 `;
 
