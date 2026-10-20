@@ -780,10 +780,10 @@ ${nav}
 `;
 }
 
-function piedV4(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie') {
-  return `<footer class="pied" id="contact">
+function piedV4(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie', avecAppel = true) {
+  return `<footer class="pied${avecAppel ? '' : ' pied-simple'}" id="contact">
 <div class="conteneur pied-int">
-<div class="pied-appel">
+${avecAppel ? `<div class="pied-appel">
 <div class="pied-appel-texte">
 <h2>Envie d’en parler ?</h2>
 <p class="texte">Je serais ravie de vous rencontrer et de partager un bout de votre histoire. N’hésitez pas à me contacter pour en savoir plus ou organiser une première rencontre.</p>
@@ -794,7 +794,7 @@ function piedV4(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie') {
 </ol>
 </div>
 <a class="btn btn-grand" href="${lienWa}">${ICONE_WA}Écrire à Marie sur WhatsApp</a>
-</div>
+</div>` : ''}
 <div class="pied-infos">
 <div class="col">
 <img src="${IMG.logo}" alt="" width="40" height="64">
@@ -1065,14 +1065,6 @@ ${s.infos.map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p>
 </div>
 </section>
 
-<section class="v4-cta${sauge ? ' sauge' : ''}">
-<div class="conteneur-etroit v4-cta-int">
-<h2 class="h2">${esc(s.nom)}, ça vous parle ?</h2>
-<p class="texte">Écrivez-moi sur WhatsApp : le message est déjà prêt, il ne vous reste qu’à le compléter.</p>
-<a class="btn btn-grand" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || 'Écrire à Marie')}</a>
-</div>
-</section>
-
 <section class="fond-blanc">
 <div class="conteneur pile pile-24" style="padding-top:56px;padding-bottom:56px">
 <h2 class="h2-petit">Découvrir aussi</h2>
@@ -1082,7 +1074,7 @@ ${autres.map((x) => `<a href="/${x.slug}"${x.groupe === 'soins' ? ' class="sauge
 </div>
 </section>
 </main>
-` + piedV4(s.wa, s.boutonPage || 'Écrire à Marie') + fin(false);
+` + piedV4(s.wa, s.boutonPage || 'Écrire à Marie', false) + fin(false);
 }
 
 // ------------------------------------------------------------------

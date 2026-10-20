@@ -175,3 +175,5 @@
   .v4-titre-grille .ariane { margin-bottom: 4px; }
   .v4-titre-grille .chapo { margin-top: 10px; }
 }
+.pied-simple .pied-infos { border-top: 0; padding-top: 0; }
+.pied-simple .pied-int { padding-top: 48px; }
