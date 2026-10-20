@@ -1014,15 +1014,18 @@ function pageServiceV4(s) {
 <figcaption><strong>${esc(auteur)}</strong> · ${esc(source || 'Avis Google')}</figcaption>
 </figure>`).join('\n');
   return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug }) + enteteV4(s.wa, sauge ? 'soins' : 'acc') + `<main>
-<div class="v4-bande-photo"><img src="${photo}" alt="${esc(alt)}" fetchpriority="high"></div>
 <section class="v4-titre-service${sauge ? ' sauge' : ''}">
-<div class="conteneur-etroit v4-titre-int">
+<div class="conteneur v4-titre-grille">
+<div class="v4-titre-int">
 <nav class="ariane" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="${groupeLien}">${esc(groupeNom)}</a><span aria-hidden="true">›</span><span aria-current="page">${esc(s.nom)}</span></nav>
 <span class="bloc-chiffre">${numero(s)}.</span>
 <h1 class="h1 h1-service">${esc(s.nom)}</h1>
 <span class="bloc-etape">${esc(s.etapePage || s.etape)}</span>
+<img class="v4-photo-service v4-photo-mobile" src="${photo}" alt="${esc(alt)}" width="440" height="587">
 <p class="chapo">${esc(s.accroche)}</p>
 <nav class="raccourcis raccourcis-v4" aria-label="Sur cette page"><a href="#detail">Le détail</a><a href="#tarif">Tarif</a><a href="#avis-page">Avis</a><a href="#questions">Questions</a></nav>
+</div>
+<img class="v4-photo-service v4-photo-ordi" src="${photo}" alt="" aria-hidden="true" width="440" height="587" fetchpriority="high">
 </div>
 </section>
 
