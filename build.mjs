@@ -863,15 +863,6 @@ function accueilV4() {
 </div>
 </section>
 
-<section class="bandeau" aria-label="En bref">
-<div class="conteneur bandeau-int">
-<div class="bandeau-item"><strong>5,0 ★ · 28 avis</strong><span>sur Google</span></div>
-<div class="bandeau-item"><strong>Premier échange offert</strong><span>20 minutes au téléphone</span></div>
-<div class="bandeau-item"><strong>Doula depuis 2020</strong><span>après 13 ans comme assistante maternelle</span></div>
-<div class="bandeau-item"><strong>Chez vous</strong><span>Paris &amp; proche banlieue sud</span></div>
-</div>
-</section>
-
 <section class="v4-offre" id="accompagnements">
 <div class="conteneur v4-offre-entete">
 <h2 class="h2">Mes accompagnements</h2>
@@ -904,7 +895,8 @@ ${soins.map(blocNumerote).join('\n')}
 <div class="tri-texte tri-qui">
 <h2 class="tri-titre">Qui je suis</h2>
 <p>Je m’appelle Marie, femme, mère, compagne, amie, et doula !</p>
-<p>Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle. Je suis aussi maman de trois merveilleux garçons, qui ont bouleversé et enrichi ma vie de femme.</p>
+<p><strong>Doula depuis 2020, après 13 ans comme assistante maternelle.</strong></p>
+<p>Diplômée de la Petite Enfance, je suis aussi maman de trois merveilleux garçons, qui ont bouleversé et enrichi ma vie de femme.</p>
 <a class="lien-fleche" href="/qui-je-suis">Lire mon histoire →</a>
 </div>
 </section>
