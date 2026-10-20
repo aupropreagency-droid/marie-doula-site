@@ -5,16 +5,20 @@ SRC = os.path.dirname(os.path.abspath(__file__))
 BLOB = {'logo.png':'93dd444eafbabbafe3540ee650e60af1','marie-fauteuil.jpg':'4e80f6573a5d64626e0cb0bf89462561',
         'marie-cuisine-portage.jpg':'f3601f2f605c03bd22f2b20426131a03','marie-portrait.jpg':'59550717fa65d86ea8c06df1f1096aff',
         'soin-rebozo.jpg':'33ca4f299c0349dfa444ddb7239ba36f','rituel-mains.jpg':'da15759555af9b7acb3411425188caf1',
-        'mama-blessing.jpg':'d87cc366ad1b0e55f8900ec9c2edced8'}
+        'mama-blessing.jpg':'d87cc366ad1b0e55f8900ec9c2edced8',
+        'mama-blessing-hd.jpg':'edccaa4e1efac52678a7fa85621d5b20','marie-cuisine-portage-hd.jpg':'4e098c815e2e9bb6f535e419c9352b79',
+        'marie-fauteuil-hd.jpg':'a7b31407e85235a769e951855ed5c30a','marie-portrait-hd.jpg':'13f8553678ea3f605c3f5758472a958f',
+        'marie-portrait-paniers-hd.jpg':'b2b507e7e1c3429777d8cb61fc9c806b','rituel-mains-hd.jpg':'361bb61e8663587a2625e3dcfce0d103',
+        'soin-rebozo-hd.jpg':'dbdb716cc7705301b3dbe1f3f85bc8af'}
 PAGES = [('accompagnement-prenatal','Prenatal'),('presence-naissance','Naissance'),('rendez-vous-postnatal','Postnatal'),
-         ('soutien-post-partum','PostPartum'),('instant-rebozo','InstantRebozo'),('rituel-rebozo','RituelRebozo'),('mama-blessing','MamaBlessing')]
+         ('soutien-post-partum','PostPartum'),('instant-rebozo','InstantRebozo'),('rituel-rebozo','RituelRebozo'),('mama-blessing','MamaBlessing'),('qui-je-suis','QuiJeSuis')]
 css = open(os.path.join(OUT,'styles.css')).read()
 css = css.replace('</', '<\\/')
 
 def convert(page_html, mobile, service, titre, w, h):
     body = page_html.split('<body>',1)[1].rsplit('</body>',1)[0]
     body = re.sub(r'<script[^>]*></script>\n?', '', body)
-    for f,b in BLOB.items(): body = body.replace(f'/images/{f}', f'/_blob/{b}')
+    for f,b in sorted(BLOB.items(), key=lambda x: -len(x[0])): body = body.replace(f'/images/{f}', f'/_blob/{b}')
     home = 'Mobile.dc.html' if mobile else 'Variante.dc.html'
     suffix = 'Mobile' if (mobile and V2) else ''
     def lien(m):

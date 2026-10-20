@@ -7,8 +7,9 @@ document.querySelectorAll('[data-carrousel]').forEach(function (piste) {
   var total = puces.length;
 
   function maj() {
-    var carte = piste.querySelector('.carte');
-    var pas = carte ? carte.offsetWidth + 14 : piste.clientWidth;
+    var carte = piste.firstElementChild;
+    var ecart = parseFloat(getComputedStyle(piste).columnGap) || 0;
+    var pas = carte ? carte.offsetWidth + ecart : piste.clientWidth;
     var i = Math.min(total - 1, Math.max(0, Math.round(piste.scrollLeft / pas)));
     puces.forEach(function (p, n) { p.classList.toggle('actif', n === i); });
     if (compteur) compteur.textContent = (i + 1) + ' / ' + total;

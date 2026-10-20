@@ -1,6 +1,6 @@
 // Générateur du site statique de Marie Graugnard, doula.
 // Usage : node build.mjs  →  écrit le site dans ./public
-import { mkdirSync, writeFileSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
+import { mkdirSync, writeFileSync, copyFileSync, readdirSync, rmSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const SORTIE = process.env.SORTIE || 'public';
@@ -736,15 +736,369 @@ function mobile(page) {
     '<div class="grille grille-avis" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">');
 }
 
+// ==================================================================
+// V4 : nouvelle structure inspirée de lauratridoux.fr (maquette)
+// ==================================================================
+const V4 = process.env.MAQUETTE_V4 === '1';
+const HD = {
+  fauteuil: '/images/marie-fauteuil-hd.jpg', portrait: '/images/marie-portrait-hd.jpg',
+  paniers: '/images/marie-portrait-paniers-hd.jpg', cuisine: '/images/marie-cuisine-portage-hd.jpg',
+  rebozo: '/images/soin-rebozo-hd.jpg', rituel: '/images/rituel-mains-hd.jpg', blessing: '/images/mama-blessing-hd.jpg'
+};
+const ALT_FAUTEUIL = 'Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre';
+const PHOTO_SERVICE = {
+  'accompagnement-prenatal': [HD.fauteuil, ALT_FAUTEUIL], 'presence-naissance': [HD.fauteuil, ALT_FAUTEUIL],
+  'rendez-vous-postnatal': [HD.fauteuil, ALT_FAUTEUIL], 'soutien-post-partum': [HD.fauteuil, ALT_FAUTEUIL],
+  'instant-rebozo': [HD.rebozo, 'Une femme et son bébé enveloppés dans des tissus rebozo'],
+  'rituel-rebozo': [HD.rituel, 'Mains serrant un tissu rebozo pendant un soin'],
+  'mama-blessing': [HD.blessing, 'Table de Mama Blessing décorée de fleurs séchées et de bougies']
+};
+const numero = (s) => services.filter((x) => x.groupe === s.groupe).indexOf(s) + 1;
+
+function enteteV4(lienWa = WA_GENERAL, actif = '') {
+  const liens = [['/qui-je-suis', 'Qui je suis', 'qui'], ['/#accompagnements', 'Accompagnements', 'acc'], ['/#soins', 'Soins &amp; cérémonies', 'soins'], ['/#avis', 'Avis', 'avis'], ['#contact', 'Contact', 'contact']];
+  const nav = liens.map(([h, t, k]) => `<a href="${h}"${k === actif ? ' aria-current="page"' : ''}>${t}</a>`).join('\n');
+  return `<header class="entete">
+<div class="conteneur entete-int">
+<a class="marque" href="/">
+<img src="${IMG.logo}" alt="" width="58" height="93">
+<span class="marque-texte"><span class="marque-nom">Marie Graugnard</span><span class="marque-sous">Doula · Paris &amp; proche banlieue sud</span></span>
+</a>
+<nav class="nav" aria-label="Navigation principale">
+${nav}
+</nav>
+<a class="btn btn-entete" href="${lienWa}" aria-label="Écrire à Marie sur WhatsApp">${ICONE_WA}<span>Écrire à Marie</span></a>
+<details class="menu-mobile">
+<summary aria-label="Ouvrir le menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></summary>
+<nav class="menu-mobile-liste" aria-label="Menu">
+<a href="/">Accueil</a>
+${nav}
+</nav>
+</details>
+</div>
+</header>
+`;
+}
+
+function piedV4(lienWa = WA_DECOUVERTE, boutonFlottant = 'Écrire à Marie') {
+  return `<footer class="pied" id="contact">
+<div class="conteneur pied-int">
+<div class="pied-appel">
+<div class="pied-appel-texte">
+<h2>Envie d’en parler ?</h2>
+<p class="texte">Je serais ravie de vous rencontrer et de partager un bout de votre histoire. N’hésitez pas à me contacter pour en savoir plus ou organiser une première rencontre.</p>
+<ol class="mini-etapes">
+<li><b>1</b>Vous m’écrivez sur WhatsApp</li>
+<li><b>2</b>On échange 20 min, gratuitement</li>
+<li><b>3</b>On construit votre accompagnement</li>
+</ol>
+</div>
+<a class="btn btn-grand" href="${lienWa}">${ICONE_WA}Écrire à Marie sur WhatsApp</a>
+</div>
+<div class="pied-infos">
+<div class="col">
+<img src="${IMG.logo}" alt="" width="40" height="64">
+<strong>Marie Graugnard · Doula</strong>
+<a href="https://wa.me/${TEL}">06 52 10 54 82 (WhatsApp)</a>
+<a href="mailto:mariedoula75@gmail.com">mariedoula75@gmail.com</a>
+<a href="https://www.instagram.com/marie_doula_paris/">Instagram @marie_doula_paris</a>
+</div>
+<div class="col">
+<strong>Où ?</strong>
+<span>À domicile, à Paris &amp; proche banlieue sud</span>
+<span>Soins rebozo chez moi, Paris 13e</span>
+</div>
+<div class="col" style="max-width:380px">
+<span>Accompagnement non médical, en complément du suivi par votre sage-femme, votre gynécologue ou votre pédiatre.</span>
+<span>Services à la personne · SAP893088153</span>
+<span>SIRET 893 088 153 00018</span>
+<a href="/mentions-legales">Mentions légales</a>
+</div>
+</div>
+</div>
+</footer>
+<a class="flottant" href="${lienWa}" aria-label="${esc(boutonFlottant)} sur WhatsApp">${ICONE_WA}<span class="sr">${esc(boutonFlottant)}</span></a>
+`;
+}
+
+function blocNumerote(s) {
+  return `<a class="bloc-num" href="/${s.slug}">
+<span class="bloc-chiffre">${numero(s)}.</span>
+<span class="bloc-etape">${esc(s.etape)}</span>
+<span class="bloc-titre">${esc(s.nom)}</span>
+<span class="bloc-texte">${esc(s.carteTexte)}</span>
+<span class="bloc-lien">En savoir plus →</span>
+</a>`;
+}
+
+function temoignagesAccueil() {
+  const vus = new Set(); const liste = [];
+  for (const s of services) for (const [t, a, src] of s.avis) if (src === 'Témoignage' && !vus.has(a)) { vus.add(a); liste.push([t, a]); }
+  return liste;
+}
+
+function accueilV4() {
+  const acc = services.filter((s) => s.groupe === 'accompagnements');
+  const soins = services.filter((s) => s.groupe === 'soins');
+  const temoins = temoignagesAccueil();
+  return tete({
+    titre: 'Marie Graugnard · Doula à Paris & proche banlieue sud',
+    description: 'Doula à Paris et proche banlieue sud : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
+    chemin: '/'
+  }) + enteteV4() + `<main>
+<section class="conteneur heros heros-v3" id="accueil">
+<div class="heros-texte">
+<p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
+<h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
+<p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
+<p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
+<div class="groupe-btn">
+<a class="btn btn-grand" href="#accompagnements">Voir les accompagnements <span aria-hidden="true">↓</span></a>
+<a class="btn btn-grand btn-sauge" href="#soins">Voir les soins <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+<div class="heros-visuel">
+<img class="arche" src="${HD.fauteuil}" alt="${ALT_FAUTEUIL}" width="420" height="540" fetchpriority="high">
+<div class="badge-avis"><strong>5,0 <span class="etoiles">★★★★★</span></strong><span class="discret">28 avis Google</span></div>
+</div>
+</section>
+
+<section class="bandeau" aria-label="En bref">
+<div class="conteneur bandeau-int">
+<div class="bandeau-item"><strong>5,0 ★ · 28 avis</strong><span>sur Google</span></div>
+<div class="bandeau-item"><strong>Premier échange offert</strong><span>20 minutes au téléphone</span></div>
+<div class="bandeau-item"><strong>Doula depuis 2020</strong><span>après 13 ans comme assistante maternelle</span></div>
+<div class="bandeau-item"><strong>Chez vous</strong><span>Paris &amp; proche banlieue sud</span></div>
+</div>
+</section>
+
+<section class="v4-offre" id="accompagnements">
+<div class="conteneur v4-offre-entete">
+<h2 class="h2">Mes accompagnements</h2>
+<p class="texte">J’ai à cœur d’accompagner les femmes, les futures mères et les femmes qui vivent la maternité solo. Cette expérience peut parfois être empreinte de défis particuliers, mais elle est aussi pleine de force et de résilience.</p>
+</div>
+<div class="blocs-num blocs-4">
+${acc.map(blocNumerote).join('\n')}
+</div>
+<div class="conteneur v4-cesu">${MODULE_CESU}</div>
+</section>
+
+<section class="v4-offre v4-soins" id="soins">
+<div class="conteneur v4-offre-entete">
+<h2 class="h2">Soins &amp; cérémonies</h2>
+<p class="texte">Le rebozo est un châle traditionnel mexicain, utilisé pour le soutien physique et émotionnel des femmes à travers des bercements et des serrages. Pendant ou après une grossesse, ou à tout moment de votre vie de femme.</p>
+</div>
+<div class="blocs-num blocs-3">
+${soins.map(blocNumerote).join('\n')}
+</div>
+</section>
+
+<section class="triptyque" aria-label="Mon approche et qui je suis">
+<div class="tri-texte tri-approche">
+<h2 class="tri-titre">Mon approche</h2>
+<p>Spécialisée dans l’accompagnement postnatal à domicile, j’offre une présence quasi quotidienne, bienveillante, une écoute attentive et un soutien concret dans les tâches du quotidien. Accueillir un bébé est un bouleversement, et les premiers mois peuvent parfois sembler intenses et épuisants.</p>
+<p>Mon approche s’adapte à vos besoins et à vos attentes. Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.</p>
+<p>Mon accompagnement n’est pas médical : il vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p>
+</div>
+<img class="tri-photo" src="${HD.paniers}" alt="Portrait de Marie, souriante, devant des paniers tressés" loading="lazy">
+<div class="tri-texte tri-qui">
+<h2 class="tri-titre">Qui je suis</h2>
+<p>Je m’appelle Marie, femme, mère, compagne, amie, et doula !</p>
+<p>Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle. Je suis aussi maman de trois merveilleux garçons, qui ont bouleversé et enrichi ma vie de femme.</p>
+<a class="lien-fleche" href="/qui-je-suis">Lire mon histoire →</a>
+</div>
+</section>
+
+<section class="conteneur section quand" aria-labelledby="quand-titre">
+<h2 class="h2" id="quand-titre">Quand faire appel à moi ?</h2>
+<p class="texte quand-intro">Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée. Chaque situation est unique, et ensemble, nous trouverons ce qui vous correspond le mieux.</p>
+<ol class="quand-liste">
+<li><span class="rond">1.</span><strong>Avant l’arrivée de bébé</strong><span>Pour vous soutenir dans la préparation émotionnelle et organisationnelle de l’arrivée de votre enfant.</span></li>
+<li><span class="rond">2.</span><strong>Lors de la naissance</strong><span>Être un soutien constant et rassurant, vous offrir une présence calme et apaisante.</span></li>
+<li><span class="rond">3.</span><strong>Durant les premiers mois</strong><span>Vous accompagner face à la fatigue, aux doutes et aux besoins du quotidien, vous soulager dans vos nouvelles responsabilités.</span></li>
+</ol>
+</section>
+
+<section class="temoins" id="avis">
+<div class="conteneur temoins-int">
+<div class="temoins-piste" data-carrousel="points-temoins">
+${temoins.map(([t, a]) => `<figure class="temoin">
+<blockquote class="temoin-texte">${esc(t)}</blockquote>
+<figcaption>${esc(a)}</figcaption>
+</figure>`).join('\n')}
+</div>
+<div class="points-carrousel points-temoins" id="points-temoins" aria-hidden="true">${temoins.map((_, i) => `<i${i === 0 ? ' class="actif"' : ''}></i>`).join('')}<span>1 / ${temoins.length}</span></div>
+<div class="temoins-liens"><a href="${FICHE_GOOGLE}">5,0 ★ · Voir les 28 avis Google →</a><a href="${FICHE_GOOGLE}">Laisser un avis</a></div>
+</div>
+</section>
+</main>
+` + piedV4(WA_DECOUVERTE) + fin(true);
+}
+
+function quiJeSuis() {
+  const chap = (n, titre, ps, extra = '') => `<section class="qui-chap${n % 2 ? '' : ' alt'}">
+<div class="conteneur qui-chap-int">
+<h2 class="qui-chap-titre"><span class="bloc-chiffre">${n}.</span>${titre}</h2>
+<div class="qui-chap-texte">
+${ps.map((p) => `<p>${p}</p>`).join('\n')}${extra}
+</div>
+</div>
+</section>`;
+  return tete({ titre: 'Qui je suis · Marie Graugnard, doula à Paris', description: 'Marie Graugnard, doula à Paris : 13 ans d’assistante maternelle, maman de trois garçons, accompagnante des futures mères, des mamans solos et du post-partum.', chemin: '/qui-je-suis' }) + enteteV4(WA_DECOUVERTE, 'qui') + `<main>
+<nav class="conteneur ariane" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><span aria-current="page">Qui je suis</span></nav>
+<section class="conteneur section apropos qui-haut">
+<img class="apropos-photo" src="${HD.portrait}" alt="Portrait de Marie, souriante, en extérieur">
+<div class="apropos-texte">
+<span class="surtitre">Bienvenue dans mon cocon</span>
+<h1 class="h1 h1-service">Je m’appelle Marie, femme, mère, compagne, amie, et doula !</h1>
+<p class="texte">Diplômée de la Petite Enfance, j’ai travaillé pendant 13 ans en tant qu’assistante maternelle.</p>
+<p class="texte">Durant ces années, j’ai eu la chance de partager le quotidien de nombreuses familles, de vivre leurs joies, de les accompagner dans leurs défis, et de leur offrir mes compétences, mes valeurs et mon soutien sur leur chemin de parentalité.</p>
+<p class="texte">Je suis aussi maman de trois merveilleux garçons, qui ont bouleversé et enrichi ma vie de femme.</p>
+</div>
+</section>
+
+<section class="fond-peche">
+<div class="conteneur-etroit section qui-intro">
+<h2 class="h2">Votre accompagnement sur mesure pour une maternité plus sereine</h2>
+<p class="texte">Chère femme, je vous propose de vous accompagner dans cette aventure aussi folle que merveilleuse qu’est l’arrivée, parfois encore rêvée, d’un enfant.</p>
+<p class="chapitre-signature">À vos côtés, à chaque étape !</p>
+<p class="texte">Je suis là pour vous, dès vos premiers pas en tant que maman, quand le bonheur se mêle parfois aux doutes et aux questionnements. Je vous accompagne tout au long de votre chemin de parentalité, chaque fois que vous ressentez le besoin d’un soutien bienveillant et rassurant.</p>
+</div>
+</section>
+
+${chap(1, 'Un accompagnement pour les futures mamans', [
+  'Être enceinte est un voyage unique, rempli de découvertes, de joie, mais aussi de questionnements et parfois d’inquiétudes.',
+  'Je vous accompagne tout au long de votre grossesse avec douceur, écoute et bienveillance. Ensemble, nous créons un espace de confiance où vous pouvez exprimer vos besoins, vos envies, et trouver des réponses adaptées.',
+  'Mon rôle est de vous soutenir émotionnellement, de vous informer et de vous préparer sereinement à la naissance, pour que vous puissiez vivre cette étape importante en toute confiance et sérénité.'])}
+
+${chap(2, 'Un accompagnement pour les mamans solos', [
+  'Depuis 2020, mon chemin de doula m’a menée à accompagner une grande diversité de femmes et leur famille dans leur parentalité. Chaque rencontre a été unique, chaque histoire précieuse.',
+  'Au fil du temps, un fil rouge s’est tissé, une évidence s’est imposée : la vie met sur ma route des mamans solos. Encore et encore !',
+  'Chère femme, j’ai appris à vous écouter, à comprendre vos besoins profonds, à être là, pleinement.',
+  'Aujourd’hui, plus que jamais, je ressens que ma place est auprès de vous. Parce que cela me touche, parce que j’aime profondément ce que je fais, parce que je veux que vous ayez un espace où vous pourrez souffler, vous déposer, être soutenues.',
+  'Mon approche s’adapte à vos besoins et à vos attentes. Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.',
+  'Engagée à soutenir les mamans solos, je sais que vous pouvez vous retrouver face à des défis uniques. Vous ne serez jamais seule dans cette aventure. Mon envie est d’être une alliée de confiance, vous apportant le soutien et la sécurité dont vous avez besoin à chaque étape de cette expérience.'])}
+
+${chap(3, 'Un accompagnement du post-partum pour toutes', [
+  'Je suis profondément convaincue que les femmes méritent une attention particulière après l’accouchement. J’ai vécu trois post-partum, avec leurs doutes, leur solitude. Et aussi cette peur de demander de l’aide, cette culpabilité de ne pas tout gérer, de ne pas tout savoir.'],
+  `\n<p class="citation">Aujourd’hui, je veux offrir aux mères ce que j’aurais aimé recevoir : un soutien bienveillant, une présence sans jugement, une aide concrète au quotidien.</p>
+<p>Les mois qui suivent la naissance de votre bébé sont une période de grande vulnérabilité et de profonds changements. Vous apprenez à vous redécouvrir en tant que mère, vous apprivoisez ce nouveau corps, vous faites connaissance avec ce nouveau petit être, tout en jonglant avec l’intendance et le flot d’émotions.</p>
+<p>Et si vous vous autorisiez à vivre cette période avec plus de douceur, de repos et de bienveillance ?</p>
+<p>C’est ici qu’est ma place : comme une sœur, une amie ou une mère, avec mon expertise à vos côtés, pour vous soulager, vous accompagner et vous offrir un véritable moment de répit.</p>
+<p>Je vous cuisine des repas nourrissants, je veille sur votre bébé le temps d’une douche ou d’une sieste, je vous accompagne dans vos premiers pas dans la parentalité. Chaque geste, chaque mot est là pour alléger votre charge mentale, vous soutenir et vous permettre de vous recentrer sur l’essentiel : vous et votre bébé.</p>
+<p class="chapitre-signature">Une doula au quotidien, pour un post-partum plus doux !</p>
+<img class="qui-photo" src="${HD.cuisine}" alt="Marie dans une cuisine, un bébé contre elle dans une écharpe de portage" loading="lazy">`)}
+
+<section class="temoins">
+<div class="conteneur temoins-int">
+<figure class="temoin temoin-seul">
+<blockquote class="temoin-texte">${esc(services.find((s) => s.slug === 'presence-naissance').avis.find((a) => a[1].startsWith('Elsa'))[0])}</blockquote>
+<figcaption>Elsa, maman solo de Maïa</figcaption>
+</figure>
+</div>
+</section>
+</main>
+` + piedV4(WA_DECOUVERTE) + fin(false);
+}
+
+function pageServiceV4(s) {
+  const sauge = s.groupe === 'soins';
+  const groupeNom = sauge ? 'Soins & cérémonies' : 'Accompagnements';
+  const groupeLien = sauge ? '/#soins' : '/#accompagnements';
+  const [photo, alt] = PHOTO_SERVICE[s.slug];
+  const couleurCoche = sauge ? '#4F6449' : '#924A48';
+  const autres = services.filter((x) => x.slug !== s.slug);
+  const avisHtml = s.avis.map(([texte, auteur, source]) => `<figure class="avis-carte">
+<span class="etoiles" aria-label="5 étoiles sur 5">★★★★★</span>
+<blockquote>« ${esc(texte)} »</blockquote>
+<figcaption><strong>${esc(auteur)}</strong> · ${esc(source || 'Avis Google')}</figcaption>
+</figure>`).join('\n');
+  return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug }) + enteteV4(s.wa, sauge ? 'soins' : 'acc') + `<main>
+<div class="v4-bande-photo"><img src="${photo}" alt="${esc(alt)}" fetchpriority="high"></div>
+<section class="v4-titre-service${sauge ? ' sauge' : ''}">
+<div class="conteneur-etroit v4-titre-int">
+<nav class="ariane" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="${groupeLien}">${esc(groupeNom)}</a><span aria-hidden="true">›</span><span aria-current="page">${esc(s.nom)}</span></nav>
+<span class="bloc-chiffre">${numero(s)}.</span>
+<h1 class="h1 h1-service">${esc(s.nom)}</h1>
+<span class="bloc-etape">${esc(s.etapePage || s.etape)}</span>
+<p class="chapo">${esc(s.accroche)}</p>
+<nav class="raccourcis raccourcis-v4" aria-label="Sur cette page"><a href="#detail">Le détail</a><a href="#tarif">Tarif</a><a href="#avis-page">Avis</a><a href="#questions">Questions</a></nav>
+</div>
+</section>
+
+<section class="fond-blanc" id="detail">
+<div class="conteneur-etroit section pile pile-32">
+${s.inclus.length ? '' : `<h2 class="h2">${esc(s.inclusTitre)}</h2>`}
+${(s.intro || []).length ? `<div class="texte-long">${s.intro.map((t) => `<p class="texte">${esc(t)}</p>`).join('\n')}</div>` : ''}
+${s.inclus.length ? `<h2 class="h2">${esc(s.inclusTitre)}</h2>
+<ul class="inclus inclus-v4">
+${s.inclus.map(([t, d]) => `<li>${coche(couleurCoche).replace('width="18" height="18"', 'width="22" height="22"')}<span><strong>${esc(t)}</strong>${d ? `<span>${esc(d)}</span>` : ''}</span></li>`).join('\n')}
+</ul>` : ''}
+${s.conclusion ? `<p class="texte texte-long">${esc(s.conclusion)}</p>` : ''}
+</div>
+</section>
+
+<section class="conteneur section deroule-bloc">
+<div class="deroule">
+<h2 class="h2">Comment ça se passe</h2>
+<ol>
+${s.deroule.map(([t, d], i) => `<li><span class="num${sauge ? ' sauge' : ''}">${i + 1}</span><span><strong>${esc(t)}</strong><span class="d">${esc(d)}</span></span></li>`).join('\n')}
+</ol>
+</div>
+<aside class="tarifs" id="tarif" aria-label="Tarifs">
+<h2>${s.tarifs.length > 1 ? 'Tarifs' : 'Tarif'}</h2>
+${s.tarifs.map(([label, sous, valeur, note]) => `<div class="tarif-ligne"><div class="g"><strong>${esc(label)}</strong><span>${esc(sous)}</span></div><div class="d"><strong>${esc(valeur)}</strong>${note ? `<span>${esc(note)}</span>` : ''}</div></div>`).join('\n')}
+${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
+</aside>
+</section>
+${sauge ? '' : `<div class="conteneur" style="padding-bottom:56px">${MODULE_CESU}</div>`}
+
+<section class="fond-rose" id="avis-page">
+<div class="conteneur section pile pile-32">
+<div class="avis-entete" style="align-items:flex-end"><h2 class="h2">Elles en parlent</h2><a class="lien-fleche" href="${FICHE_GOOGLE}">5,0 ★ · Voir les 28 avis Google →</a></div>
+<div class="grille" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
+${avisHtml}
+</div>
+</div>
+</section>
+
+<section class="conteneur-etroit section pile pile-24" id="questions">
+<h2 class="h2">Bon à savoir</h2>
+<div class="faq">
+${s.infos.map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('\n')}
+</div>
+</section>
+
+<section class="v4-cta${sauge ? ' sauge' : ''}">
+<div class="conteneur-etroit v4-cta-int">
+<h2 class="h2">${esc(s.nom)}, ça vous parle ?</h2>
+<p class="texte">Écrivez-moi sur WhatsApp : le message est déjà prêt, il ne vous reste qu’à le compléter.</p>
+<a class="btn btn-grand" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || 'Écrire à Marie')}</a>
+</div>
+</section>
+
+<section class="fond-blanc">
+<div class="conteneur pile pile-24" style="padding-top:56px;padding-bottom:56px">
+<h2 class="h2-petit">Découvrir aussi</h2>
+<div class="pastilles">
+${autres.map((x) => `<a href="/${x.slug}"${x.groupe === 'soins' ? ' class="sauge"' : ''}>${esc(x.nom.replace(/^L’|^Le /, '').replace(/^./, (c) => c.toUpperCase()))}</a>`).join('\n')}
+</div>
+</div>
+</section>
+</main>
+` + piedV4(s.wa, s.boutonPage || 'Écrire à Marie') + fin(false);
+}
+
 // ------------------------------------------------------------------
 // Écriture
 // ------------------------------------------------------------------
 rmSync(SORTIE, { recursive: true, force: true });
 mkdirSync(join(SORTIE, 'images'), { recursive: true });
-writeFileSync(join(SORTIE, 'index.html'), mobile(accueil()));
-for (const s of services) writeFileSync(join(SORTIE, `${s.slug}.html`), mobile(pageService(s)));
+writeFileSync(join(SORTIE, 'index.html'), mobile(V4 ? accueilV4() : accueil()));
+for (const s of services) writeFileSync(join(SORTIE, `${s.slug}.html`), mobile(V4 ? pageServiceV4(s) : pageService(s)));
+if (V4) writeFileSync(join(SORTIE, 'qui-je-suis.html'), quiJeSuis());
 writeFileSync(join(SORTIE, 'mentions-legales.html'), mentions());
-copyFileSync('src/styles.css', join(SORTIE, 'styles.css'));
+writeFileSync(join(SORTIE, 'styles.css'), readFileSync('src/styles.css', 'utf8') + (V4 ? '\n' + readFileSync('src/v4.css', 'utf8') : ''));
 copyFileSync('src/carrousel.js', join(SORTIE, 'carrousel.js'));
 copyFileSync('src/bulle.js', join(SORTIE, 'bulle.js'));
 for (const f of readdirSync('src/images')) copyFileSync(join('src/images', f), join(SORTIE, 'images', f));
