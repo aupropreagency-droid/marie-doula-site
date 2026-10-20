@@ -746,9 +746,10 @@ const HD = {
   rebozo: '/images/soin-rebozo-hd.jpg', rituel: '/images/rituel-mains-hd.jpg', blessing: '/images/mama-blessing-hd.jpg'
 };
 const ALT_FAUTEUIL = 'Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre';
+const ALT_CUISINE = 'Marie dans sa cuisine, souriante, un bébé contre elle dans une écharpe de portage';
 const PHOTO_SERVICE = {
-  'accompagnement-prenatal': [HD.fauteuil, ALT_FAUTEUIL], 'presence-naissance': [HD.fauteuil, ALT_FAUTEUIL],
-  'rendez-vous-postnatal': [HD.fauteuil, ALT_FAUTEUIL], 'soutien-post-partum': [HD.fauteuil, ALT_FAUTEUIL],
+  'accompagnement-prenatal': [HD.cuisine, ALT_CUISINE], 'presence-naissance': [HD.cuisine, ALT_CUISINE],
+  'rendez-vous-postnatal': [HD.cuisine, ALT_CUISINE], 'soutien-post-partum': [HD.cuisine, ALT_CUISINE],
   'instant-rebozo': [HD.rebozo, 'Une femme et son bébé enveloppés dans des tissus rebozo'],
   'rituel-rebozo': [HD.rituel, 'Mains serrant un tissu rebozo pendant un soin'],
   'mama-blessing': [HD.blessing, 'Table de Mama Blessing décorée de fleurs séchées et de bougies']
