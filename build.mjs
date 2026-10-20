@@ -1033,21 +1033,14 @@ ${s.conclusion ? `<p class="texte texte-long">${esc(s.conclusion)}</p>` : ''}
 </div>
 </section>
 
-<section class="conteneur section deroule-bloc">
+<section class="conteneur section deroule-bloc deroule-seul">
 <div class="deroule">
 <h2 class="h2">Comment ça se passe</h2>
 <ol>
 ${s.deroule.map(([t, d], i) => `<li><span class="num${sauge ? ' sauge' : ''}">${i + 1}</span><span><strong>${esc(t)}</strong><span class="d">${esc(d)}</span></span></li>`).join('\n')}
 </ol>
 </div>
-<aside class="tarifs" id="tarif" aria-label="Tarifs">
-<h2>${s.tarifs.length > 1 ? 'Tarifs' : 'Tarif'}</h2>
-${s.tarifs.map(([label, sous, valeur, note]) => `<div class="tarif-ligne"><div class="g"><strong>${esc(label)}</strong><span>${esc(sous)}</span></div><div class="d"><strong>${esc(valeur)}</strong>${note ? `<span>${esc(note)}</span>` : ''}</div></div>`).join('\n')}
-${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
-<a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || 'Écrire à Marie')}</a>
-</aside>
 </section>
-${sauge ? '' : `<div class="conteneur" style="padding-bottom:56px">${MODULE_CESU}</div>`}
 
 <section class="fond-rose" id="avis-page">
 <div class="conteneur section pile pile-32">
@@ -1062,6 +1055,18 @@ ${avisHtml}
 <h2 class="h2">Bon à savoir</h2>
 <div class="faq">
 ${s.infos.map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('\n')}
+</div>
+</section>
+
+<section class="v4-tarif${sauge ? ' sauge' : ''}">
+<div class="conteneur-etroit v4-tarif-int">
+<aside class="tarifs tarifs-v4" id="tarif" aria-label="Tarifs">
+<h2>${s.tarifs.length > 1 ? 'Tarifs' : 'Tarif'}</h2>
+${s.tarifs.map(([label, sous, valeur, note]) => `<div class="tarif-ligne"><div class="g"><strong>${esc(label)}</strong><span>${esc(sous)}</span></div><div class="d"><strong>${esc(valeur)}</strong>${note ? `<span>${esc(note)}</span>` : ''}</div></div>`).join('\n')}
+${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
+<a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || 'Écrire à Marie')}</a>
+</aside>
+${sauge ? '' : MODULE_CESU}
 </div>
 </section>
 
