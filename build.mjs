@@ -1044,6 +1044,7 @@ ${s.deroule.map(([t, d], i) => `<li><span class="num${sauge ? ' sauge' : ''}">${
 <h2>${s.tarifs.length > 1 ? 'Tarifs' : 'Tarif'}</h2>
 ${s.tarifs.map(([label, sous, valeur, note]) => `<div class="tarif-ligne"><div class="g"><strong>${esc(label)}</strong><span>${esc(sous)}</span></div><div class="d"><strong>${esc(valeur)}</strong>${note ? `<span>${esc(note)}</span>` : ''}</div></div>`).join('\n')}
 ${s.tarifNote ? `<p class="discret">${esc(s.tarifNote)}</p>` : ''}
+<a class="btn" href="${s.wa}">${ICONE_WA}${esc(s.boutonPage || 'Écrire à Marie')}</a>
 </aside>
 </section>
 ${sauge ? '' : `<div class="conteneur" style="padding-bottom:56px">${MODULE_CESU}</div>`}
