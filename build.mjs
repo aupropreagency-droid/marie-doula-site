@@ -701,11 +701,11 @@ ${autres.map((x) => `<a href="/${x.slug}"${x.groupe === 'soins' ? ' class="sauge
 // Mentions légales (à compléter)
 // ------------------------------------------------------------------
 function mentions() {
-  return tete({ titre: 'Mentions légales · Marie Graugnard, doula', description: 'Mentions légales et politique de confidentialité du site de Marie Graugnard, doula à Paris.', chemin: '/mentions-legales' }) + entete() + `<main class="conteneur-etroit section pile pile-16 legal">
+  return tete({ titre: 'Mentions légales · Marie Graugnard, doula', description: 'Mentions légales et politique de confidentialité du site de Marie Graugnard, doula à Paris.', chemin: '/mentions-legales' }) + (V4 ? enteteV4() : entete()) + `<main class="conteneur-etroit section pile pile-16 legal">
 <h1 class="h1 h1-service">Mentions légales</h1>
 <h2>Éditrice du site</h2>
-<p>Marie Graugnard · [Statut] · SIRET [à compléter] · [Adresse] · mariedoula75@gmail.com · 06 52 10 54 82</p>
-<p>Services à la personne · Déclaration n° [à compléter]</p>
+<p>Marie Graugnard · SIRET 893 088 153 00018 · mariedoula75@gmail.com · 06 52 10 54 82</p>
+<p>Services à la personne · Déclaration SAP893088153</p>
 <h2>Hébergement</h2>
 <p>Cloudflare, Inc. · 101 Townsend St, San Francisco, CA 94107, États-Unis · cloudflare.com</p>
 <h2>Réalisation</h2>
@@ -715,7 +715,7 @@ function mentions() {
 <h2>Avis</h2>
 <p>Les avis affichés proviennent de la fiche Google de Marie Graugnard et sont reproduits avec l’accord de leurs autrices. [Accord à recueillir.]</p>
 </main>
-` + pied() + fin(false);
+` + (V4 ? piedV4(WA_DECOUVERTE, 'Écrire à Marie', false) : pied()) + fin(false);
 }
 
 // ------------------------------------------------------------------
@@ -739,7 +739,7 @@ function mobile(page) {
 // ==================================================================
 // V4 : nouvelle structure inspirée de lauratridoux.fr (maquette)
 // ==================================================================
-const V4 = process.env.MAQUETTE_V4 === '1';
+const V4 = process.env.MAQUETTE_V4 !== '0';
 const HD = {
   fauteuil: '/images/marie-fauteuil-hd.jpg', portrait: '/images/marie-portrait-hd.jpg',
   paniers: '/images/marie-portrait-paniers-hd.jpg', cuisine: '/images/marie-cuisine-portage-hd.jpg',
@@ -1098,4 +1098,4 @@ copyFileSync('src/bulle.js', join(SORTIE, 'bulle.js'));
 for (const f of readdirSync('src/images')) copyFileSync(join('src/images', f), join(SORTIE, 'images', f));
 writeFileSync(join(SORTIE, 'robots.txt'), PREVISU ? 'User-agent: *\nDisallow: /\n' : 'User-agent: *\nAllow: /\n');
 writeFileSync(join(SORTIE, '_headers'), '/images/*\n  Cache-Control: public, max-age=604800\n/*.css\n  Cache-Control: public, max-age=3600\n');
-console.log(`Site généré dans ./${SORTIE} : ${services.length + 2} pages.`);
+console.log(`Site généré dans ./${SORTIE} : ${services.length + (V4 ? 3 : 2)} pages.`);

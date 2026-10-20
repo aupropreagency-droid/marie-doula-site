@@ -471,3 +471,198 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .heros-service .prix-heros, .heros-service .heros-visuel { display: none; }
   .heros-service { padding-bottom: 32px; }
 }
+
+
+/* ===================================================================
+   V4 — structure inspirée de lauratridoux.fr (blocs numérotés,
+   bandes de couleur, triptyque, témoignage unique)
+   =================================================================== */
+.nav a[aria-current="page"] { color: var(--brun); }
+
+/* Sections offres */
+.v4-offre { padding-top: 88px; }
+.v4-soins { padding-top: 72px; }
+.v4-offre-entete { max-width: 860px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 40px; }
+.v4-offre-entete .texte { font-size: 18px; }
+.v4-cesu { padding-top: 28px; display: flex; justify-content: center; }
+.v4-cesu .info-cesu { width: 100%; }
+
+/* Blocs numérotés pleine largeur */
+.blocs-num { display: grid; }
+.blocs-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.blocs-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.bloc-num { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding: 48px 32px 44px; color: var(--texte); text-decoration: none; transition: filter .2s ease; }
+.bloc-num:hover { filter: brightness(.97); color: var(--texte); }
+.blocs-4 .bloc-num:nth-child(1) { background: var(--peche); }
+.blocs-4 .bloc-num:nth-child(2) { background: var(--rose); }
+.blocs-4 .bloc-num:nth-child(3) { background: #EECDC3; }
+.blocs-4 .bloc-num:nth-child(4) { background: var(--peche-clair); }
+.blocs-3 .bloc-num:nth-child(1) { background: var(--sauge-clair); }
+.blocs-3 .bloc-num:nth-child(2) { background: #EEF2EA; }
+.blocs-3 .bloc-num:nth-child(3) { background: #D3DECD; }
+.bloc-chiffre { font-family: var(--serif); font-size: 40px; font-weight: 500; line-height: 1; color: var(--brun); }
+.v4-soins .bloc-chiffre, .sauge .bloc-chiffre { color: var(--sauge); }
+.bloc-etape { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--texte-4); }
+.bloc-titre { font-family: var(--serif); font-size: 26px; line-height: 1.2; }
+.bloc-texte { font-size: 15.5px; line-height: 1.6; color: var(--texte-2); max-width: 300px; }
+.bloc-lien { margin-top: auto; padding-top: 8px; font-weight: 600; font-size: 15px; color: var(--brun); border-bottom: 1.5px solid currentColor; }
+.v4-soins .bloc-lien { color: var(--sauge-fonce); }
+
+/* Triptyque approche / photo / qui je suis */
+.triptyque { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); margin-top: 88px; }
+.tri-texte { padding: 56px 44px; display: flex; flex-direction: column; justify-content: center; gap: 14px; font-size: 16px; line-height: 1.65; color: var(--texte-2); }
+.tri-texte p { margin: 0; }
+.tri-approche { background: var(--rose); }
+.tri-qui { background: var(--sauge-clair); }
+.tri-titre { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 34px; color: var(--texte); margin: 0 0 6px; }
+.tri-photo { width: 100%; height: 100%; min-height: 420px; object-fit: cover; object-position: center 30%; display: block; }
+.tri-qui .lien-fleche { margin-top: 6px; }
+
+/* Quand faire appel à moi */
+.quand { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.quand-intro { max-width: 680px; }
+.quand-liste { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; max-width: 1040px; }
+.quand-liste li { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.quand-liste .rond { width: 64px; height: 64px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 26px; background: var(--peche); color: var(--brun); }
+.quand-liste li:nth-child(2) .rond { background: var(--sauge-clair); color: var(--sauge-fonce); }
+.quand-liste li:nth-child(3) .rond { background: #EECDC3; }
+.quand-liste strong { font-family: var(--serif); font-weight: 500; font-size: 21px; }
+.quand-liste li > span:last-child { font-size: 15.5px; color: var(--texte-3); line-height: 1.6; }
+
+/* Témoignages : un seul à la fois, en grand */
+.temoins { background: var(--sauge); color: #F4F1EA; }
+.temoins-int { padding-top: 72px; padding-bottom: 56px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.temoins-piste { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; width: 100%; max-width: 860px; gap: 0; }
+.temoins-piste::-webkit-scrollbar { display: none; }
+.temoin { flex: 0 0 100%; scroll-snap-align: center; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center; padding: 0 8px; }
+.temoin-texte { margin: 0; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.55; position: relative; }
+.temoin-texte::before { content: "“"; display: block; font-size: 64px; line-height: .6; margin-bottom: 8px; color: #C9D6C2; font-style: normal; }
+.temoin figcaption { font-size: 15px; letter-spacing: .02em; color: #DCE5D6; }
+.temoin-seul { max-width: 860px; }
+.points-temoins { display: flex !important; }
+.points-temoins i { background: rgba(255,255,255,.35); }
+.points-temoins i.actif { background: #fff; }
+.points-temoins span { color: #DCE5D6; }
+.temoins-liens { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+.temoins-liens a { color: #fff; font-weight: 600; font-size: 15px; }
+.temoins-liens a + a { color: #DCE5D6; font-weight: 500; }
+
+/* Pied de page : trois colonnes d'infos */
+.pied-infos .col span { line-height: 1.5; }
+
+/* Page Qui je suis */
+.qui-haut { align-items: center; }
+.qui-intro { display: flex; flex-direction: column; gap: 14px; text-align: center; align-items: center; }
+.qui-chap { padding: 72px 0; }
+.qui-chap.alt { background: var(--rose); }
+.qui-chap-int { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 56px; align-items: start; }
+.qui-chap-titre { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 32px; line-height: 1.2; display: flex; flex-direction: column; gap: 10px; }
+.qui-chap-texte { display: flex; flex-direction: column; gap: 14px; font-size: 17px; line-height: 1.7; color: var(--texte-2); }
+.qui-chap-texte p { margin: 0; }
+.qui-photo { width: 100%; max-width: 420px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 26px; margin-top: 12px; }
+
+/* Pages services */
+.v4-bande-photo { height: 380px; overflow: hidden; background: var(--peche); }
+.v4-bande-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+.v4-titre-service { background: var(--peche); }
+.v4-titre-service.sauge { background: var(--sauge-clair); }
+.v4-titre-int { padding-top: 28px; padding-bottom: 56px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.v4-titre-int .ariane { justify-content: center; padding-top: 0; margin-bottom: 18px; }
+.v4-titre-int .h1-service { margin: 0; }
+.v4-titre-int .chapo { max-width: 680px; margin-top: 8px; }
+.raccourcis-v4 { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.raccourcis-v4 a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; background: rgba(255,255,255,.7); color: var(--texte); font-size: 14px; font-weight: 500; text-decoration: none; }
+.raccourcis-v4 a::after { content: "↓"; margin-left: 6px; color: var(--brun); }
+.inclus-v4 { grid-template-columns: 1fr; gap: 14px; }
+.inclus-v4 li { background: none; padding: 0; }
+.v4-cta { background: var(--peche); }
+.v4-cta.sauge { background: var(--sauge-clair); }
+.v4-cta-int { padding-top: 64px; padding-bottom: 64px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+
+/* Tablette */
+@media (max-width: 1080px) {
+  .blocs-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .triptyque { grid-template-columns: 1fr 1fr; }
+  .tri-photo { grid-row: span 2; }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .v4-offre { padding-top: 56px; }
+  .v4-soins { padding-top: 48px; }
+  .v4-offre-entete { text-align: left; align-items: flex-start; margin-bottom: 24px; }
+  .v4-offre-entete .texte { font-size: 16px; }
+  .blocs-4, .blocs-3 { grid-template-columns: 1fr; }
+  .bloc-num { align-items: flex-start; text-align: left; padding: 28px 20px 26px; gap: 8px; }
+  .bloc-chiffre { font-size: 32px; }
+  .bloc-titre { font-size: 23px; }
+  .bloc-texte { max-width: none; }
+  .bloc-lien { margin-top: 4px; }
+  .v4-cesu { padding-top: 20px; }
+  .triptyque { grid-template-columns: 1fr; margin-top: 56px; }
+  .tri-photo { grid-row: auto; min-height: 0; height: 340px; }
+  .tri-texte { padding: 36px 20px; }
+  .tri-titre { font-size: 28px; }
+  .quand { text-align: left; align-items: flex-start; }
+  .quand-liste { grid-template-columns: 1fr; gap: 22px; }
+  .quand-liste li { display: grid; grid-template-columns: 52px 1fr; column-gap: 14px; row-gap: 4px; align-items: start; }
+  .quand-liste .rond { width: 52px; height: 52px; font-size: 22px; grid-row: span 2; }
+  .temoins-int { padding-top: 48px; padding-bottom: 40px; }
+  .temoin-texte { font-size: 18px; }
+  .qui-chap { padding: 44px 0; }
+  .qui-chap-int { grid-template-columns: 1fr; gap: 16px; }
+  .qui-chap-titre { font-size: 24px; }
+  .qui-chap-texte { font-size: 16px; }
+  .qui-intro { text-align: left; align-items: flex-start; }
+  .v4-bande-photo { height: 240px; }
+  .v4-titre-int { padding-bottom: 40px; align-items: flex-start; text-align: left; }
+  .v4-titre-int .ariane { justify-content: flex-start; margin-bottom: 8px; }
+  .raccourcis-v4 { justify-content: flex-start; flex-wrap: nowrap; gap: 6px; width: 100%; }
+  .raccourcis-v4 a { flex: 1 1 auto; justify-content: center; padding: 0 8px; font-size: 13px; }
+  .v4-cta-int { padding-top: 48px; padding-bottom: 48px; align-items: stretch; text-align: left; }
+  .v4-cta-int .btn { justify-content: center; }
+  /* Pages services : l'ancien masquage du haut n'a plus lieu d'être */
+  .heros-service .prix-heros, .heros-service .heros-visuel { display: revert; }
+  #contact { scroll-margin-top: 72px; }
+}
+.points-temoins { justify-content: center; align-items: center; gap: 8px; }
+.points-temoins i { display: block; width: 8px; height: 8px; border-radius: 999px; }
+.points-temoins i.actif { width: 22px; }
+
+/* Pages services : haut en deux colonnes, photo entière en arche */
+.v4-titre-grille { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 72px; align-items: center; padding-top: 40px; padding-bottom: 64px; }
+.v4-titre-grille .v4-titre-int { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 8px; padding: 0; }
+.v4-titre-grille .ariane { justify-content: flex-start; margin: 0 0 14px; }
+.v4-titre-grille .bloc-etape { margin-top: 4px; }
+.v4-titre-grille .chapo { max-width: 560px; margin-top: 16px; }
+.v4-titre-grille .raccourcis-v4 { justify-content: flex-start; margin-top: 16px; }
+.v4-photo-service { width: 440px; max-width: 100%; height: auto; object-fit: cover; border-radius: 220px 220px 28px 28px; display: block; box-shadow: var(--ombre); background: var(--blanc); }
+.v4-photo-mobile { display: none; }
+@media (max-width: 1080px) {
+  .v4-titre-grille { grid-template-columns: minmax(0, 1fr) 340px; column-gap: 40px; }
+  .v4-photo-service { width: 340px; border-radius: 170px 170px 24px 24px; }
+}
+@media (max-width: 760px) {
+  .v4-titre-grille { display: block; padding-top: 16px; padding-bottom: 40px; }
+  .v4-photo-ordi { display: none; }
+  .v4-photo-mobile { display: block; width: 100%; max-width: 360px; align-self: center; border-radius: 180px 180px 24px 24px; margin: 18px 0 6px; }
+  .v4-titre-grille .ariane { margin-bottom: 4px; }
+  .v4-titre-grille .chapo { margin-top: 10px; }
+}
+.pied-simple .pied-infos { border-top: 0; padding-top: 0; }
+.pied-simple .pied-int { padding-top: 48px; }
+/* Pages services : tarif et bouton en conclusion */
+.deroule-seul { display: block; }
+.deroule-seul .deroule { max-width: 760px; }
+.v4-tarif { background: var(--peche); }
+.v4-tarif.sauge { background: var(--sauge-clair); }
+.v4-tarif-int { padding-top: 64px; padding-bottom: 64px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.tarifs-v4 { width: 100%; max-width: 560px; }
+.tarifs-v4 .btn { align-self: stretch; justify-content: center; }
+.v4-tarif-int .info-cesu { width: 100%; max-width: 560px; }
+@media (max-width: 760px) { .v4-tarif-int { padding-top: 44px; padding-bottom: 44px; } }
+/* Accueil : lien discret vers la page Qui je suis */
+.lien-histoire { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 15px; color: var(--texte-3); text-decoration: none; }
+.lien-histoire span { color: var(--brun); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.lien-histoire:hover span { color: var(--brun-fonce); }
+@media (max-width: 760px) { .heros-v3 .lien-histoire { margin-top: 8px; } }
