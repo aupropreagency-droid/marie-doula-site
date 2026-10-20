@@ -856,6 +856,7 @@ function accueilV4() {
 <a class="btn btn-grand" href="#accompagnements">Voir les accompagnements <span aria-hidden="true">↓</span></a>
 <a class="btn btn-grand btn-sauge" href="#soins">Voir les soins <span aria-hidden="true">↓</span></a>
 </div>
+<a class="lien-histoire" href="/qui-je-suis">Qui suis-je ? <span>Découvrir mon histoire →</span></a>
 </div>
 <div class="heros-visuel">
 <img class="arche" src="${HD.fauteuil}" alt="${ALT_FAUTEUIL}" width="420" height="540" fetchpriority="high">

@@ -187,3 +187,8 @@
 .tarifs-v4 .btn { align-self: stretch; justify-content: center; }
 .v4-tarif-int .info-cesu { width: 100%; max-width: 560px; }
 @media (max-width: 760px) { .v4-tarif-int { padding-top: 44px; padding-bottom: 44px; } }
+/* Accueil : lien discret vers la page Qui je suis */
+.lien-histoire { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 15px; color: var(--texte-3); text-decoration: none; }
+.lien-histoire span { color: var(--brun); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.lien-histoire:hover span { color: var(--brun-fonce); }
+@media (max-width: 760px) { .heros-v3 .lien-histoire { margin-top: 8px; } }
