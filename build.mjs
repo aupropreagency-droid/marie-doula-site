@@ -191,10 +191,10 @@ const services = [
       ['On choisit votre formule', 'Offre mini : 2 fois 3 h par semaine. Offre maxi : 3 fois 3 h par semaine.']
     ],
     tarifs: [
-      ['Offre mini', '2 × 3 h par semaine', '150 €/sem.', ''],
-      ['Offre maxi', '3 × 3 h par semaine', '225 €/sem.', '']
+      ['Offre mini', '2 × 3 h par semaine', '25 €/h', ''],
+      ['Offre maxi', '3 × 3 h par semaine', '25 €/h', '']
     ],
-    tarifNote: 'Tarif horaire de 25 €.',
+    tarifNote: '',
     avis: [
       ['J’ai fait appel à Marie parce que j’avais besoin de soutien dans mon post-partum. Je n’aurais pas pu imaginer une meilleure personne pour ça. Marie s’est occupée de moi et de mon bébé telle une fée, prenant le relais avec brio pendant que j’allais m’aérer ou nager, me préparant de merveilleux plats, et se mettant à l’écoute chaque jour de mes peurs et de mes doutes avec une infinie bienveillance. Sa présence enveloppante, hyper rassurante et joyeuse m’a été immédiatement familière. Forte de son expérience de doula et de ses connaissances sur la maternité et les bébés, Marie a su m’accompagner et me réconforter, toujours avec justesse, et sans jugement. Marie restera à jamais dans mon cœur, elle a été comme un ange gardien sur mon chemin et je lui en suis infiniment reconnaissante. Merci Marie !', 'Fanny, maman d’Ethel', 'Témoignage'],
       ['Notre bulle d’oxygène dans les premières semaines : dormir quelques heures et retrouver à notre réveil un bébé bien au chaud et apaisé, et des plats maison réconfortants.', 'Claire T.'],
@@ -748,8 +748,8 @@ const HD = {
 const ALT_FAUTEUIL = 'Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre';
 const ALT_CUISINE = 'Marie dans sa cuisine, souriante, un bébé contre elle dans une écharpe de portage';
 const PHOTO_SERVICE = {
-  'accompagnement-prenatal': [HD.cuisine, ALT_CUISINE], 'presence-naissance': [HD.cuisine, ALT_CUISINE],
-  'rendez-vous-postnatal': [HD.cuisine, ALT_CUISINE], 'soutien-post-partum': [HD.cuisine, ALT_CUISINE],
+  'accompagnement-prenatal': [HD.fauteuil, ALT_FAUTEUIL], 'presence-naissance': [HD.fauteuil, ALT_FAUTEUIL],
+  'rendez-vous-postnatal': [HD.fauteuil, ALT_FAUTEUIL], 'soutien-post-partum': [HD.cuisine, ALT_CUISINE],
   'instant-rebozo': [HD.rebozo, 'Une femme et son bébé enveloppés dans des tissus rebozo'],
   'rituel-rebozo': [HD.rituel, 'Mains serrant un tissu rebozo pendant un soin'],
   'mama-blessing': [HD.blessing, 'Table de Mama Blessing décorée de fleurs séchées et de bougies']
