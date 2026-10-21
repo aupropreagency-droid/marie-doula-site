@@ -748,8 +748,8 @@ const HD = {
 const ALT_FAUTEUIL = 'Marie tenant un nouveau-né dans ses bras, assise près d’une fenêtre';
 const ALT_CUISINE = 'Marie dans sa cuisine, souriante, un bébé contre elle dans une écharpe de portage';
 const PHOTO_SERVICE = {
-  'accompagnement-prenatal': [HD.fauteuil, ALT_FAUTEUIL], 'presence-naissance': [HD.fauteuil, ALT_FAUTEUIL],
-  'rendez-vous-postnatal': [HD.fauteuil, ALT_FAUTEUIL], 'soutien-post-partum': [HD.cuisine, ALT_CUISINE],
+  'accompagnement-prenatal': null, 'presence-naissance': null,
+  'rendez-vous-postnatal': null, 'soutien-post-partum': [HD.cuisine, ALT_CUISINE],
   'instant-rebozo': [HD.rebozo, 'Une femme et son bébé enveloppés dans des tissus rebozo'],
   'rituel-rebozo': [HD.rituel, 'Mains serrant un tissu rebozo pendant un soin'],
   'mama-blessing': [HD.blessing, 'Table de Mama Blessing décorée de fleurs séchées et de bougies']
@@ -999,7 +999,7 @@ function pageServiceV4(s) {
   const sauge = s.groupe === 'soins';
   const groupeNom = sauge ? 'Soins & cérémonies' : 'Accompagnements';
   const groupeLien = sauge ? '/#soins' : '/#accompagnements';
-  const [photo, alt] = PHOTO_SERVICE[s.slug];
+  const [photo, alt] = PHOTO_SERVICE[s.slug] || [null, ''];
   const couleurCoche = sauge ? '#4F6449' : '#924A48';
   const autres = services.filter((x) => x.slug !== s.slug);
   const avisHtml = s.avis.map(([texte, auteur, source]) => `<figure class="avis-carte">
@@ -1009,17 +1009,17 @@ function pageServiceV4(s) {
 </figure>`).join('\n');
   return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug }) + enteteV4(s.wa, sauge ? 'soins' : 'acc') + `<main>
 <section class="v4-titre-service${sauge ? ' sauge' : ''}">
-<div class="conteneur v4-titre-grille">
+<div class="conteneur v4-titre-grille${photo ? '' : ' sans-photo'}">
 <div class="v4-titre-int">
 <nav class="ariane" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="${groupeLien}">${esc(groupeNom)}</a><span aria-hidden="true">›</span><span aria-current="page">${esc(s.nom)}</span></nav>
 <span class="bloc-chiffre">${numero(s)}.</span>
 <h1 class="h1 h1-service">${esc(s.nom)}</h1>
 <span class="bloc-etape">${esc(s.etapePage || s.etape)}</span>
-<img class="v4-photo-service v4-photo-mobile" src="${photo}" alt="${esc(alt)}" width="440" height="587">
+${photo ? `<img class="v4-photo-service v4-photo-mobile" src="${photo}" alt="${esc(alt)}" width="440" height="587">` : ''}
 <p class="chapo">${esc(s.accroche)}</p>
 <nav class="raccourcis raccourcis-v4" aria-label="Sur cette page"><a href="#detail">Le détail</a><a href="#tarif">Tarif</a><a href="#avis-page">Avis</a><a href="#questions">Questions</a></nav>
 </div>
-<img class="v4-photo-service v4-photo-ordi" src="${photo}" alt="" aria-hidden="true" width="440" height="587" fetchpriority="high">
+${photo ? `<img class="v4-photo-service v4-photo-ordi" src="${photo}" alt="" aria-hidden="true" width="440" height="587" fetchpriority="high">` : ''}
 </div>
 </section>
 

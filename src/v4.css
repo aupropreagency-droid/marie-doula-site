@@ -204,3 +204,11 @@
   .marque-nom { font-size: 20px; }
   .nav { gap: 12px; font-size: 13.5px; }
 }
+/* Pages services sans photo */
+.v4-titre-grille.sans-photo { grid-template-columns: minmax(0, 1fr); padding-top: 48px; padding-bottom: 72px; }
+.v4-titre-grille.sans-photo .v4-titre-int { max-width: 780px; }
+@media (max-width: 760px) { .v4-titre-grille.sans-photo { padding-top: 16px; padding-bottom: 40px; } }
+@media (min-width: 761px) {
+  .v4-titre-grille.sans-photo .v4-titre-int { margin: 0 auto; align-items: center; text-align: center; }
+  .v4-titre-grille.sans-photo .ariane, .v4-titre-grille.sans-photo .raccourcis-v4 { justify-content: center; }
+}
