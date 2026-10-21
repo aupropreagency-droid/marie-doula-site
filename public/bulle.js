@@ -29,3 +29,20 @@
     if (menu.hasAttribute('open') && !menu.contains(e.target)) menu.removeAttribute('open');
   });
 })();
+
+// Retour depuis une page de service : revenir sur la section d'où l'on vient (accompagnements ou soins).
+(function () {
+  document.querySelectorAll('.bloc-num').forEach(function (lien) {
+    lien.addEventListener('click', function () {
+      var section = lien.closest('section[id]');
+      if (section && history.replaceState) history.replaceState(null, '', '#' + section.id);
+    });
+  });
+  function allerSection() {
+    var h = location.hash;
+    if (h !== '#accompagnements' && h !== '#soins') return;
+    var el = document.querySelector(h);
+    if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
+  window.addEventListener('pageshow', function () { setTimeout(allerSection, 0); });
+})();
