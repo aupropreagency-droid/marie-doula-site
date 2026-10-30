@@ -856,9 +856,11 @@ function accueilV4() {
   }) + enteteV4() + `<main>
 <section class="conteneur heros heros-v3" id="accueil">
 <div class="heros-texte">
+<div class="surtitre-ligne">
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
+<p class="etiquette-nm"><span class="info-i" aria-hidden="true">i</span>Accompagnement non médical</p>
+</div>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
-<p class="pastille-info"><span class="info-i" aria-hidden="true">i</span><span><strong>Accompagnement non médical</strong>, en complément du suivi de votre sage-femme ou de votre gynécologue.</span></p>
 <p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
 <p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
 <div class="groupe-btn">
