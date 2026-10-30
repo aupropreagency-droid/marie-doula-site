@@ -23,7 +23,7 @@ Workers & Pages → Create → Pages → Connect to Git → choisir ce dépôt
 Sans Git : Create → Pages → Upload assets → glisser le dossier `public/`.
 
 ## Avant la mise en ligne définitive
-- Passer `PREVISU` à `false` dans `build.mjs` (le site est actuellement en `noindex`)
+- Changer la constante `DOMAINE` dans `build.mjs` (une seule ligne) : elle alimente canonical, og:url, og:image, sitemap.xml et robots.txt, et `PREVISU` passe tout seul à `false` dès que l'adresse n'est plus en `.workers.dev` (le site est alors indexé)
 - Compléter les mentions légales (SIRET, n° SAP, adresse) et la liste des zones d'intervention
 - Remplacer les photos par des versions HD
 - Brancher le nom de domaine

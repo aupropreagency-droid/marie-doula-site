@@ -7,7 +7,10 @@ const SORTIE = process.env.SORTIE || 'public';
 const V3 = process.env.MAQUETTE_V3 !== '0'; // version validée sur la maquette (menu mobile, cartes allégées…)
 const TEL = '33652105482';
 const FICHE_GOOGLE = 'https://share.google/hiO8zxGKeLJWMfdDU';
-const PREVISU = true;
+// ⚠ SEULE LIGNE À CHANGER le jour de la mise en ligne : l'adresse du site, sans « / » final.
+// Elle alimente canonical, og:url, og:image, sitemap.xml et robots.txt.
+const DOMAINE = 'https://marie-doula-site.aupropre-agency.workers.dev';
+const PREVISU = DOMAINE.endsWith('.workers.dev'); // adresse provisoire = site non indexé ; un vrai domaine = indexé
 const VERSION = Date.now().toString(36); // casse le cache CSS/JS à chaque build // true = site en prévisualisation : non indexé par Google
 
 const wa = (msg) => `https://wa.me/${TEL}?text=${encodeURIComponent(msg)}`;
@@ -332,10 +335,11 @@ ${PREVISU ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta prop
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="/images/marie-fauteuil.jpg">
+<meta property="og:url" content="${DOMAINE}${chemin}">
+<meta property="og:image" content="${DOMAINE}/images/marie-fauteuil.jpg">
 <meta name="theme-color" content="#FBF6F0">
 <link rel="icon" type="image/png" href="/images/logo.png">
-<link rel="canonical" href="${chemin}">
+<link rel="canonical" href="${DOMAINE}${chemin}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -1097,6 +1101,11 @@ writeFileSync(join(SORTIE, 'styles.css'), readFileSync('src/styles.css', 'utf8')
 copyFileSync('src/carrousel.js', join(SORTIE, 'carrousel.js'));
 copyFileSync('src/bulle.js', join(SORTIE, 'bulle.js'));
 for (const f of readdirSync('src/images')) copyFileSync(join('src/images', f), join(SORTIE, 'images', f));
-writeFileSync(join(SORTIE, 'robots.txt'), PREVISU ? 'User-agent: *\nDisallow: /\n' : 'User-agent: *\nAllow: /\n');
+writeFileSync(join(SORTIE, 'robots.txt'), PREVISU ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\n\nSitemap: ${DOMAINE}/sitemap.xml\n`);
+if (!PREVISU) {
+  const jour = new Date().toISOString().slice(0, 10);
+  const pages = ['/', ...(V4 ? ['/qui-je-suis'] : []), ...services.map((s) => `/${s.slug}`)];
+  writeFileSync(join(SORTIE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `  <url><loc>${DOMAINE}${p}</loc><lastmod>${jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+}
 writeFileSync(join(SORTIE, '_headers'), '/images/*\n  Cache-Control: public, max-age=604800\n/*.css\n  Cache-Control: public, max-age=3600\n');
 console.log(`Site généré dans ./${SORTIE} : ${services.length + (V4 ? 3 : 2)} pages.`);
