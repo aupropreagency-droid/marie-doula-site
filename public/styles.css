@@ -116,7 +116,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .heros { display: flex; flex-wrap: wrap; align-items: center; gap: 56px; padding-top: 64px; padding-bottom: 56px; }
 .heros-texte { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
 .heros-visuel { flex: 1 1 340px; min-width: 0; position: relative; display: flex; justify-content: center; }
-.arche { width: 100%; max-width: 420px; height: 540px; border-radius: 220px 220px 28px 28px; object-fit: cover; object-position: center 30%; background: var(--peche); }
+.arche { width: 100%; max-width: 420px; height: auto; border-radius: 24px; object-fit: cover; object-position: center 30%; background: var(--peche); }
 .badge-avis {
   position: absolute; left: 0; bottom: 36px; background: var(--blanc); border-radius: 18px;
   padding: 14px 18px; box-shadow: 0 10px 30px rgba(59,42,36,.12); display: flex; flex-direction: column; line-height: 1.3;
@@ -180,7 +180,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 
 /* ---------- À propos ---------- */
 .apropos { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
-.apropos-photo { flex: 1 1 360px; min-width: 0; max-width: 440px; height: 480px; border-radius: 28px 28px 220px 220px; object-fit: cover; object-position: center 35%; background: var(--sauge-clair); }
+.apropos-photo { flex: 1 1 360px; min-width: 0; max-width: 440px; height: auto; border-radius: 24px; object-fit: cover; object-position: center 35%; background: var(--sauge-clair); }
 .apropos-texte { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
 .citation { font-family: var(--serif); font-style: italic; font-size: 24px; line-height: 1.4; color: var(--brun); }
 
@@ -216,7 +216,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .tarif-ligne .d strong { font-size: 19px; }
 .tarif-ligne .d span { font-size: 14px; font-weight: 600; color: var(--sauge-fonce); }
 .heros-service { padding-top: 32px; padding-bottom: 72px; }
-.heros-service .arche { height: 460px; max-width: 440px; }
+.heros-service .arche { max-width: 440px; }
 .arche.logo { object-fit: contain; padding: 56px; }
 .arche.sauge { background: var(--sauge-clair); }
 .prix-heros { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; }
@@ -315,8 +315,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .h2-petit { font-size: 26px; }
   .chapo { font-size: 17px; }
   .groupe-btn .btn { flex: 1 1 100%; }
-  .arche { height: 400px; max-width: 100%; }
-  .heros-service .arche { height: 300px; }
+  .arche { max-width: 100%; }
   /* Raccourcis sous le titre */
   .raccourcis { display: flex; flex-wrap: nowrap; gap: 6px; margin-top: -6px; }
   .raccourcis a { flex: 1 1 auto; justify-content: center; white-space: nowrap; display: inline-flex; align-items: center; min-height: 40px; padding: 0 8px; border-radius: 999px; border: 1.5px solid var(--ligne); background: var(--blanc); color: var(--texte); font-size: 13px; font-weight: 500; text-decoration: none; }
@@ -333,7 +332,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .solo .btn { flex: 1 1 100%; }
   .avis-entete .btn { flex: 1 1 100%; }
   .apropos { gap: 32px; }
-  .apropos-photo { flex-basis: 100%; max-width: 100%; height: 360px; }
+  .apropos-photo { flex-basis: 100%; max-width: 100%; height: auto; }
   .citation { font-size: 20px; }
   .pied-appel h2 { font-size: 30px; }
   .pied-appel .btn { flex: 1 1 100%; }
@@ -459,7 +458,8 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .heros-v3 .heros-texte > .h1 { order: 2; margin-top: 12px; }
   .heros-v3 .heros-visuel { order: 2; margin-top: 22px; margin-bottom: 6px; }
   .heros-v3 .groupe-btn { margin-top: 24px; }
-  .heros-v3 .arche { height: 320px; }
+  .heros-v3 .arche { max-width: 320px; }
+  .heros-v3 .heros-visuel { justify-content: center; }
   .heros-v3 .badge-avis { display: none; }
 }
 /* En-tête accroché : les sections ciblées s'arrêtent sous l'en-tête */
@@ -629,23 +629,23 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .points-temoins i { display: block; width: 8px; height: 8px; border-radius: 999px; }
 .points-temoins i.actif { width: 22px; }
 
-/* Pages services : haut en deux colonnes, photo entière en arche */
+/* Pages services : haut en deux colonnes, photo entière en rectangle arrondi */
 .v4-titre-grille { display: grid; grid-template-columns: minmax(0, 1fr) 440px; column-gap: 72px; align-items: center; padding-top: 40px; padding-bottom: 64px; }
 .v4-titre-grille .v4-titre-int { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 8px; padding: 0; }
 .v4-titre-grille .ariane { justify-content: flex-start; margin: 0 0 14px; }
 .v4-titre-grille .bloc-etape { margin-top: 4px; }
 .v4-titre-grille .chapo { max-width: 560px; margin-top: 16px; }
 .v4-titre-grille .raccourcis-v4 { justify-content: flex-start; margin-top: 16px; }
-.v4-photo-service { width: 440px; max-width: 100%; height: auto; object-fit: cover; border-radius: 220px 220px 28px 28px; display: block; box-shadow: var(--ombre); background: var(--blanc); }
+.v4-photo-service { width: 440px; max-width: 100%; height: auto; object-fit: cover; border-radius: 24px; display: block; box-shadow: var(--ombre); background: var(--blanc); }
 .v4-photo-mobile { display: none; }
 @media (max-width: 1080px) {
   .v4-titre-grille { grid-template-columns: minmax(0, 1fr) 340px; column-gap: 40px; }
-  .v4-photo-service { width: 340px; border-radius: 170px 170px 24px 24px; }
+  .v4-photo-service { width: 340px; }
 }
 @media (max-width: 760px) {
   .v4-titre-grille { display: block; padding-top: 16px; padding-bottom: 40px; }
   .v4-photo-ordi { display: none; }
-  .v4-photo-mobile { display: block; width: 100%; max-width: 360px; align-self: center; border-radius: 180px 180px 24px 24px; margin: 18px 0 6px; }
+  .v4-photo-mobile { display: block; width: 100%; max-width: 360px; align-self: center; margin: 18px 0 6px; }
   .v4-titre-grille .ariane { margin-bottom: 4px; }
   .v4-titre-grille .chapo { margin-top: 10px; }
 }
@@ -666,6 +666,13 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .lien-histoire span { color: var(--brun); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .lien-histoire:hover span { color: var(--brun-fonce); }
 @media (max-width: 760px) { .heros-v3 .lien-histoire { margin-top: 8px; } }
+/* Accueil : pastille « accompagnement non médical » sous le titre */
+.pastille-info { display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; align-self: flex-start; margin: 0; padding: 10px 18px 10px 12px; background: var(--sauge-clair); color: var(--sauge-fonce); border-radius: 18px; font-size: 15px; line-height: 1.45; text-wrap: balance; }
+.pastille-info strong { font-weight: 700; }
+@media (max-width: 760px) {
+  .pastille-info { font-size: 16px; }
+  .heros-v3 .heros-texte > .pastille-info { order: 2; margin-top: 14px; }
+}
 /* En-tête : tablettes et petits écrans d'ordinateur */
 @media (min-width: 761px) and (max-width: 1180px) {
   .entete-int { flex-wrap: nowrap; gap: 14px; }

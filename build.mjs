@@ -336,7 +336,10 @@ ${PREVISU ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta prop
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="${DOMAINE}${chemin}">
-<meta property="og:image" content="${DOMAINE}/images/marie-fauteuil.jpg">
+<meta property="og:image" content="${DOMAINE}/images/partage-marie.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBF6F0">
 <link rel="icon" type="image/png" href="/images/logo.png">
 <link rel="canonical" href="${DOMAINE}${chemin}">
@@ -713,7 +716,7 @@ function mentions() {
 <h2>Hébergement</h2>
 <p>Cloudflare, Inc. · 101 Townsend St, San Francisco, CA 94107, États-Unis · cloudflare.com</p>
 <h2>Réalisation</h2>
-<p>[Nom de l’agence / du créateur du site]</p>
+<p><a href="https://aupropreagency.fr">AuPropre</a></p>
 <h2 id="confidentialite">Confidentialité</h2>
 <p>Ce site ne dépose aucun cookie de suivi et ne collecte aucune donnée personnelle. Les échanges se font directement par WhatsApp, par téléphone ou par e-mail : les informations que vous partagez ne sont utilisées que pour vous répondre et organiser votre accompagnement. [À compléter et valider avant la mise en ligne.]</p>
 <h2>Avis</h2>
@@ -855,6 +858,7 @@ function accueilV4() {
 <div class="heros-texte">
 <p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
+<p class="pastille-info"><span class="info-i" aria-hidden="true">i</span><span><strong>Accompagnement non médical</strong>, en complément du suivi de votre sage-femme ou de votre gynécologue.</span></p>
 <p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
 <p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
 <div class="groupe-btn">
@@ -864,7 +868,7 @@ function accueilV4() {
 <a class="lien-histoire" href="/qui-je-suis">Qui suis-je ? <span>Découvrir mon histoire →</span></a>
 </div>
 <div class="heros-visuel">
-<img class="arche" src="${HD.fauteuil}" alt="${ALT_FAUTEUIL}" width="420" height="540" fetchpriority="high">
+<img class="arche" src="${HD.fauteuil}" alt="${ALT_FAUTEUIL}" width="420" height="560" fetchpriority="high">
 <div class="badge-avis"><strong>5,0 <span class="etoiles">★★★★★</span></strong><span class="discret">28 avis Google</span></div>
 </div>
 </section>
