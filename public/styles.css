@@ -509,7 +509,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .v4-soins .bloc-lien { color: var(--sauge-fonce); }
 
 /* Triptyque approche / photo / qui je suis */
-.triptyque { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); margin-top: 88px; }
+.triptyque { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); margin-top: 88px; }
 .tri-texte { padding: 56px 44px; display: flex; flex-direction: column; justify-content: center; gap: 14px; font-size: 16px; line-height: 1.65; color: var(--texte-2); }
 .tri-texte p { margin: 0; }
 .tri-approche { background: var(--rose); }
@@ -582,8 +582,11 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 /* Tablette */
 @media (max-width: 1080px) {
   .blocs-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Triptyque : sous 1400 px, la photo (carrée) passe sur sa propre ligne, entière, jamais étirée sur deux blocs de texte */
+@media (max-width: 1400px) {
   .triptyque { grid-template-columns: 1fr 1fr; }
-  .tri-photo { grid-row: span 2; }
+  .tri-photo { grid-column: 1 / -1; grid-row: 1; justify-self: center; width: min(100%, 520px); height: auto; min-height: 0; aspect-ratio: 1 / 1; }
 }
 
 /* Mobile */
@@ -600,7 +603,7 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
   .bloc-lien { margin-top: 4px; }
   .v4-cesu { padding-top: 20px; }
   .triptyque { grid-template-columns: 1fr; margin-top: 56px; }
-  .tri-photo { grid-row: auto; min-height: 0; height: 340px; }
+  .tri-photo { grid-column: auto; grid-row: auto; }
   .tri-texte { padding: 36px 20px; }
   .tri-titre { font-size: 28px; }
   .quand { text-align: left; align-items: flex-start; }

@@ -900,7 +900,7 @@ ${soins.map(blocNumerote).join('\n')}
 <p>Mon approche s’adapte à vos besoins et à vos attentes. Je vous offre une écoute attentive, une présence réconfortante, et un soutien respectueux de vos choix, de votre histoire et de votre rythme.</p>
 <p>Mon accompagnement n’est pas médical : il vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p>
 </div>
-<img class="tri-photo" src="${HD.paniers}" alt="Portrait de Marie, souriante, devant des paniers tressés" loading="lazy">
+<img class="tri-photo" src="${HD.paniers}" alt="Portrait de Marie, souriante, devant des paniers tressés" width="1400" height="1400" loading="lazy">
 <div class="tri-texte tri-qui">
 <h2 class="tri-titre">Qui je suis</h2>
 <p>Je m’appelle Marie, femme, mère, compagne, amie, et doula !</p>
