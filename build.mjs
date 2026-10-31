@@ -357,7 +357,7 @@ function entete(lienWa = WA_GENERAL) {
 <div class="conteneur entete-int">
 <a class="marque" href="/">
 <img src="${IMG.logo}" alt="" width="58" height="93">
-<span class="marque-texte"><span class="marque-nom">Marie Graugnard</span><span class="marque-sous">Doula · Paris &amp; proche banlieue sud</span></span>
+<span class="marque-texte"><span class="marque-nom">Marie Graugnard</span><span class="marque-sous">Doula · Paris &amp; Île-de-France</span></span>
 </a>
 <nav class="nav" aria-label="Navigation principale">
 <a class="nav-offre" href="/#accompagnements">Accompagnements</a>
@@ -473,13 +473,13 @@ function accueil() {
   const acc = services.filter((s) => s.groupe === 'accompagnements');
   const soins = services.filter((s) => s.groupe === 'soins');
   return tete({
-    titre: 'Marie Graugnard · Doula à Paris & proche banlieue sud',
-    description: 'Doula à Paris et proche banlieue sud : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
+    titre: 'Marie Graugnard · Doula à Paris & en Île-de-France',
+    description: 'Doula à Paris et en Île-de-France : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
     chemin: '/'
   }) + entete() + `<main>
 <section class="conteneur heros${V3 ? ' heros-v3' : ''}" id="accueil">
 <div class="heros-texte">
-<p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
+<p class="surtitre">Doula à Paris &amp; en Île-de-France</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
 <p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
 <p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>
@@ -500,7 +500,7 @@ ${`<div class="heros-visuel">
 <div class="bandeau-item"><strong>5,0 ★ · 28 avis</strong><span>sur Google</span></div>
 <div class="bandeau-item"><strong>Premier échange offert</strong><span>20 minutes au téléphone</span></div>
 <div class="bandeau-item"><strong>4 ans de doula</strong><span>après 13 ans d’assistante maternelle</span></div>
-<div class="bandeau-item"><strong>Chez vous</strong><span>Paris &amp; proche banlieue sud</span></div>
+<div class="bandeau-item"><strong>Chez vous</strong><span>Paris &amp; Île-de-France</span></div>
 </div>
 </section>
 
@@ -606,7 +606,7 @@ ${points('points-soins', soins.length)}
 <div class="faq">
 <details><summary>Quand faire appel à moi ?</summary><p>Le meilleur moment est celui où vous ressentez l’envie ou le besoin d’être accompagnée : avant l’arrivée de bébé, pour la préparation émotionnelle et organisationnelle ; lors de la naissance, pour une présence calme et apaisante ; durant les premiers mois, face à la fatigue, aux doutes et aux besoins du quotidien.</p></details>
 <details><summary>Est-ce un accompagnement médical ?</summary><p>Non. Mon accompagnement vient en complément du suivi réalisé par votre sage-femme, votre gynécologue ou tout autre professionnel de santé.</p></details>
-<details><summary>Où intervenez-vous ?</summary><p>À votre domicile, à Paris et en proche banlieue sud [liste à confirmer]. Pour l’instant rebozo, je peux aussi vous recevoir chez moi, dans le 13e arrondissement.</p></details>
+<details><summary>Où intervenez-vous ?</summary><p>À votre domicile, dans toute l’Île-de-France. Pour l’instant rebozo, je peux aussi vous recevoir chez moi, dans le 13e arrondissement.</p></details>
 </div>
 </section>
 </main>
@@ -770,7 +770,7 @@ function enteteV4(lienWa = WA_GENERAL, actif = '') {
 <div class="conteneur entete-int">
 <a class="marque" href="/">
 <img src="${IMG.logo}" alt="" width="58" height="93">
-<span class="marque-texte"><span class="marque-nom">Marie Graugnard</span><span class="marque-sous">Doula · Paris &amp; proche banlieue sud</span></span>
+<span class="marque-texte"><span class="marque-nom">Marie Graugnard</span><span class="marque-sous">Doula · Paris &amp; Île-de-France</span></span>
 </a>
 <nav class="nav" aria-label="Navigation principale">
 ${nav}
@@ -813,7 +813,7 @@ ${avecAppel ? `<div class="pied-appel">
 </div>
 <div class="col">
 <strong>Où ?</strong>
-<span>À domicile, à Paris &amp; proche banlieue sud</span>
+<span>À domicile, dans toute l’Île-de-France</span>
 <span>Soins rebozo chez moi, Paris 13e</span>
 </div>
 <div class="col" style="max-width:380px">
@@ -850,16 +850,13 @@ function accueilV4() {
   const soins = services.filter((s) => s.groupe === 'soins');
   const temoins = temoignagesAccueil();
   return tete({
-    titre: 'Marie Graugnard · Doula à Paris & proche banlieue sud',
-    description: 'Doula à Paris et proche banlieue sud : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
+    titre: 'Marie Graugnard · Doula à Paris & en Île-de-France',
+    description: 'Doula à Paris et en Île-de-France : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
     chemin: '/'
   }) + enteteV4() + `<main>
 <section class="conteneur heros heros-v3" id="accueil">
 <div class="heros-texte">
-<div class="surtitre-ligne">
-<p class="surtitre">Doula à Paris &amp; proche banlieue sud</p>
-<p class="etiquette-nm"><span class="info-i" aria-hidden="true">i</span>Accompagnement non médical</p>
-</div>
+<p class="surtitre">Doula à Paris &amp; en Île-de-France</p>
 <h1 class="h1">Accompagner les femmes, <em>à chaque étape.</em></h1>
 <p class="chapo">Si vous êtes ici, en train de me lire, c’est peut-être parce que vous ressentez le besoin d’être écoutée, soutenue, accompagnée.</p>
 <p class="texte">Vous commencez à imaginer votre parcours vers la parentalité, vous êtes enceinte ou vous venez d’accueillir votre bébé ? Peut-être avez-vous des questions, des doutes, l’envie d’être entourée dans cette période de transition… <strong>Vous êtes au bon endroit.</strong></p>

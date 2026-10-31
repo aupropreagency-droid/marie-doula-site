@@ -666,15 +666,6 @@ h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
 .lien-histoire span { color: var(--brun); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .lien-histoire:hover span { color: var(--brun-fonce); }
 @media (max-width: 760px) { .heros-v3 .lien-histoire { margin-top: 8px; } }
-/* Accueil : étiquette « accompagnement non médical » à côté du surtitre */
-.surtitre-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
-.surtitre-ligne .surtitre { margin: 0; }
-.etiquette-nm { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 5px 14px 5px 6px; background: var(--sauge-clair); color: var(--sauge-fonce); border-radius: 999px; font-size: 15px; font-weight: 600; line-height: 1.3; }
-.etiquette-nm .info-i { flex-basis: 24px; width: 24px; height: 24px; font-size: 14px; }
-@media (max-width: 760px) {
-  .etiquette-nm { font-size: 16px; }
-  .heros-v3 .heros-texte > .surtitre-ligne { order: 1; margin-top: 0; }
-}
 /* En-tête : tablettes et petits écrans d'ordinateur */
 @media (min-width: 761px) and (max-width: 1180px) {
   .entete-int { flex-wrap: nowrap; gap: 14px; }
