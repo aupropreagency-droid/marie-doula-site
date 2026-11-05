@@ -1,6 +1,11 @@
 /* Marie Graugnard · Doula — feuille de style
    Couleurs alignées sur le logo (brun-rouge #924A48, corail #DB6C59) */
 
+/* Polices hébergées sur le site (mêmes fichiers que Google Fonts, sous-ensemble latin) : aucun appel à un tiers */
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/fonts/dm-sans-v17-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/fonts/fraunces-v38-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 400; font-display: swap; src: url(/fonts/fraunces-italic-v38-latin.woff2) format('woff2'); }
+
 :root {
   --creme: #FBF6F0;
   --blanc: #FFFFFF;

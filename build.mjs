@@ -323,7 +323,50 @@ const services = [
 // ------------------------------------------------------------------
 // Gabarits communs
 // ------------------------------------------------------------------
-function tete({ titre, description, chemin }) {
+// ------------------------------------------------------------------
+// Référencement : description de l'accueil et données structurées (JSON-LD)
+// ------------------------------------------------------------------
+const DESCRIPTION_ACCUEIL = 'Marie Graugnard, doula à Paris et en Île-de-France : de la grossesse au post-partum, présence à la naissance, soins rebozo. 5,0 ★ sur 28 avis.';
+const ID_MARIE = `${DOMAINE}/#marie`;
+const ZONE = [{ '@type': 'City', name: 'Paris' }, { '@type': 'AdministrativeArea', name: 'Île-de-France' }];
+const balisesJsonLd = (donnees) => `<script type="application/ld+json">${JSON.stringify(donnees).replace(/</g, '\\u003c')}</script>\n`;
+
+// Accueil : qui est Marie, où elle intervient, ce qu'elle propose (une entrée par page de service)
+const donneesAccueil = () => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': `${DOMAINE}/#site`, url: `${DOMAINE}/`, name: 'Marie Graugnard · Doula', inLanguage: 'fr-FR', publisher: { '@id': ID_MARIE } },
+    {
+      '@type': 'ProfessionalService', '@id': ID_MARIE, name: 'Marie Graugnard, doula', url: `${DOMAINE}/`,
+      description: DESCRIPTION_ACCUEIL, image: `${DOMAINE}/images/partage-marie.jpg`, logo: `${DOMAINE}/images/logo.png`,
+      founder: { '@type': 'Person', name: 'Marie Graugnard', jobTitle: 'Doula' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Paris', addressRegion: 'Île-de-France', addressCountry: 'FR' },
+      areaServed: ZONE, knowsLanguage: 'fr', sameAs: ['https://www.instagram.com/marie_doula_paris/'],
+      hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Accompagnements et soins', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.nom, url: `${DOMAINE}/${s.slug}` } })) }
+    }
+  ]
+});
+
+// Page de service : le service proposé par Marie et le fil d'Ariane visible sur la page
+const donneesService = (s) => {
+  const groupe = s.groupe === 'soins' ? ['Soins & cérémonies', '#soins'] : ['Accompagnements', '#accompagnements'];
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'Service', '@id': `${DOMAINE}/${s.slug}#service`, name: s.nom, url: `${DOMAINE}/${s.slug}`, description: s.description, serviceType: 'Doula', areaServed: ZONE, provider: { '@type': 'ProfessionalService', '@id': ID_MARIE, name: 'Marie Graugnard, doula', url: `${DOMAINE}/` } },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${DOMAINE}/` },
+          { '@type': 'ListItem', position: 2, name: groupe[0], item: `${DOMAINE}/${groupe[1]}` },
+          { '@type': 'ListItem', position: 3, name: s.nom }
+        ]
+      }
+    ]
+  };
+};
+
+function tete({ titre, description, chemin, donnees }) {
   return `<!doctype html>
 <html lang="fr">
 <head>
@@ -343,11 +386,11 @@ ${PREVISU ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta prop
 <meta name="theme-color" content="#FBF6F0">
 <link rel="icon" type="image/png" href="/images/logo.png">
 <link rel="canonical" href="${DOMAINE}${chemin}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/dm-sans-v17-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-v38-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-italic-v38-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css?v=${VERSION}">
-</head>
+${donnees ? balisesJsonLd(donnees) : ''}</head>
 <body>
 `;
 }
@@ -474,7 +517,7 @@ function accueil() {
   const soins = services.filter((s) => s.groupe === 'soins');
   return tete({
     titre: 'Marie Graugnard · Doula à Paris & en Île-de-France',
-    description: 'Doula à Paris et en Île-de-France : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
+    description: DESCRIPTION_ACCUEIL,
     chemin: '/'
   }) + entete() + `<main>
 <section class="conteneur heros${V3 ? ' heros-v3' : ''}" id="accueil">
@@ -851,8 +894,9 @@ function accueilV4() {
   const temoins = temoignagesAccueil();
   return tete({
     titre: 'Marie Graugnard · Doula à Paris & en Île-de-France',
-    description: 'Doula à Paris et en Île-de-France : accompagnement de la grossesse aux premiers mois, présence à la naissance, soutien post-partum à domicile, soins rebozo. 5,0 ★ sur 28 avis.',
-    chemin: '/'
+    description: DESCRIPTION_ACCUEIL,
+    chemin: '/',
+    donnees: donneesAccueil()
   }) + enteteV4() + `<main>
 <section class="conteneur heros heros-v3" id="accueil">
 <div class="heros-texte">
@@ -1014,7 +1058,7 @@ function pageServiceV4(s) {
 <blockquote>« ${esc(texte)} »</blockquote>
 <figcaption><strong>${esc(auteur)}</strong> · ${esc(source || 'Avis Google')}</figcaption>
 </figure>`).join('\n');
-  return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug }) + enteteV4(s.wa, sauge ? 'soins' : 'acc') + `<main>
+  return tete({ titre: `${s.titreSeo} · Marie Graugnard, doula`, description: s.description, chemin: '/' + s.slug, donnees: donneesService(s) }) + enteteV4(s.wa, sauge ? 'soins' : 'acc') + `<main>
 <section class="v4-titre-service${sauge ? ' sauge' : ''}">
 <div class="conteneur v4-titre-grille${photo ? '' : ' sans-photo'}">
 <div class="v4-titre-int">
@@ -1104,11 +1148,13 @@ writeFileSync(join(SORTIE, 'styles.css'), readFileSync('src/styles.css', 'utf8')
 copyFileSync('src/carrousel.js', join(SORTIE, 'carrousel.js'));
 copyFileSync('src/bulle.js', join(SORTIE, 'bulle.js'));
 for (const f of readdirSync('src/images')) copyFileSync(join('src/images', f), join(SORTIE, 'images', f));
+mkdirSync(join(SORTIE, 'fonts'), { recursive: true });
+for (const f of readdirSync('src/fonts')) copyFileSync(join('src/fonts', f), join(SORTIE, 'fonts', f));
 writeFileSync(join(SORTIE, 'robots.txt'), PREVISU ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\n\nSitemap: ${DOMAINE}/sitemap.xml\n`);
 if (!PREVISU) {
   const jour = new Date().toISOString().slice(0, 10);
   const pages = ['/', ...(V4 ? ['/qui-je-suis'] : []), ...services.map((s) => `/${s.slug}`)];
   writeFileSync(join(SORTIE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `  <url><loc>${DOMAINE}${p}</loc><lastmod>${jour}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 }
-writeFileSync(join(SORTIE, '_headers'), '/images/*\n  Cache-Control: public, max-age=604800\n/*.css\n  Cache-Control: public, max-age=3600\n');
+writeFileSync(join(SORTIE, '_headers'), '/images/*\n  Cache-Control: public, max-age=604800\n/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n/*.css\n  Cache-Control: public, max-age=3600\n');
 console.log(`Site généré dans ./${SORTIE} : ${services.length + (V4 ? 3 : 2)} pages.`);
