@@ -9,7 +9,7 @@ const TEL = '33652105482';
 const FICHE_GOOGLE = 'https://share.google/hiO8zxGKeLJWMfdDU';
 // ⚠ SEULE LIGNE À CHANGER le jour de la mise en ligne : l'adresse du site, sans « / » final.
 // Elle alimente canonical, og:url, og:image, sitemap.xml et robots.txt.
-const DOMAINE = 'https://marie-doula-site.aupropre-agency.workers.dev';
+const DOMAINE = 'https://mariegraugnard.fr';
 const PREVISU = DOMAINE.endsWith('.workers.dev'); // adresse provisoire = site non indexé ; un vrai domaine = indexé
 const VERSION = Date.now().toString(36); // casse le cache CSS/JS à chaque build // true = site en prévisualisation : non indexé par Google
 
